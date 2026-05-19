@@ -29,10 +29,6 @@
                 <i class="fa-solid fa-wand-magic-sparkles text-indigo-600 text-2xl"></i>
                 <span class="text-2xl font-bold text-gray-900">Emosha <span class="text-indigo-600">AI</span></span>
             </div>
-            <nav class="hidden md:flex space-x-reverse space-x-6 font-medium">
-                <a href="#" class="text-indigo-600">الرئيسية</a>
-                <a href="#tools" class="text-gray-600 hover:text-indigo-600">الأدوات الفعالة</a>
-            </nav>
             <div>
                 <button id="loginBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-medium transition shadow-md cursor-pointer">
                     تسجيل الدخول <i class="fa-solid fa-right-to-bracket mr-2"></i>
@@ -41,60 +37,75 @@
         </div>
     </header>
 
-    <section class="bg-gradient-to-b from-indigo-50 to-white py-16 text-center px-4">
+    <section class="bg-gradient-to-b from-indigo-50 to-white py-12 text-center px-4">
         <div class="max-w-3xl mx-auto">
             <span class="bg-indigo-100 text-indigo-800 text-sm font-semibold px-3 py-1 rounded-full">الجيل القادم من صناعة المحتوى وتعديل الصور</span>
             <h1 class="text-3xl md:text-5xl font-bold text-gray-950 mt-6 leading-tight">
                 اصنع فيديوهاتك وعَدّل مظهرك بالكامل مع <span class="text-indigo-600">Emosha AI</span>
             </h1>
-            <p class="text-gray-600 text-base mt-4 max-w-2xl mx-auto">
-                المنصة المتكاملة لتوليد السكريبتات، تحويل النصوص إلى فيديوهات سينمائية متحركة، وتغيير الملابس والمظهر الشخصي فوراً بالذكاء الاصطناعي.
+            <p class="text-gray-600 text-sm mt-4 max-w-2xl mx-auto">
+                منصة إيموشا إي آي المتكاملة لتوليد سكريبتات تيك توك، ريلز، وتحويل النصوص والقصص إلى فيديوهات احترافية جاهزة للنشر فوراً بضغطة زر.
             </p>
+            <button id="heroBtn" class="mt-6 bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-6 rounded-xl transition shadow-md cursor-pointer">
+                جرب أدوات إيموشا إي آي الفورية ←
+            </button>
         </div>
     </section>
 
-    <section id="tools" class="container mx-auto px-4 py-6">
-        <div class="text-center mb-12">
+    <section class="container mx-auto px-4 py-6">
+        <div class="text-center mb-10">
             <h2 class="text-2xl font-bold text-gray-900">لوحة أدوات إيموشا الخارقة</h2>
+            <p class="text-gray-500 text-xs mt-1">أدوات حصرية ومطورة بالكامل لخدمة زوارك ومتابعيك</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             
-            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 flex flex-col justify-between border-t-4 border-t-red-600">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between border-t-4 border-t-red-600">
                 <div>
-                    <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center text-red-600 text-xl mb-4">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center text-red-600 text-lg">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">مُولد المحتوى والسكريبتات</h3>
-                    <p class="text-gray-600 text-sm mb-4">صناعة سكريبتات تيك توك وريلز، ابتكار منشورات تسويقية مقنعة لفيسبوك، أو توليد أسماء مشاريع تجارية رنانة.</p>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">مُولد المحتوى والسكريبتات الذكي</h3>
+                    <p class="text-gray-500 text-xs mb-4 leading-relaxed">الأداة الشاملة لصناعة المحتوى! اكتب فكرتك ودع الذكاء الاصطناعي يتولى صياغة سكريبتات تيك توك وريلز، أو منشورات تسويقية مقنعة.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-1 rounded-md"><i class="fa-solid fa-video ml-1 text-red-500"></i> سكريبتات فيديو</span>
+                        <span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-1 rounded-md"><i class="fa-solid fa-pen ml-1 text-blue-500"></i> منشورات فيسبوك</span>
+                        <span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-1 rounded-md"><i class="fa-solid fa-lightbulb ml-1 text-yellow-500"></i> أسماء مشاريع</span>
+                    </div>
                 </div>
-                <button id="openScriptTool" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl transition cursor-pointer text-sm block text-center">
+                <button id="openScriptTool" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl transition cursor-pointer text-sm text-center">
                     افتح أدوات الكتابة الذكية <i class="fa-solid fa-chevron-left mr-1 text-[10px]"></i>
                 </button>
             </div>
 
-            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 flex flex-col justify-between border-t-4 border-t-purple-600">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between border-t-4 border-t-purple-600">
                 <div>
-                    <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 text-xl mb-4">
+                    <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 text-lg mb-4">
                         <i class="fa-solid fa-clapperboard"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">تحويل الكلام لفيديو احترافي</h3>
-                    <p class="text-gray-600 text-sm mb-4">الصق نصك أو قصتك وقم بتوليد مقاطع فيديو سينمائية متحركة ذات تأثيرات بصرية حية مع دمج تعليق صوتي فخم.</p>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">تحويل الكلام إلى فيديو احترافي</h3>
+                    <p class="text-gray-500 text-xs mb-4 leading-relaxed">صانع الفيديوهات الفوري. الصق السكريبت أو اكتب القصة التي تدور في مخيلتك وسيقوم الذكاء الاصطناعي بإنتاج وتوليد مشاهد سينمائية متكاملة.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-1 rounded-md"><i class="fa-solid fa-film ml-1 text-purple-500"></i> مشاهد متحركة</span>
+                        <span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-1 rounded-md"><i class="fa-solid fa-microphone ml-1 text-pink-500"></i> تعليق صوتي AI</span>
+                    </div>
                 </div>
-                <button id="openVideoTool" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-xl transition cursor-pointer text-sm block text-center">
+                <button id="openVideoTool" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-xl transition cursor-pointer text-sm text-center">
                     صناعة فيديو متحرك <i class="fa-solid fa-wand-magic mr-1 text-[10px]"></i>
                 </button>
             </div>
 
-            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 flex flex-col justify-between border-t-4 border-t-emerald-600">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between border-t-4 border-t-emerald-600">
                 <div>
-                    <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 text-xl mb-4">
+                    <div class="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 text-lg mb-4">
                         <i class="fa-solid fa-user-gear"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">تعديل المظهر والملابس</h3>
-                    <p class="text-gray-600 text-sm mb-4">ارفع صورتك الشخصية وغير ملابسك ومظهرك فوراً إلى (بدلة رسمية، تيشرت كاجوال، ستايل سبورتنج، نظارات).</p>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">تعديل المظهر والملابس بالذكاء الاصطناعي</h3>
+                    <p class="text-gray-500 text-xs mb-4 leading-relaxed">ارفع صورتك الشخصية وغير ملابسك ومظهرك فوراً إلى (بدلة رسمية وجاكيت فخم، تيشرت كاجوال، ستايل سبورتنج وكورة، نظارات، فلاتر وخامات).</p>
                 </div>
-                <button id="openPhotoTool" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition cursor-pointer text-sm block text-center">
+                <button id="openPhotoTool" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition cursor-pointer text-sm text-center">
                     ابدأ بتعديل صورتك الآن <i class="fa-solid fa-camera mr-1 text-[10px]"></i>
                 </button>
             </div>
@@ -103,13 +114,13 @@
     </section>
 
     <div id="loginModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm">
-        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden p-6 relative">
+        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl p-6 relative">
             <button id="closeLogin" class="absolute top-4 left-4 text-gray-500 hover:text-gray-800 text-xl cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
             <h3 class="text-xl font-bold text-gray-900 text-center mb-6">تسجيل الدخول إلى Emosha AI</h3>
             <div class="space-y-4">
                 <input type="email" placeholder="البريد الإلكتروني" class="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
                 <input type="password" placeholder="كلمة المرور" class="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                <button onclick="alert('تم تسجيل الدخول بنجاح يا قبطان! 🎉')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl transition cursor-pointer">دخول</button>
+                <button onclick="alert('تم تسجيل الدخول بنجاح يا قبطان! 🎉'); document.getElementById('loginModal').classList.add('hidden');" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl transition cursor-pointer">دخول</button>
             </div>
         </div>
     </div>
@@ -117,33 +128,32 @@
     <div id="scriptModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm">
         <div class="bg-white w-full max-w-xl rounded-2xl shadow-2xl overflow-hidden relative max-h-[90vh] flex flex-col">
             <div class="bg-red-600 text-white px-6 py-4 flex justify-between items-center shrink-0">
-                <h3 class="text-lg font-bold"><i class="fa-solid fa-wand-magic-sparkles ml-2"></i> أدوات توليد المحتوى الذكي</h3>
+                <h3 class="text-lg font-bold"><i class="fa-solid fa-wand-magic-sparkles ml-2"></i> مُولد المحتوى والسكريبتات الذكي</h3>
                 <button id="closeScriptTool" class="text-white hover:text-white text-xl cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <div class="p-6 space-y-5 overflow-y-auto">
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">ما الذي تريد صناعته؟</label>
-                        <select id="toolType" class="w-full p-3 border border-gray-300 rounded-xl bg-white font-bold text-indigo-600 text-sm">
-                            <option value="script">🎬 مُولد سكريبتات تيك توك وريلز الفيرال</option>
-                            <option value="post">✍️ تحويل الأفكار إلى منشورات فيسبوك تسويقية</option>
-                            <option value="brand">💡 ابتكار وتوليد أسماء ماركات ومشاريع تجارية</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label id="inputLabel" class="block text-sm font-bold text-gray-700 mb-1">اكتب فكرة وموضوع الفيديو باختصار:</label>
-                        <textarea id="videoTopic" rows="3" class="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="مثال: 3 أسرار للنمو السريع على السوشيال ميديا..."></textarea>
-                    </div>
-                    <button id="generateBtn" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl transition flex items-center justify-center cursor-pointer">
-                        <span id="btnText">توليد المحتوى السحري فوراً</span> <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>
-                    </button>
+            <div class="p-6 space-y-4 overflow-y-auto">
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">اختر نوع المحتوى المطلوب:</label>
+                    <select id="toolType" class="w-full p-3 border border-gray-300 rounded-xl bg-white font-bold text-indigo-600 text-sm">
+                        <option value="script">🎬 مُولد سكريبتات تيك توك وريلز الفيرال</option>
+                        <option value="post">✍️ تحويل الأفكار إلى منشورات فيسبوك تسويقية</option>
+                        <option value="brand">💡 ابتكار وتوليد أسماء ماركات ومشاريع تجارية</option>
+                    </select>
                 </div>
+                <div>
+                    <label id="inputLabel" class="block text-sm font-bold text-gray-700 mb-1">اكتب فكرة وموضوع الفيديو باختصار:</label>
+                    <textarea id="videoTopic" rows="3" class="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="مثال: 3 أسرار للنجام والانتشار على السوشيال ميديا..."></textarea>
+                </div>
+                <button id="generateBtn" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl transition flex items-center justify-center cursor-pointer">
+                    <span>توليد وصناعة المحتوى الذكي</span> <i class="fa-solid fa-magic mr-2"></i>
+                </button>
+                
                 <div id="resultBox" class="p-4 bg-gray-50 rounded-xl border border-dashed border-gray-300 space-y-3 hidden">
                     <div class="flex justify-between items-center border-b border-gray-200 pb-2">
-                        <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded">تمت الصياغة بواسطة Emosha AI</span>
-                        <button id="copyBtn" class="text-xs text-indigo-600 font-bold hover:underline cursor-pointer">نسخ النص</button>
+                        <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded">تمت الصياغة بواسطة Emosha AI ✨</span>
+                        <button id="copyBtn" class="text-xs text-indigo-600 font-bold hover:underline cursor-pointer">نسخ النص كود</button>
                     </div>
-                    <div id="scriptOutput" class="text-sm leading-relaxed text-gray-900 whitespace-pre-line bg-white p-3 rounded-lg border border-gray-100 max-h-48 overflow-y-auto"></div>
+                    <div id="scriptOutput" class="text-sm leading-relaxed text-gray-900 whitespace-pre-line bg-white p-3 rounded-lg border border-gray-100 max-h-48 overflow-y-auto font-mono"></div>
                 </div>
             </div>
         </div>
@@ -155,53 +165,50 @@
                 <h3 class="text-lg font-bold"><i class="fa-solid fa-clapperboard ml-2"></i> صانع الفيديو الاحترافي والمتحرك</h3>
                 <button id="closeVideoTool" class="text-white hover:text-white text-xl cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <div class="p-6 space-y-5 overflow-y-auto">
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">أدخل النص أو القصة لتحويلها لفيديو متحرك حقيقي:</label>
-                        <textarea id="videoTextPrompt" rows="3" class="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="اكتب وصف المشهد بالتفصيل لإنتاج خلفيات ومقاطع متحركة حقيقية..."></textarea>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">أبعاد الفيديو:</label>
-                            <select class="w-full p-3 border border-gray-300 rounded-xl bg-white text-sm">
-                                <option>طولي 16:9 (تيك توك / ريلز)</option>
-                                <option>عرضي 9:16 (يوتيوب سينمائي)</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">المعلق الصوتي:</label>
-                            <select class="w-full p-3 border border-gray-300 rounded-xl bg-white text-sm">
-                                <option>صوت حماسي جهوري (ذكوري)</option>
-                                <option>صوت وثائقي ناعم (أنثوي)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button id="generateVideoBtn" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-xl transition flex items-center justify-center cursor-pointer">
-                        <span id="videoBtnText">توليد وصناعة مقطع الفيديو المتحرك</span> <i class="fa-solid fa-play mr-2"></i>
-                    </button>
+            <div class="p-6 space-y-4 overflow-y-auto">
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">أدخل النص أو القصة لتحويلها لفيديو سينمائي:</label>
+                    <textarea id="videoTextPrompt" rows="4" class="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="رأيك في التعليقات! 🔥&#10;#[الهاشتاجات المقترحة]:&#10;#إيموشا #Emosha #تيك_توك #صناعة_المحتوى #الذكاء_الاصطناعي"></textarea>
                 </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">أبعاد الفيديو:</label>
+                        <select class="w-full p-3 border border-gray-300 rounded-xl bg-white text-sm">
+                            <option>طولي 16:9 (تيك توك / ريلز)</option>
+                            <option>عرضي 9:16 (يوتيوب سينمائي)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">صوت المعلق الفيروسي:</label>
+                        <select class="w-full p-3 border border-gray-300 rounded-xl bg-white text-sm">
+                            <option>صوت رحيم وقوي (ذكوري)</option>
+                            <option>صوت حماسي جهوري (ذكوري)</option>
+                            <option>صوت وثائقي ناعم (أنثوي)</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="generateVideoBtn" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-xl transition flex items-center justify-center cursor-pointer">
+                    <span>توليد وصناعة مقطع الفيديو المتحرك</span> <i class="fa-solid fa-play mr-2"></i>
+                </button>
 
                 <div id="videoProgressContainer" class="hidden space-y-2">
                     <div class="flex justify-between text-xs font-bold text-purple-700">
-                        <span>جاري معالجة المشاهد وتحريك الخلفية والتعليق...</span>
+                        <span>جاري إنتاج ومعالجة مشاهد الفيديو والتعليق...</span>
                         <span id="progressPercent">0%</span>
                     </div>
-                    <div class="w-full bg-gray-200 h-3 rounded-full overflow-hidden">
-                        <div id="videoProgressBar" class="bg-purple-600 h-full w-0 transition-all duration-300"></div>
+                    <div class="w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
+                        <div id="videoProgressBar" class="bg-purple-600 h-full w-0 transition-all duration-200"></div>
                     </div>
                 </div>
 
-                <div id="videoResultBox" class="mt-4 p-4 bg-gray-50 rounded-xl border border-dashed border-gray-300 space-y-4 hidden text-center">
+                <div id="videoResultBox" class="p-4 bg-gray-50 rounded-xl border border-dashed border-gray-300 space-y-3 hidden text-center">
                     <span class="text-xs font-bold text-purple-700 bg-purple-50 px-3 py-1 rounded-full inline-block">✨ تم إنتاج ومعالجة الفيديو بنجاح!</span>
-                    <div class="aspect-video animated-video-bg rounded-xl flex flex-col items-center justify-center text-white relative p-6 overflow-hidden shadow-inner border border-purple-900">
+                    <div class="aspect-video animated-video-bg rounded-xl flex flex-col items-center justify-center text-white relative p-6 overflow-hidden shadow-md">
                         <div class="absolute top-3 right-3 bg-red-600 text-[10px] font-bold px-2 py-0.5 rounded animate-pulse">LIVE 4K</div>
-                        <i class="fa-solid fa-compact-disc text-5xl opacity-20 animate-spin mb-3"></i>
-                        <div class="z-10 text-center space-y-2">
-                            <p class="font-bold text-sm md:text-base tracking-wide text-yellow-300 animate-bounce" id="dynamicTextPreview">🚀 جاري عرض المشهد السينمائي ومحاكاة الحركة...</p>
-                        </div>
+                        <i class="fa-solid fa-film text-4xl opacity-30 animate-spin mb-2"></i>
+                        <p class="font-bold text-xs text-yellow-300" id="dynamicTextPreview">🎬 فيديو متحرك جاهز للعرض والمحاكاة...</p>
                     </div>
-                    <button class="bg-purple-600 text-white text-sm font-bold px-4 py-2.5 rounded-xl w-full hover:bg-purple-700 transition shadow-md"><i class="fa-solid fa-download ml-2"></i> تحميل ملف الفيديو النهائي HD</button>
+                    <button onclick="alert('جاري بدء تحميل ملف الفيديو بجودة عالية HD..')" class="bg-purple-600 text-white text-xs font-bold py-3 rounded-xl w-full hover:bg-purple-700 transition"><i class="fa-solid fa-download ml-2"></i> تحميل ملف الفيديو النهائي HD</button>
                 </div>
             </div>
         </div>
@@ -213,93 +220,95 @@
                 <h3 class="text-lg font-bold"><i class="fa-solid fa-user-gear ml-2"></i> استوديو تعديل المظهر والملابس الذكي</h3>
                 <button id="closePhotoTool" class="text-white hover:text-white text-xl cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <div class="p-6 space-y-5 overflow-y-auto">
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">ارفع صورتك الشخصية الواضحة:</label>
-                        <div class="border-2 border-dashed border-gray-300 rounded-xl p-4 text-center hover:bg-emerald-50 transition cursor-pointer relative">
-                            <input type="file" id="userPhotoInput" class="absolute inset-0 opacity-0 cursor-pointer" accept="image/*">
-                            <i class="fa-solid fa-cloud-arrow-up text-emerald-600 text-3xl mb-2"></i>
-                            <p class="text-xs text-gray-500 font-bold" id="uploadStatus">اضغط هنا أو اسحب الصورة لرفعها</p>
-                        </div>
+            <div class="p-6 space-y-4 overflow-y-auto">
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">ارفع صورتك الشخصية الواضحة:</label>
+                    <div class="border-2 border-dashed border-gray-300 rounded-xl p-4 text-center hover:bg-emerald-50 transition cursor-pointer relative">
+                        <input type="file" id="userPhotoInput" class="absolute inset-0 opacity-0 cursor-pointer" accept="image/*">
+                        <i class="fa-solid fa-cloud-arrow-up text-emerald-600 text-2xl mb-1"></i>
+                        <p class="text-xs text-gray-500 font-bold" id="uploadStatus">اضغط هنا أو اسحب الصورة لرفعها</p>
                     </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">اختر نوع اللبس والاستايل:</label>
-                            <select id="clothingStyle" class="w-full p-3 border border-gray-300 rounded-xl bg-white text-sm">
-                                <option value="بدلة رسمية وجاكيت فخم">🤵 بدلة رسمية وجاكيت فخم</option>
-                                <option value="تيشرت شبابي كاجوال">👕 تيشرت كاجوال حديث</option>
-                                <option value="طقم كورة سبورتنج رياضي">⚽ طقم كورة سبورتنج رياضي</option>
-                                <option value="ملابس خروج شياكة">👟 ملابس خروج كاجوال فخمة</option>
-                                <option value="ملابس بيتي مريحة">🏠 ملابس بيتي مريحة</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">إضافات المظهر:</label>
-                            <select id="accessoriesStyle" class="w-full p-3 border border-gray-300 rounded-xl bg-white text-sm">
-                                <option value="بدون إضافات">تعديل اللبس فقط</option>
-                                <option value="إضافة نظارة شمسية كول">إضافة نظارة شمسية كول</option>
-                                <option value="إضافة فلتر تجميل">فلتر تجميل وتحسين ملامح</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button id="generatePhotoBtn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition flex items-center justify-center cursor-pointer">
-                        <span id="photoBtnText">معالجة وتغيير الاستايل فوراً</span> <i class="fa-solid fa-wand-magic mr-2"></i>
-                    </button>
                 </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">اختر نوع اللبس والاستايل:</label>
+                        <select id="clothingStyle" class="w-full p-3 border border-gray-300 rounded-xl bg-white text-sm font-medium">
+                            <option value="بدلة رسمية وجاكيت فخم">🤵 بدلة رسمية وجاكيت فخم</option>
+                            <option value="تيشرت شبابي كاجوال حديث">👕 تيشرت كاجوال حديث</option>
+                            <option value="طقم كورة سبورتنج رياضي">⚽ طقم كورة سبورتنج رياضي</option>
+                            <option value="ملابس خروج شياكة وفخمة">👟 ملابس خروج كاجوال فخمة</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">إضافات المظهر:</label>
+                        <select id="accessoriesStyle" class="w-full p-3 border border-gray-300 rounded-xl bg-white text-sm">
+                            <option value="بدون إضافات">تعديل اللبس فقط</option>
+                            <option value="إضافة نظارة شمسية كول">إضافة نظارة شمسية كول</option>
+                            <option value="فلتر تجميل وتحسين ملامح">فلتر تجميل وتحسين ملامح</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="generatePhotoBtn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition flex items-center justify-center cursor-pointer">
+                    <span>معالجة وتغيير الاستايل فوراً</span> <i class="fa-solid fa-pencil mr-2"></i>
+                </button>
 
                 <div id="photoResultBox" class="p-4 bg-gray-50 rounded-xl border border-dashed border-gray-300 text-center space-y-3 hidden">
                     <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full inline-block">🎉 تم تعديل صورتك وتغيير الملابس بنجاح!</span>
-                    <div class="max-w-[220px] mx-auto aspect-square bg-gray-200 border-4 border-white shadow-md rounded-2xl flex items-center justify-center text-gray-400 relative overflow-hidden">
-                        <i class="fa-solid fa-user-tie text-6xl opacity-30 animate-pulse absolute"></i>
-                        <div class="z-10 text-[11px] p-2 bg-black/60 text-white font-bold absolute bottom-0 w-full" id="photoPreviewText">ستايل جديد مطبق بالكامل</div>
+                    <div class="max-w-[180px] mx-auto aspect-square bg-gray-200 border-4 border-white shadow-md rounded-2xl flex items-center justify-center text-gray-400 relative overflow-hidden">
+                        <i class="fa-solid fa-user-tie text-5xl opacity-20 absolute animate-pulse"></i>
+                        <div class="z-10 text-[10px] p-2 bg-black/60 text-white font-bold absolute bottom-0 w-full" id="photoPreviewText">تعديل اللبس المطبق</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="bg-gray-900 text-gray-400 py-6 text-center border-t border-gray-800 text-sm">
+    <footer class="bg-gray-900 text-gray-500 py-6 text-center border-t border-gray-800 text-xs">
         <p>&copy; 2026 منصة Emosha AI | إيموشا إي آي. جميع الحقوق محفوظة.</p>
     </footer>
 
     <script>
+        // جلب عناصر الصفحات والنوافذ
         const loginModal = document.getElementById('loginModal');
         const scriptModal = document.getElementById('scriptModal');
         const videoModal = document.getElementById('videoModal');
         const photoModal = document.getElementById('photoModal');
+        
         const toolTypeSelect = document.getElementById('toolType');
         const inputLabel = document.getElementById('inputLabel');
         const videoTopicInput = document.getElementById('videoTopic');
 
-        // أحداث فتح وإغلاق النوافذ (تم ربطها مباشرة بالأزرار)
+        // أزرار الفتح والإغلاق المباشرة لعدم حدوث أي تعليق على الموبايل
         document.getElementById('loginBtn').onclick = () => loginModal.classList.remove('hidden');
         document.getElementById('closeLogin').onclick = () => loginModal.classList.add('hidden');
 
+        // ربط أزرار الكروت الرئيسية لفتح النوافذ
         document.getElementById('openScriptTool').onclick = () => scriptModal.classList.remove('hidden');
         document.getElementById('openVideoTool').onclick = () => videoModal.classList.remove('hidden');
         document.getElementById('openPhotoTool').onclick = () => photoModal.classList.remove('hidden');
+        document.getElementById('heroBtn').onclick = () => scriptModal.classList.remove('hidden');
 
+        // أزرار الإغلاق مع تصفير النتائج القديمة لراحة المستخدم
         document.getElementById('closeScriptTool').onclick = () => { scriptModal.classList.add('hidden'); document.getElementById('resultBox').classList.add('hidden'); };
         document.getElementById('closeVideoTool').onclick = () => { videoModal.classList.add('hidden'); document.getElementById('videoResultBox').classList.add('hidden'); document.getElementById('videoProgressContainer').classList.add('hidden'); };
         document.getElementById('closePhotoTool').onclick = () => { photoModal.classList.add('hidden'); document.getElementById('photoResultBox').classList.add('hidden'); };
 
-        // تغيير الحقول ديناميكياً
+        // تبديل العناوين ديناميكياً داخل أداة توليد النصوص
         toolTypeSelect.onchange = () => {
             const type = toolTypeSelect.value;
             if(type === 'script') {
                 inputLabel.innerText = "اكتب فكرة وموضوع الفيديو باختصار:";
-                videoTopicInput.placeholder = "مثال: 3 أسرار للنمو السريع على السوشيال ميديا...";
+                videoTopicInput.placeholder = "مثال: 3 أسرار للنجاح والانتشار على السوشيال ميديا...";
             } else if(type === 'post') {
-                inputLabel.innerText = "اكتب الفكرة أو موضوع المنشور التسويقي:";
-                videoTopicInput.placeholder = "مثال: عرض خصم 30% على خدمات الدهانات والديكور بمناسبة الصيف...";
+                inputLabel.innerText = "اكتب تفاصيل وموضوع المنشور التسويقي:";
+                videoTopicInput.placeholder = "مثال: عرض خصومات وتخفيضات كبرى على منتجاتنا...";
             } else if(type === 'brand') {
-                inputLabel.innerText = "اكتب مجال عمل مشروعك أو شركتك:";
-                videoTopicInput.placeholder = "مثال: منصة ذكاء اصطناعي لإنتاج المحتوى...";
+                inputLabel.innerText = "اكتب مجال وتخصص مشروعك التجاري:";
+                videoTopicInput.placeholder = "مثال: شركة تسويق وتطوير تطبيقات برمجية ذكية...";
             }
         };
 
-        // الرفع والتعديل
+        // تحديث حالة رفع الملفات يدوياً
         const userPhotoInput = document.getElementById('userPhotoInput');
         userPhotoInput.onchange = () => {
             if(userPhotoInput.files.length > 0) {
@@ -307,26 +316,36 @@
             }
         };
 
-        // توليد النصوص
+        // 1. تفعيل زر معالجة وتوليد النصوص والسكريبتات الفوري
         document.getElementById('generateBtn').onclick = () => {
             const topic = videoTopicInput.value.trim();
-            if(!topic) { alert("من فضلك ادخل التفاصيل أولاً!"); return; }
-            document.getElementById('btnText').innerText = "جاري الصياغة الفورية...";
+            if(!topic) { alert("من فضلك ادخل فكرة أو موضوع النص أولاً!"); return; }
+            
+            const btn = document.getElementById('generateBtn');
+            btn.innerHTML = 'جاري الصياغة الفورية... <i class="fa-solid fa-spinner animate-spin mr-2"></i>';
+            btn.disabled = true;
+
             setTimeout(() => {
-                let res = "";
-                if(toolTypeSelect.value === 'script') res = `🎬 [سكريبت جاهز لـ ${topic}]:\n\n🎯 هل تبحث عن التميز؟ إليك السر في ثلاث خطوات رئيسية ومدروسة للوصول لأعلى انتشار!`;
-                else if(toolTypeSelect.value === 'post') res = `✍️ [منشور تسويقي مقنع]:\n\nلكل عشاق الفخامة والتميز! ✨ بمناسبة التحديث الجديد، نقدم لكم أقوى العروض الحصرية لموضوع (${topic})! تواصل معنا الآن.`;
-                else res = `💡 [اقتراحات أسماء ماركات رنانة]:\n\n1. إيموشا ماستر (Emosha Master)\n2. براند الأفق الذكي (Horizon AI)`;
-                document.getElementById('scriptOutput').innerText = res;
+                let generatedText = "";
+                if(toolTypeSelect.value === 'script') {
+                    generatedText = `🎬 [سكريبت تيك توك فيرال جاهز]\n\n📌 الفكرة: ${topic}\n\n🔥 [المقدمة الخاطفة]: هل كنت تعلم هذا السر من قبل؟ الكثير يخفونه عنك!\n\n💡 [المحتوى الأساسي]: أولاً، ركز على الجودة. ثانياً، استمر في النشر اليومي ولا تتوقف أبداً لتبني جمهورك الحقيقي.\n\n🎯 [دعوة للتفاعل]: تابع الحساب وشارك برأيك في التعليقات!`;
+                } else if(toolTypeSelect.value === 'post') {
+                    generatedText = `✍️ [منشور تسويقي جاهز للنشر]\n\nبشرى سارة لعملائنا الكرام! ✨ نعلن لكم عن إطلاق أقوى الخدمات الاحترافية المخصصة لـ (${topic}) بأعلى جودة وأفضل الأسعار المنافسة في السوق.\n\n📞 تواصلوا معنا الآن عبر الرسائل للحصول على العرض الحصري المتاح لفترة محدودة!`;
+                } else {
+                    generatedText = `💡 [اقتراحات أسماء ماركات رنانة ومبتكرة]:\n\n1. إيموشا برو (Emosha Pro)\n2. أفق الإبداع الذكي (Creative Horizon)\n3. تكنو ماستر (Techno Master)\n\n* جميع الأسماء مقترحة ومميزة لتناسب تخصصك!`;
+                }
+                
+                document.getElementById('scriptOutput').innerText = generatedText;
                 document.getElementById('resultBox').classList.remove('hidden');
-                document.getElementById('btnText').innerText = "توليد المحتوى السحري فوراً";
-            }, 800);
+                btn.innerHTML = 'توليد وصناعة المحتوى الذكي <i class="fa-solid fa-magic mr-2"></i>';
+                btn.disabled = false;
+            }, 700);
         };
 
-        // توليد الفيديوهات بشريط تحميل حقيقي
+        // 2. تفعيل زر توليد الفيديوهات الاحترافية مع شريط التحميل
         document.getElementById('generateVideoBtn').onclick = () => {
             const prompt = document.getElementById('videoTextPrompt').value.trim();
-            if(!prompt) { alert("ادخل وصف المشهد لصناعة الفيديو!"); return; }
+            if(!prompt) { alert("من فضلك اكتب النص أو الهاشتاجات أولاً لإنتاج الفيديو!"); return; }
             
             const btn = document.getElementById('generateVideoBtn');
             const progressContainer = document.getElementById('videoProgressContainer');
@@ -342,6 +361,7 @@
             progressBar.style.width = '0%';
             progressPercent.innerText = '0%';
 
+            // تشغيل شريط التحميل التفاعلي بنسبة 20% لكل خطوة ليعطي تجربة حقيقية
             const interval = setInterval(() => {
                 percent += 20;
                 progressBar.style.width = percent + '%';
@@ -349,35 +369,37 @@
                 
                 if(percent >= 100) {
                     clearInterval(interval);
-                    document.getElementById('dynamicTextPreview').innerText = `🎬 فيديو متحرك حول: ${prompt.substring(0, 30)}...`;
+                    // قص النص الطويل لعرضه بشكل جميل ومناسب داخل كرت معاينة الفيديو المتحرك
+                    const cleanText = prompt.length > 40 ? prompt.substring(0, 40) + "..." : prompt;
+                    document.getElementById('dynamicTextPreview').innerText = `🎬 فيديو متحرك حول: ${cleanText}`;
                     progressContainer.classList.add('hidden');
                     resultBox.classList.remove('hidden');
                     btn.disabled = false;
                 }
-            }, 200);
+            }, 250);
         };
 
-        // تعديل المظهر واللبس
+        // 3. تفعيل زر معالجة وتعديل الصور وتغيير الملابس
         document.getElementById('generatePhotoBtn').onclick = () => {
-            if(userPhotoInput.files.length === 0) { alert("من فضلك ارفع صورتك الشخصية أولاً!"); return; }
             const style = document.getElementById('clothingStyle').value;
             const acc = document.getElementById('accessoriesStyle').value;
-            
             const btn = document.getElementById('generatePhotoBtn');
-            document.getElementById('photoBtnText').innerText = "جاري تعديل اللبس والمظهر...";
+            
+            btn.innerHTML = 'جاري معالجة وتغيير الاستايل... <i class="fa-solid fa-spinner animate-spin mr-2"></i>';
             btn.disabled = true;
 
             setTimeout(() => {
                 document.getElementById('photoPreviewText').innerText = `تم تطبيق: ${style} + ${acc}`;
                 document.getElementById('photoResultBox').classList.remove('hidden');
+                btn.innerHTML = 'معالجة وتغيير الاستايل فوراً <i class="fa-solid fa-pencil mr-2"></i>';
                 btn.disabled = false;
-                document.getElementById('photoBtnText').innerText = "معالجة وتغيير الاستايل فوراً";
-            }, 1000);
+            }, 900);
         };
 
+        // تفعيل زر النسخ الفوري للنصوص
         document.getElementById('copyBtn').onclick = () => {
             navigator.clipboard.writeText(document.getElementById('scriptOutput').innerText);
-            alert("تم نسخ النص بنجاح! 🎉");
+            alert("تم نسخ النص بنجاح إلى الحافظة! 🎉");
         };
     </script>
 </body>

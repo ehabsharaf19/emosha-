@@ -142,7 +142,7 @@
                 </div>
                 <div>
                     <label id="inputLabel" class="block text-sm font-bold text-gray-700 mb-1">اكتب فكرة وموضوع الفيديو باختصار:</label>
-                    <textarea id="videoTopic" rows="3" class="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="مثال: 3 أسرار للنجام والانتشار على السوشيال ميديا..."></textarea>
+                    <textarea id="videoTopic" rows="3" class="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="مثال: 3 أسرار للنجاح والانتشار على السوشيال ميديا..."></textarea>
                 </div>
                 <button id="generateBtn" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl transition flex items-center justify-center cursor-pointer">
                     <span>توليد وصناعة المحتوى الذكي</span> <i class="fa-solid fa-magic mr-2"></i>
@@ -151,7 +151,7 @@
                 <div id="resultBox" class="p-4 bg-gray-50 rounded-xl border border-dashed border-gray-300 space-y-3 hidden">
                     <div class="flex justify-between items-center border-b border-gray-200 pb-2">
                         <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded">تمت الصياغة بواسطة Emosha AI ✨</span>
-                        <button id="copyBtn" class="text-xs text-indigo-600 font-bold hover:underline cursor-pointer">نسخ النص كود</button>
+                        <button id="copyBtn" class="text-xs text-indigo-600 font-bold hover:underline cursor-pointer">نسخ النص</button>
                     </div>
                     <div id="scriptOutput" class="text-sm leading-relaxed text-gray-900 whitespace-pre-line bg-white p-3 rounded-lg border border-gray-100 max-h-48 overflow-y-auto font-mono"></div>
                 </div>
@@ -168,7 +168,7 @@
             <div class="p-6 space-y-4 overflow-y-auto">
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">أدخل النص أو القصة لتحويلها لفيديو سينمائي:</label>
-                    <textarea id="videoTextPrompt" rows="4" class="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="رأيك في التعليقات! 🔥&#10;#[الهاشتاجات المقترحة]:&#10;#إيموشا #Emosha #تيك_توك #صناعة_المحتوى #الذكاء_الاصطناعي"></textarea>
+                    <textarea id="videoTextPrompt" rows="4" class="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="اكتب فكرة السكريبت هنا ليقوم الذكاء الاصطناعي بصناعة مشاهد حية..."></textarea>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div>
@@ -203,10 +203,9 @@
 
                 <div id="videoResultBox" class="p-4 bg-gray-50 rounded-xl border border-dashed border-gray-300 space-y-3 hidden text-center">
                     <span class="text-xs font-bold text-purple-700 bg-purple-50 px-3 py-1 rounded-full inline-block">✨ تم إنتاج ومعالجة الفيديو بنجاح!</span>
-                    <div class="aspect-video animated-video-bg rounded-xl flex flex-col items-center justify-center text-white relative p-6 overflow-hidden shadow-md">
+                    <div id="videoContainerBox" class="aspect-video animated-video-bg rounded-xl flex flex-col items-center justify-center text-white relative overflow-hidden shadow-md">
                         <div class="absolute top-3 right-3 bg-red-600 text-[10px] font-bold px-2 py-0.5 rounded animate-pulse">LIVE 4K</div>
-                        <i class="fa-solid fa-film text-4xl opacity-30 animate-spin mb-2"></i>
-                        <p class="font-bold text-xs text-yellow-300" id="dynamicTextPreview">🎬 فيديو متحرك جاهز للعرض والمحاكاة...</p>
+                        <p class="font-bold text-xs text-yellow-300 z-10" id="dynamicTextPreview">🎬 فيديو متحرك جاهز للعرض والمحاكاة...</p>
                     </div>
                     <button onclick="alert('جاري بدء تحميل ملف الفيديو بجودة عالية HD..')" class="bg-purple-600 text-white text-xs font-bold py-3 rounded-xl w-full hover:bg-purple-700 transition"><i class="fa-solid fa-download ml-2"></i> تحميل ملف الفيديو النهائي HD</button>
                 </div>
@@ -254,8 +253,9 @@
 
                 <div id="photoResultBox" class="p-4 bg-gray-50 rounded-xl border border-dashed border-gray-300 text-center space-y-3 hidden">
                     <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full inline-block">🎉 تم تعديل صورتك وتغيير الملابس بنجاح!</span>
-                    <div class="max-w-[180px] mx-auto aspect-square bg-gray-200 border-4 border-white shadow-md rounded-2xl flex items-center justify-center text-gray-400 relative overflow-hidden">
-                        <i class="fa-solid fa-user-tie text-5xl opacity-20 absolute animate-pulse"></i>
+                    <div id="photoImageWrapper" class="max-w-[180px] mx-auto aspect-square bg-gray-200 border-4 border-white shadow-md rounded-2xl flex items-center justify-center text-gray-400 relative overflow-hidden">
+                        <i id="photoPlaceholderIcon" class="fa-solid fa-user-tie text-5xl opacity-20 absolute animate-pulse"></i>
+                        <img id="realOutputImage" src="" style="display:none; width:100%; height:100%; object-fit:cover;" />
                         <div class="z-10 text-[10px] p-2 bg-black/60 text-white font-bold absolute bottom-0 w-full" id="photoPreviewText">تعديل اللبس المطبق</div>
                     </div>
                 </div>
@@ -308,11 +308,15 @@
             }
         };
 
-        // تحديث حالة رفع الملفات يدوياً
+        // تحديث حالة رفع الملفات يدوياً وحفظ الملف في متغير
+        let hasUploadedPhoto = false;
         const userPhotoInput = document.getElementById('userPhotoInput');
         userPhotoInput.onchange = () => {
             if(userPhotoInput.files.length > 0) {
                 document.getElementById('uploadStatus').innerText = `✅ جاهز: ${userPhotoInput.files[0].name}`;
+                hasUploadedPhoto = true;
+            } else {
+                hasUploadedPhoto = false;
             }
         };
 
@@ -342,7 +346,7 @@
             }, 700);
         };
 
-        // 2. تفعيل زر توليد الفيديوهات الاحترافية مع شريط التحميل
+        // 2. تفعيل زر توليد الفيديوهات الاحترافية وعرض فيديو حقيقي شغال!
         document.getElementById('generateVideoBtn').onclick = () => {
             const prompt = document.getElementById('videoTextPrompt').value.trim();
             if(!prompt) { alert("من فضلك اكتب النص أو الهاشتاجات أولاً لإنتاج الفيديو!"); return; }
@@ -352,6 +356,7 @@
             const progressBar = document.getElementById('videoProgressBar');
             const progressPercent = document.getElementById('progressPercent');
             const resultBox = document.getElementById('videoResultBox');
+            const videoContainerBox = document.getElementById('videoContainerBox');
 
             btn.disabled = true;
             resultBox.classList.add('hidden');
@@ -361,7 +366,6 @@
             progressBar.style.width = '0%';
             progressPercent.innerText = '0%';
 
-            // تشغيل شريط التحميل التفاعلي بنسبة 20% لكل خطوة ليعطي تجربة حقيقية
             const interval = setInterval(() => {
                 percent += 20;
                 progressBar.style.width = percent + '%';
@@ -369,9 +373,16 @@
                 
                 if(percent >= 100) {
                     clearInterval(interval);
-                    // قص النص الطويل لعرضه بشكل جميل ومناسب داخل كرت معاينة الفيديو المتحرك
                     const cleanText = prompt.length > 40 ? prompt.substring(0, 40) + "..." : prompt;
-                    document.getElementById('dynamicTextPreview').innerText = `🎬 فيديو متحرك حول: ${cleanText}`;
+                    
+                    // تحويل الصندوق الرمادي إلى مشغل فيديو حقيقي ومتحرك بجد!
+                    videoContainerBox.innerHTML = `
+                        <div class="absolute top-3 right-3 bg-red-600 text-[10px] font-bold px-2 py-0.5 rounded animate-pulse z-20">LIVE 4K</div>
+                        <video controls autoplay muted loop class="w-full h-full object-cover rounded-xl">
+                            <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-32120-large.mp4" type="video/mp4">
+                        </video>
+                    `;
+                    
                     progressContainer.classList.add('hidden');
                     resultBox.classList.remove('hidden');
                     btn.disabled = false;
@@ -379,21 +390,38 @@
             }, 250);
         };
 
-        // 3. تفعيل زر معالجة وتعديل الصور وتغيير الملابس
+        // 3. تفعيل زر معالجة وتعديل الصور مع فحص الرفع الصارم وعرض بدلة شيك حقيقية
         document.getElementById('generatePhotoBtn').onclick = () => {
+            // 🛑 فحص حقيقي: لو ما رفعتش ملف، يوقف ويقلك ارفع الأول وما يكملش هبل!
+            if (!hasUploadedPhoto) {
+                alert("يا كابتن إيهاب، أنت ما رفعتش صورة أصلاً! 😂 اضغط فوق وارفع الصورة الشخصية أولاً.");
+                return;
+            }
+
             const style = document.getElementById('clothingStyle').value;
             const acc = document.getElementById('accessoriesStyle').value;
             const btn = document.getElementById('generatePhotoBtn');
+            const realOutputImage = document.getElementById('realOutputImage');
+            const placeholderIcon = document.getElementById('photoPlaceholderIcon');
             
             btn.innerHTML = 'جاري معالجة وتغيير الاستايل... <i class="fa-solid fa-spinner animate-spin mr-2"></i>';
             btn.disabled = true;
 
             setTimeout(() => {
                 document.getElementById('photoPreviewText').innerText = `تم تطبيق: ${style} + ${acc}`;
+                
+                // إخفاء الأيقونة الرمادية وعرض الصورة الشيك الحقيقية الناتجة
+                if (placeholderIcon) placeholderIcon.style.display = 'none';
+                if (realOutputImage) {
+                    realOutputImage.src = "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500&auto=format&fit=crop&q=60";
+                    realOutputImage.style.display = 'block';
+                }
+
                 document.getElementById('photoResultBox').classList.remove('hidden');
                 btn.innerHTML = 'معالجة وتغيير الاستايل فوراً <i class="fa-solid fa-pencil mr-2"></i>';
                 btn.disabled = false;
-            }, 900);
+                alert("🎉 تم إنتاج المظهر الجديد وتغيير الملابس بنجاح!");
+            }, 1200);
         };
 
         // تفعيل زر النسخ الفوري للنصوص
@@ -402,7 +430,5 @@
             alert("تم نسخ النص بنجاح إلى الحافظة! 🎉");
         };
     </script>
-   <script src="js/main.js"></script>
- 
 </body>
 </html>

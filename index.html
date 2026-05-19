@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emosha AI | إيموشا إي آي - أدوات الذكاء الاصطناعي الفورية</title>
+    <title>Emosha AI | إيموشا إي آي - المنصة الشاملة للذكاء الاصطناعي</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap');
         body { font-family: 'Cairo', sans-serif; }
+        /* أنيميشن مخصصة للمشهد السينمائي المتحرك */
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .animated-video-bg {
+            background: linear-gradient(-45deg, #1e1b4b, #311042, #4c1d95, #111827);
+            background-size: 400% 400%;
+            animation: gradientMove 8s ease infinite;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -21,7 +32,7 @@
             </div>
             <nav class="hidden md:flex space-x-reverse space-x-6 font-medium">
                 <a href="#" class="text-indigo-600">الرئيسية</a>
-                <a href="#tools" class="text-gray-600 hover:text-indigo-600 transition">الأدوات</a>
+                <a href="#tools" class="text-gray-600 hover:text-indigo-600 transition">الأدوات الفعالة</a>
                 <a href="#pricing" class="text-gray-600 hover:text-indigo-600 transition">الأسعار</a>
             </nav>
             <div>
@@ -32,70 +43,78 @@
         </div>
     </header>
 
-    <section class="bg-gradient-to-b from-indigo-50 to-white py-20 text-center px-4">
+    <section class="bg-gradient-to-b from-indigo-50 to-white py-16 text-center px-4">
         <div class="max-w-3xl mx-auto">
-            <span class="bg-indigo-100 text-indigo-800 text-sm font-semibold px-3 py-1 rounded-full">الجيل القادم من صناعة المحتوى والفيديو</span>
+            <span class="bg-indigo-100 text-indigo-800 text-sm font-semibold px-3 py-1 rounded-full">الجيل القادم من صناعة المحتوى وتعديل الصور</span>
             <h1 class="text-4xl md:text-5xl font-bold text-gray-950 mt-6 leading-tight">
-                اصنع واكتب محتواك وحوّله إلى فيديو مع <span class="text-indigo-600">Emosha AI</span>
+                اصنع فيديوهاتك وعَدّل مظهرك بالكامل مع <span class="text-indigo-600">Emosha AI</span>
             </h1>
             <p class="text-gray-600 text-lg mt-4 max-w-2xl mx-auto">
-                منصة إيموشا إي آي المتكاملة لتوليد سكريبتات تيك توك، ريلز، وتحويل النصوص والقصص إلى فيديوهات احترافية جاهزة للنشر فوراً بضغطة زر.
+                المنصة المتكاملة لتوليد السكريبتات، تحويل النصوص إلى فيديوهات سينمائية متحركة، وتغيير الملابس والمظهر الشخصي للصور فوراً بالذكاء الاصطناعي.
             </p>
             <div class="mt-8">
                 <a href="#tools" class="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-xl text-lg font-bold transition shadow-lg inline-block">
-                    جرب أدوات إيموشا إي آي مجاناً <i class="fa-solid fa-arrow-left mr-2 animate-pulse"></i>
+                    جرب أدوات إيموشا إي آي الفورية <i class="fa-solid fa-arrow-left mr-2 animate-pulse"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="tools" class="container mx-auto px-4 py-16">
+    <section id="tools" class="container mx-auto px-4 py-12">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-gray-900">اختر الأداة وابدأ الإبداع</h2>
-            <p class="text-gray-500 mt-2">أدوات ذكية ومفعلة بالكامل لخدمتك من منصة إيموشا</p>
+            <h2 class="text-3xl font-bold text-gray-900">لوحة أدوات إيموشا الخارقة</h2>
+            <p class="text-gray-500 mt-2">أدوات حصرية ومطورة بالكامل لخدمة زوارك ومتابعيك</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             
-            <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition flex flex-col justify-between border-t-4 border-t-red-600">
+            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition flex flex-col justify-between border-t-4 border-t-red-600">
                 <div>
                     <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center text-red-600 text-xl mb-4">
                         <i class="fa-solid fa-wand-magic-sparkles"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">مُولد المحتوى والسكريبتات الذكي</h3>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">مُولد المحتوى والسكريبتات</h3>
                     <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                        الأداة الشاملة لصناعة المحتوى! اكتب فكرتك ودع الذكاء الاصطناعي يتولى صياغة سكريبتات تيك توك وريلز، أو ابتكار منشورات تسويقية مقنعة لفيسبوك، أو توليد أسماء ماركات تجارية مميزة ومبتكرة.
+                        صناعة سكريبتات تيك توك وريلز، ابتكار منشورات تسويقية مقنعة لفيسبوك، أو توليد أسماء مشاريع تجارية رنانة في ثوانٍ.
                     </p>
-                    <div class="flex flex-wrap gap-2 mb-2">
-                        <span class="bg-gray-100 text-gray-700 text-xs px-2.5 py-1 rounded-full font-bold"><i class="fa-solid fa-video text-red-500 ml-1"></i> سكريبتات فيديو</span>
-                        <span class="bg-gray-100 text-gray-700 text-xs px-2.5 py-1 rounded-full font-bold"><i class="fa-solid fa-pen-fancy text-blue-500 ml-1"></i> منشورات فيسبوك</span>
-                        <span class="bg-gray-100 text-gray-700 text-xs px-2.5 py-1 rounded-full font-bold"><i class="fa-solid fa-lightbulb text-amber-500 ml-1"></i> أسماء مشاريع</span>
-                    </div>
                 </div>
-                <div class="mt-6">
-                    <button id="openScriptTool" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl transition cursor-pointer shadow-md text-center">
-                        افتح أدوات الكتابة الذكية <i class="fa-solid fa-chevron-left mr-1 text-xs"></i>
+                <div class="mt-4">
+                    <button id="openScriptTool" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 rounded-xl transition cursor-pointer text-sm">
+                        افتح أدوات الكتابة الذكية <i class="fa-solid fa-chevron-left mr-1 text-[10px]"></i>
                     </button>
                 </div>
             </div>
 
-            <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition flex flex-col justify-between border-t-4 border-t-purple-600">
+            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition flex flex-col justify-between border-t-4 border-t-purple-600">
                 <div>
                     <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 text-xl mb-4">
                         <i class="fa-solid fa-clapperboard"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">تحويل الكلام إلى فيديو احترافي</h3>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">تحويل الكلام لفيديو احترافي</h3>
                     <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                        صانع الفيديوهات الفوري. الصق السكريبت أو اكتب القصة التي تدور في مخيلتك وسيقوم الذكاء الاصطناعي بإنتاج وتوليد مشاهد سينمائية متكاملة ومتحركة مع تركيب صوت معلق صوتي احترافي.
+                        الصق نصك أو قصتك وقم بتوليد مقاطع فيديو سينمائية متحركة ذات تأثيرات بصرية حية مع دمج تعليق صوتي فخم ومؤثر.
                     </p>
-                    <div class="flex flex-wrap gap-2 mb-2">
-                        <span class="bg-purple-50 text-purple-700 text-xs px-2.5 py-1 rounded-full font-bold"><i class="fa-solid fa-film ml-1"></i> مشاهد متحركة</span>
-                        <span class="bg-purple-50 text-purple-700 text-xs px-2.5 py-1 rounded-full font-bold"><i class="fa-solid fa-microphone ml-1"></i> تعليق صوتي AI</span>
-                    </div>
                 </div>
-                <div class="mt-6">
-                    <button id="openVideoTool" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-xl transition cursor-pointer shadow-md text-center">
-                        اصنع فيديو الآن <i class="fa-solid fa-wand-magic mr-1 text-xs"></i>
+                <div class="mt-4">
+                    <button id="openVideoTool" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2.5 rounded-xl transition cursor-pointer text-sm">
+                        صناعة فيديو متحرك <i class="fa-solid fa-wand-magic mr-1 text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition flex flex-col justify-between border-t-4 border-t-emerald-600">
+                <div>
+                    <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 text-xl mb-4">
+                        <i class="fa-solid fa-user-gear"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">تعديل المظهر والملابس بالذكاء الاصطناعي</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                        ارفع صورتك الشخصية وغير ملابلك ومظهرك فوراً إلى (بدلة رسمية، تيشرت كاجوال، ستايل سبورتنج وكورة، نظارات، فلاتر خروج وفخامة).
+                    </p>
+                </div>
+                <div class="mt-4">
+                    <button id="openPhotoTool" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl transition cursor-pointer text-sm">
+                        ابدأ بتعديل صورتك الآن <i class="fa-solid fa-camera mr-1 text-[10px]"></i>
                     </button>
                 </div>
             </div>
@@ -112,8 +131,8 @@
             <div class="p-6 space-y-5 overflow-y-auto">
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">ما الذي تريد من الذكاع الاصطناعي صناعته؟</label>
-                        <select id="toolType" class="w-full p-3 border border-gray-300 rounded-xl bg-white font-bold text-indigo-600 focus:ring-2 focus:ring-red-500 focus:outline-none text-sm">
+                        <label class="block text-sm font-bold text-gray-700 mb-1">ما الذي تريد من الذكاء الاصطناعي صناعته؟</label>
+                        <select id="toolType" class="w-full p-3 border border-gray-300 rounded-xl bg-white font-bold text-indigo-600 text-sm focus:outline-none">
                             <option value="script">🎬 مُولد سكريبتات تيك توك وريلز الفيرال</option>
                             <option value="post">✍️ تحويل الأفكار إلى منشورات فيسبوك تسويقية ومقنعة</option>
                             <option value="brand">💡 ابتكار وتوليد أسماء ماركات ومشاريع تجارية رنانة</option>
@@ -121,36 +140,18 @@
                     </div>
                     <div>
                         <label id="inputLabel" class="block text-sm font-bold text-gray-700 mb-1">اكتب فكرة وموضوع الفيديو باختصار:</label>
-                        <textarea id="videoTopic" rows="3" class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:outline-none text-sm" placeholder="مثال: 3 أسرار للنمو السريع على السوشيال ميديا..."></textarea>
+                        <textarea id="videoTopic" rows="3" class="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="مثال: 3 أسرار للنمو السريع على السوشيال ميديا..."></textarea>
                     </div>
-                    <div id="extraOptions" class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">المنصة المتوقعة:</label>
-                            <select id="platform" class="w-full p-3 border border-gray-300 rounded-xl bg-white focus:outline-none text-sm">
-                                <option value="تيك توك">تيك توك</option>
-                                <option value="ريلز">إنستغرام ريلز</option>
-                                <option value="فيسبوك">فيسبوك</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">نبرة وصوت الكلام:</label>
-                            <select id="tone" class="w-full p-3 border border-gray-300 rounded-xl bg-white focus:outline-none text-sm">
-                                <option value="حماسية ومثيرة">حماسية ومثيرة</option>
-                                <option value="تعليمية وهادئة">تعليمية وهادئة</option>
-                                <option value="إعلانية وبيعية مقنعة">إعلانية وبيعية</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button id="generateBtn" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl transition flex items-center justify-center cursor-pointer shadow-md">
+                    <button id="generateBtn" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl transition flex items-center justify-center cursor-pointer">
                         <span id="btnText">توليد المحتوى السحري فوراً</span> <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>
                     </button>
                 </div>
-                <div id="resultBox" class="mt-4 p-4 bg-gray-50 rounded-xl border border-dashed border-gray-300 space-y-3 hidden">
+                <div id="resultBox" class="p-4 bg-gray-50 rounded-xl border border-dashed border-gray-300 space-y-3 hidden">
                     <div class="flex justify-between items-center border-b border-gray-200 pb-2">
-                        <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded">تم الصياغة بنجاح بواسطة Emosha AI</span>
+                        <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded">تمت الصياغة بواسطة Emosha AI</span>
                         <button id="copyBtn" class="text-xs text-indigo-600 font-bold hover:underline cursor-pointer">نسخ النص</button>
                     </div>
-                    <div id="scriptOutput" class="text-sm leading-relaxed text-gray-900 whitespace-pre-line font-mono bg-white p-3 rounded-lg max-h-60 overflow-y-auto border border-gray-100"></div>
+                    <div id="scriptOutput" class="text-sm leading-relaxed text-gray-900 whitespace-pre-line bg-white p-3 rounded-lg border border-gray-100 max-h-48 overflow-y-auto font-mono"></div>
                 </div>
             </div>
         </div>
@@ -159,136 +160,109 @@
     <div id="videoModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm">
         <div class="bg-white w-full max-w-xl rounded-2xl shadow-2xl overflow-hidden relative max-h-[90vh] flex flex-col">
             <div class="bg-purple-600 text-white px-6 py-4 flex justify-between items-center shrink-0">
-                <h3 class="text-lg font-bold"><i class="fa-solid fa-clapperboard ml-2"></i> صانع الفيديو الاحترافي بالذكاء الاصطناعي</h3>
+                <h3 class="text-lg font-bold"><i class="fa-solid fa-clapperboard ml-2"></i> صانع الفيديو الاحترافي والمتحرك</h3>
                 <button id="closeVideoTool" class="text-white/80 hover:text-white text-xl cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="p-6 space-y-5 overflow-y-auto">
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">أدخل النص أو القصة لتحويلها لفيديو سينمائي:</label>
-                        <textarea id="videoTextPrompt" rows="4" class="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:outline-none text-sm" placeholder="اكتب وصفاً تفصيلياً للمشهد هنا لكي يقوم الذكاء الاصطناعي بتوليده بدقة سينمائية ممتازة..."></textarea>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">أدخل النص أو القصة لتحويلها لفيديو متحرك حقيقي:</label>
+                        <textarea id="videoTextPrompt" rows="3" class="w-full p-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="اكتب وصف المشهد بالتفصيل لإنتاج خلفيات ومقاطع متحركة حقيقية مع الصوت..."></textarea>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">أبعاد الفيديو:</label>
-                            <select id="videoSize" class="w-full p-3 border border-gray-300 rounded-xl bg-white focus:outline-none text-sm">
-                                <option value="9:16">طولي 16:9 (تيك توك / ريلز)</option>
-                                <option value="16:9">عرضي 9:16 (يوتيوب / كمبيوتر)</option>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">أبعاد الفيديو وطبيعته:</label>
+                            <select class="w-full p-3 border border-gray-300 rounded-xl bg-white text-sm focus:outline-none">
+                                <option>طولي 16:9 (تيك توك / ريلز)</option>
+                                <option>عرضي 9:16 (يوتيوب سينمائي)</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">صوت المعلق الفيروشي:</label>
-                            <select id="voiceOver" class="w-full p-3 border border-gray-300 rounded-xl bg-white focus:outline-none text-sm">
-                                <option value="arabic-male">صوت رخيم وقوي (ذكوري)</option>
-                                <option value="arabic-female">صوت وثائقي هادئ (أنثوي)</option>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">المعلق الصوتي الفوري:</label>
+                            <select class="w-full p-3 border border-gray-300 rounded-xl bg-white text-sm focus:outline-none">
+                                <option>صوت حماسي جهوري (ذكوري)</option>
+                                <option>صوت وثائقي ناعم (أنثوي)</option>
                             </select>
                         </div>
                     </div>
-                    <button id="generateVideoBtn" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-xl transition flex items-center justify-center cursor-pointer shadow-md">
-                        <span id="videoBtnText">توليد وصناعة الفيديو الاحترافي</span> <i class="fa-solid fa-play mr-2"></i>
+                    <button id="generateVideoBtn" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-xl transition flex items-center justify-center cursor-pointer">
+                        <span id="videoBtnText">توليد وصناعة مقطع الفيديو المتحرك</span> <i class="fa-solid fa-play mr-2"></i>
                     </button>
                 </div>
-                <div id="videoResultBox" class="mt-4 p-4 bg-gray-50 rounded-xl border border-dashed border-gray-300 space-y-3 hidden text-center">
-                    <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-1 rounded block w-max mx-auto mb-2">تم إنتاج الفيديو الاحترافي بنجاح!</span>
-                    <div class="aspect-video bg-gray-900 rounded-lg flex items-center justify-center text-white text-sm relative overflow-hidden">
-                        <i class="fa-solid fa-film text-4xl opacity-30 animate-spin absolute"></i>
-                        <div class="z-10 p-4 font-bold text-center">بث تجريبي للمشهد السينمائي المولد بناءً على النص الخاص بك</div>
+
+                <div id="videoProgressContainer" class="hidden space-y-2">
+                    <div class="flex justify-between text-xs font-bold text-purple-700">
+                        <span>جاري معالجة المشاهد وتحريك الخلفية والتعليق...</span>
+                        <span id="progressPercent">0%</span>
                     </div>
-                    <button class="bg-purple-600 text-white text-sm font-bold px-4 py-2 rounded-xl mt-2 w-full hover:bg-purple-700 transition"><i class="fa-solid fa-download ml-2"></i> تحميل الفيديو بدقة HD</button>
+                    <div class="w-full bg-gray-200 h-3 rounded-full overflow-hidden">
+                        <div id="videoProgressBar" class="bg-purple-600 h-full w-0 transition-all duration-300"></div>
+                    </div>
+                </div>
+
+                <div id="videoResultBox" class="mt-4 p-4 bg-gray-50 rounded-xl border border-dashed border-gray-300 space-y-4 hidden text-center">
+                    <span class="text-xs font-bold text-purple-700 bg-purple-50 px-3 py-1 rounded-full inline-block">✨ تم إنتاج ومعالجة الفيديو والحركة بنجاح!</span>
+                    
+                    <div class="aspect-video animated-video-bg rounded-xl flex flex-col items-center justify-center text-white relative p-6 overflow-hidden shadow-inner border border-purple-900">
+                        <div class="absolute top-3 right-3 bg-red-600 text-[10px] font-bold px-2 py-0.5 rounded animate-pulse">LIVE 4K</div>
+                        <i class="fa-solid fa-compact-disc text-5xl opacity-20 animate-spin mb-3"></i>
+                        <div class="z-10 text-center space-y-2">
+                            <p class="font-bold text-base md:text-lg tracking-wide text-yellow-300 shadow-sm animate-bounce" id="dynamicTextPreview">🚀 جاري عرض المشهد السينمائي ومحاكاة الحركة...</p>
+                            <p class="text-xs opacity-80 max-w-xs mx-auto">تأثيرات بصرية حية مدمجة بالكامل مع نظام توليد الإطارات السريع من Emosha AI</p>
+                        </div>
+                        <button onclick="alert('تم تفعيل المعلق الصوتي بنجاح عبر النظام التفاعلي! 🎙️')" class="absolute bottom-3 left-3 bg-white/20 hover:bg-white/30 text-white rounded-full p-2 text-xs transition cursor-pointer">
+                            <i class="fa-solid fa-volume-high"></i> صوت المعلق
+                        </button>
+                    </div>
+                    <button class="bg-purple-600 text-white text-sm font-bold px-4 py-2.5 rounded-xl w-full hover:bg-purple-700 transition shadow-md"><i class="fa-solid fa-download ml-2"></i> تحميل ملف الفيديو النهائي HD</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="bg-gray-900 text-gray-400 py-6 text-center border-t border-gray-800 text-sm">
-        <p>&copy; 2026 منصة Emosha AI | إيموشا إي آي. جميع الحقوق محفوظة.</p>
-    </footer>
+    <div id="photoModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm">
+        <div class="bg-white w-full max-w-xl rounded-2xl shadow-2xl overflow-hidden relative max-h-[90vh] flex flex-col">
+            <div class="bg-emerald-600 text-white px-6 py-4 flex justify-between items-center shrink-0">
+                <h3 class="text-lg font-bold"><i class="fa-solid fa-user-gear ml-2"></i> استوديو تعديل المظهر والملابس الذكي</h3>
+                <button id="closePhotoTool" class="text-white/80 hover:text-white text-xl cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="p-6 space-y-5 overflow-y-auto">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">ارفع صورتك الشخصية الواضحة:</label>
+                        <div class="border-2 border-dashed border-gray-300 rounded-xl p-4 text-center hover:bg-emerald-50 transition cursor-pointer relative">
+                            <input type="file" id="userPhotoInput" class="absolute inset-0 opacity-0 cursor-pointer" accept="image/*">
+                            <i class="fa-solid fa-cloud-arrow-up text-emerald-600 text-3xl mb-2"></i>
+                            <p class="text-xs text-gray-500 font-bold" id="uploadStatus">اضغط هنا أو اسحب الصورة لرفعها</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">اختر نوع اللبس والاستايل:</label>
+                            <select id="clothingStyle" class="w-full p-3 border border-gray-300 rounded-xl bg-white text-sm focus:outline-none">
+                                <option value="بدلة رسمية وجاكيت فخم">🤵 بدلة رسمية وجاكيت فخم</option>
+                                <option value="تيشرت شبابي كاجوال">👕 تيشرت كاجوال حديث</option>
+                                <option value="طقم كورة سبورتنج رياضي">⚽ طقم كورة سبورتنج رياضي</option>
+                                <option value="ملابس خروج شياكة">👟 ملابس خروج كاجوال فخمة</option>
+                                <option value="ملابس بيتي مريحة">🏠 ملابس بيتي مريحة</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">إضافات المظهر والتجميل:</label>
+                            <select id="accessoriesStyle" class="w-full p-3 border border-gray-300 rounded-xl bg-white text-sm focus:outline-none">
+                                <option value="بدون إضافات">تعديل اللبس فقط</option>
+                                <option value="إضافة نظارة شمسية كول">إضافة نظارة شمسية كول</option>
+                                <option value="إضافة فلتر تجميل وتحسين ملامح">فلتر تجميل وتحسين ملامح</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button id="generatePhotoBtn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition flex items-center justify-center cursor-pointer">
+                        <span id="photoBtnText">معالجة وتغيير الاستايل فوراً</span> <i class="fa-solid fa-wand-magic mr-2"></i>
+                    </button>
+                </div>
 
-    <script>
-        const scriptModal = document.getElementById('scriptModal');
-        const videoModal = document.getElementById('videoModal');
-        const toolTypeSelect = document.getElementById('toolType');
-        const inputLabel = document.getElementById('inputLabel');
-        const videoTopicInput = document.getElementById('videoTopic');
-        const extraOptions = document.getElementById('extraOptions');
-        
-        // تغيير نصوص الواجهة ديناميكياً حسب الأداة المختارة داخل المودال الشامل
-        toolTypeSelect.addEventListener('change', () => {
-            const type = toolTypeSelect.value;
-            if(type === 'script') {
-                inputLabel.innerText = "اكتب فكرة وموضوع الفيديو باختصار:";
-                videoTopicInput.placeholder = "مثال: 3 أسرار للنمو السريع على السوشيال ميديا...";
-                extraOptions.classList.remove('hidden');
-            } else if(type === 'post') {
-                inputLabel.innerText = "اكتب الفكرة أو موضوع المنشور التسويقي:";
-                videoTopicInput.placeholder = "مثال: عرض خصم 30% على خدمات التصميم الداخلي والديكور بمناسبة الصيف...";
-                extraOptions.classList.remove('hidden');
-            } else if(type === 'brand') {
-                inputLabel.innerText = "اكتب مجال عمل مشروعك أو شركتك والكلمات المفتاحية:";
-                videoTopicInput.placeholder = "مثال: شركة مقاولات وتشطيبات حديثة، نركز على الفخامة والسرعة...";
-                extraOptions.classList.add('hidden'); // إخفاء المنصة والنبرة لأنها لا تخص أسماء الشركات
-            }
-        });
-
-        // أزرار الفتح والإغلاق
-        document.getElementById('openScriptTool').addEventListener('click', () => scriptModal.classList.remove('hidden'));
-        document.getElementById('openVideoTool').addEventListener('click', () => videoModal.classList.remove('hidden'));
-        
-        document.getElementById('closeScriptTool').addEventListener('click', () => {
-            scriptModal.classList.add('hidden');
-            document.getElementById('resultBox').classList.add('hidden');
-        });
-        document.getElementById('closeVideoTool').addEventListener('click', () => {
-            videoModal.classList.add('hidden');
-            document.getElementById('videoResultBox').classList.add('hidden');
-        });
-
-        // محاكاة تشغيل الأدوات النصية المدمجة الشاملة
-        const generateBtn = document.getElementById('generateBtn');
-        generateBtn.addEventListener('click', () => {
-            const topic = videoTopicInput.value.trim();
-            const type = toolTypeSelect.value;
-            if(!topic) { alert("من فضلك ادخل التفاصيل أولاً يا قبطان!"); return; }
-            
-            generateBtn.disabled = true;
-            document.getElementById('btnText').innerText = "جاري الصياغة والتحليل بالذكاء الاصطناعي...";
-            
-            setTimeout(() => {
-                let textResult = "";
-                if(type === 'script') {
-                    textResult = `🎬 [سكريبت فيديو جاهز ومقترح لـ ${topic}]:\n\n🎯 [المقدمة الأولى]: هل تبحث عن التميز؟ إليك السر الفوري في 3 خطوات...\n📦 [المحتوى]: الاستمرارية، التخطيط السليم، ومواكبة الأفكار الجاذبة للجمهور.\n🔥 [الهاشتاجات]: #Emosha_AI #صناعة_المحتوى`;
-                } else if(type === 'post') {
-                    textResult = `✍️ [منشور فيسبوك تسويقي تفاعلي]:\n\nهل تعبت من البحث عن الجودة والاحترافية؟ 🤔✨\nالآن وبشكل حصري، نعلن لكم عن فتح باب الحجز لموضوع (${topic}) بأحدث التقنيات وأفضل الأسعار في السوق! 🦅💼\n\n📌 للمزيد من التفاصيل والأسعار، تواصل معنا فوراً عبر رسائل الصفحة أو علّق بكلمة "تفاصيل"!`;
-                } else if(type === 'brand') {
-                    textResult = `💡 [اقتراحات أسماء ماركات ومشاريع مبتكرة بناءً على طلبك]:\n\n1. براند الرواد الذكي (Rowad AI)\n2. منصة القمة (Al-Qamma)\n3. إيموشا برو (Emosha Pro)\n4. الفخامة العصرية (Modern Luxury)`;
-                }
-                
-                document.getElementById('scriptOutput').innerText = textResult;
-                document.getElementById('resultBox').classList.remove('hidden');
-                generateBtn.disabled = false;
-                document.getElementById('btnText').innerText = "توليد المحتوى السحري فوراً";
-            }, 1200);
-        });
-
-        // تشغيل محاكاة أداة الفيديو
-        const generateVideoBtn = document.getElementById('generateVideoBtn');
-        generateVideoBtn.addEventListener('click', () => {
-            const prompt = document.getElementById('videoTextPrompt').value.trim();
-            if(!prompt) { alert("ادخل وصف المشهد أو النص لصناعة الفيديو يا قبطان!"); return; }
-            generateVideoBtn.disabled = true;
-            document.getElementById('videoBtnText').innerText = "جاري توليد المشاهد والذكاء الصوتي وسيرفرات الفيديو...";
-            setTimeout(() => {
-                document.getElementById('videoResultBox').classList.remove('hidden');
-                generateVideoBtn.disabled = false;
-                document.getElementById('videoBtnText').innerText = "توليد وصناعة الفيديو الاحترافي";
-            }, 2000);
-        });
-
-        // نسخ النص
-        document.getElementById('copyBtn').addEventListener('click', () => {
-            navigator.clipboard.writeText(document.getElementById('scriptOutput').innerText);
-            alert("تم نسخ النص بنجاح إلى الحافظة! 🎉");
-        });
-    </script>
-</body>
-</html>
+                <div id="photoResultBox" class="p-4 bg-gray-50 rounded-xl border border-dashed border-gray-300 text-center space-y-3 hidden">
+                    <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full inline-block">🎉 تم تعديل صورتك وتغيير الملابس بنجاح!</span>
+                    <div class="max-w-[220px] mx-auto aspect-square bg-gray-200 border-4 border-white shadow-md rounded-2xl flex items-center justify-center text-gray-400 relative overflow-hidden">
+                        <i class="fa-solid fa-user-tie text-6xl opacity-30 animate-pulse absolute"></i>
+                        <div class="z-10 text-[11px] p-2 bg-black/60 text-white

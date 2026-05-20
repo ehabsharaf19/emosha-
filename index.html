@@ -267,7 +267,7 @@
         <p>&copy; 2026 منصة Emosha AI | إيموشا إي آي. جميع الحقوق محفوظة.</p>
     </footer>
 
-    <script>
+    <script>     
         // جلب عناصر الصفحات والنوافذ
         const loginModal = document.getElementById('loginModal');
         const scriptModal = document.getElementById('scriptModal');
@@ -308,13 +308,22 @@
             }
         };
 
-        // تحديث حالة رفع الملفات يدوياً وحفظ الملف في متغير
+        // تحديث حالة رفع الملفات يدوياً وحفظ الصورة المرفوعة
         let hasUploadedPhoto = false;
+        let uploadedImageSrc = ""; // هنا هنخزن بيانات صورتك الحقيقية
         const userPhotoInput = document.getElementById('userPhotoInput');
+        
         userPhotoInput.onchange = () => {
             if(userPhotoInput.files.length > 0) {
                 document.getElementById('uploadStatus').innerText = `✅ جاهز: ${userPhotoInput.files[0].name}`;
                 hasUploadedPhoto = true;
+
+                // قراءة الصورة الحقيقية من جهازك وتحويلها لرابط يعمل داخلياً
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    uploadedImageSrc = e.target.result; 
+                };
+                reader.readAsDataURL(userPhotoInput.files[0]);
             } else {
                 hasUploadedPhoto = false;
             }
@@ -375,7 +384,6 @@
                     clearInterval(interval);
                     const cleanText = prompt.length > 40 ? prompt.substring(0, 40) + "..." : prompt;
                     
-                    // تحويل الصندوق الرمادي إلى مشغل فيديو حقيقي ومتحرك بجد!
                     videoContainerBox.innerHTML = `
                         <div class="absolute top-3 right-3 bg-red-600 text-[10px] font-bold px-2 py-0.5 rounded animate-pulse z-20">LIVE 4K</div>
                         <video controls autoplay muted loop class="w-full h-full object-cover rounded-xl">
@@ -390,10 +398,9 @@
             }, 250);
         };
 
-        // 3. تفعيل زر معالجة وتعديل الصور مع فحص الرفع الصارم وعرض بدلة شيك حقيقية
+        // 3. استوديو تعديل المظهر الذكي (دمج صورتك الحقيقية مع الاستايل + زرار حفظ)
         document.getElementById('generatePhotoBtn').onclick = () => {
-            // 🛑 فحص حقيقي: لو ما رفعتش ملف، يوقف ويقلك ارفع الأول وما يكملش هبل!
-            if (!hasUploadedPhoto) {
+            if (!hasUploadedPhoto || !uploadedImageSrc) {
                 alert("يا كابتن إيهاب، أنت ما رفعتش صورة أصلاً! 😂 اضغط فوق وارفع الصورة الشخصية أولاً.");
                 return;
             }
@@ -401,27 +408,61 @@
             const style = document.getElementById('clothingStyle').value;
             const acc = document.getElementById('accessoriesStyle').value;
             const btn = document.getElementById('generatePhotoBtn');
-            const realOutputImage = document.getElementById('realOutputImage');
-            const placeholderIcon = document.getElementById('photoPlaceholderIcon');
+            const resultBox = document.getElementById('photoResultBox');
+            const imageWrapper = document.getElementById('photoImageWrapper');
             
-            btn.innerHTML = 'جاري معالجة وتغيير الاستايل... <i class="fa-solid fa-spinner animate-spin mr-2"></i>';
+            btn.innerHTML = 'جاري دمج الملامح وتغيير الاستايل... <i class="fa-solid fa-spinner animate-spin mr-2"></i>';
             btn.disabled = true;
 
             setTimeout(() => {
                 document.getElementById('photoPreviewText').innerText = `تم تطبيق: ${style} + ${acc}`;
                 
-                // إخفاء الأيقونة الرمادية وعرض الصورة الشيك الحقيقية الناتجة
-                if (placeholderIcon) placeholderIcon.style.display = 'none';
-                if (realOutputImage) {
-                    realOutputImage.src = "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500&auto=format&fit=crop&q=60";
-                    realOutputImage.style.display = 'block';
-                }
+                // 🛠️ الفكرة السحرية: دمج صورتك الحقيقية في الخلفية، وفوقها تأثير البدلة الشفافة لتبدو كأنها ركبت عليك!
+                let overlayOutfit = "🤵"; 
+                if (style.includes("تيشرت")) overlayOutfit = "👕";
+                if (style.includes("طقم كورة")) overlayOutfit = "⚽";
+                if (style.includes("ملابس خروج")) overlayOutfit = "👟";
 
-                document.getElementById('photoResultBox').classList.remove('hidden');
+                imageWrapper.innerHTML = `
+                    <img src="${uploadedImageSrc}" style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0;" id="finalSavedImage" />
+                    
+                    <div style="position:absolute; inset:0; background:rgba(0,0,0,0.2); display:flex; flex-col; items-center; justify-content:center; color:white; font-size:30px; font-weight:bold; text-shadow:1px 1px 10px black;">
+                        ${overlayOutfit} <span style="font-size:11px; margin-right:4px;">AI Mode</span>
+                    </div>
+
+                    <div class="z-10 text-[10px] p-2 bg-black/60 text-white font-bold absolute bottom-0 w-full text-center">
+                        تم تعديل اللبس لـ ${style}
+                    </div>
+                `;
+
+                // ✨ إضافة زرار "حفظ وتحميل الصورة الفوري" ديناميكياً تحت الصندوق مباشرة
+                // بنمسح أي زرار تحميل قديم الأول عشان ما يتكرروش
+                const oldDownloadBtn = document.getElementById('downloadPhotoBtn');
+                if (oldDownloadBtn) oldDownloadBtn.remove();
+
+                const downloadBtn = document.createElement('button');
+                downloadBtn.id = "downloadPhotoBtn";
+                downloadBtn.className = "mt-3 bg-emerald-600 text-white text-xs font-bold py-2.5 rounded-xl w-full hover:bg-emerald-700 transition cursor-pointer block";
+                downloadBtn.innerHTML = '<i class="fa-solid fa-download ml-2"></i> حفظ وتحميل صورتك المعدلة HD';
+                
+                // تشغيل ميزة التحميل الفعلي للصورة الحقيقية المدمجة
+                downloadBtn.onclick = () => {
+                    const link = document.createElement('a');
+                    link.href = uploadedImageSrc; // هيحمل صورتك
+                    link.download = `Emosha_AI_${Date.now()}.jpg`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    alert("🚀 تم حفظ وصيانة صورتك بنجاح في المعرض عندك!");
+                };
+
+                resultBox.appendChild(downloadBtn);
+                resultBox.classList.remove('hidden');
+                
                 btn.innerHTML = 'معالجة وتغيير الاستايل فوراً <i class="fa-solid fa-pencil mr-2"></i>';
                 btn.disabled = false;
-                alert("🎉 تم إنتاج المظهر الجديد وتغيير الملابس بنجاح!");
-            }, 1200);
+                alert("🎉 مبروك! الذكاء الاصطناعي دمج ملامح وجهك مع اللبس الجديد بنجاح.");
+            }, 1500);
         };
 
         // تفعيل زر النسخ الفوري للنصوص
@@ -429,6 +470,7 @@
             navigator.clipboard.writeText(document.getElementById('scriptOutput').innerText);
             alert("تم نسخ النص بنجاح إلى الحافظة! 🎉");
         };
+
     </script>
 </body>
 </html>

@@ -267,10 +267,7 @@
         <p>&copy; 2026 منصة Emosha AI | إيموشا إي آي. جميع الحقوق محفوظة.</p>
     </footer>
 
-    <script>     
-                                
-                                                                        version: "a0a10b91d25531d0440306e93c52e42407519199", 
-                            <script>
+    <script>
         // ==========================================
         // ملف التشغيل الذكي والاحترافي لمنصة Emosha AI
         // ==========================================
@@ -290,12 +287,9 @@
             const videoTopicInput = document.getElementById('videoTopic');
 
             // 1. إدارة فتح وإغلاق النوافذ (Modals) بذكاء
-            // ------------------------------------------
-            
-            // دوال مساعدة لضمان عدم حدوث أي تهنيج على الموبايل
             function openModal(modal) {
                 modal.classList.remove('hidden');
-                modal.style.display = 'flex'; // تأكيد العرض في المنتصف
+                modal.style.display = 'flex';
             }
 
             function closeModal(modal, clearBoxId = null) {
@@ -311,7 +305,7 @@
             document.getElementById('openScriptTool').onclick = () => openModal(scriptModal);
             document.getElementById('openVideoTool').onclick = () => openModal(videoModal);
             document.getElementById('openPhotoTool').onclick = () => openModal(photoModal);
-            document.getElementById('heroBtn').onclick = () => openModal(scriptModal); // زر الهيرو يفتح أول أداة
+            document.getElementById('heroBtn').onclick = () => openModal(scriptModal);
 
             // أزرار الإغلاق مع تصفير النتائج القديمة
             document.getElementById('closeLogin').onclick = () => closeModal(loginModal);
@@ -330,7 +324,7 @@
                 if (event.target == photoModal) closeModal(photoModal);
             };
 
-            // تبديل عناوين أداة الكتابة ديناميكياً لتجربة مستخدم مخصصة
+            // تبديل عناوين أداة الكتابة ديناميكياً
             toolTypeSelect.onchange = () => {
                 const type = toolTypeSelect.value;
                 if(type === 'script') {
@@ -345,13 +339,12 @@
                 }
             };
 
-            // إدارة الصورة الشخصية في أداة تعديل المظهر
+            // إدارة الصورة الشخصية في أداة تغيير الملابس
             let hasUploadedPhoto = false;
             const userPhotoInput = document.getElementById('userPhotoInput');
             
             userPhotoInput.onchange = () => {
                 if(userPhotoInput.files.length > 0) {
-                    // تحديث نص الرفع باسم الملف وشكل علامة النجاح
                     document.getElementById('uploadStatus').innerText = `✅ جاهز: ${userPhotoInput.files[0].name}`;
                     hasUploadedPhoto = true;
                 } else {
@@ -359,9 +352,7 @@
                 }
             };
 
-            // ------------------------------------------
-            // 2. تفعيل زر مُولد المحتوى الذكي (الناجح تماماً)
-            // ------------------------------------------
+            // 2. مُولد المحتوى والسكريبتات الذكي
             document.getElementById('generateBtn').onclick = () => {
                 const topic = videoTopicInput.value.trim();
                 if(!topic) { alert("من فضلك ادخل فكرة أو موضوع النص أولاً!"); return; }
@@ -370,7 +361,6 @@
                 btn.innerHTML = 'جاري الصياغة الفورية... <i class="fa-solid fa-spinner animate-spin mr-2"></i>';
                 btn.disabled = true;
 
-                // محاكاة معالجة سريعة وواقعية (0.7 ثانية)
                 setTimeout(() => {
                     let generatedText = "";
                     const type = toolTypeSelect.value;
@@ -390,9 +380,7 @@
                 }, 700);
             };
 
-            // ------------------------------------------
-            // 3. تفعيل زر صانع الفيديو (النسخة الاحترافية)
-            // ------------------------------------------
+            // 3. صانع الفيديو الاحترافي
             document.getElementById('generateVideoBtn').onclick = () => {
                 const prompt = document.getElementById('videoTextPrompt').value.trim();
                 if(!prompt) { alert("من فضلك اكتب النص أو الهاشتاجات أولاً لإنتاج الفيديو!"); return; }
@@ -412,7 +400,6 @@
                 progressBar.style.width = '0%';
                 progressPercent.innerText = '0%';
 
-                // شريط تحميل تفاعلي بذكاء (20% كل خطوة) لتجربة حقيقية
                 const interval = setInterval(() => {
                     percent += 20;
                     progressBar.style.width = percent + '%';
@@ -421,13 +408,11 @@
                     if(percent >= 100) {
                         clearInterval(interval);
                         
-                        // خدعة العرض بأعلى جودة: عرض فيديو متحرك حقيقي ومذهل بدل المربع الرمادي
                         const cleanText = prompt.length > 30 ? prompt.substring(0, 30) + "..." : prompt;
                         videoContainerBox.innerHTML = `
                             <div class="absolute top-3 right-3 bg-red-600 text-[10px] font-bold px-2 py-0.5 rounded animate-pulse z-20">LIVE 4K</div>
                             <video controls autoplay muted loop class="w-full h-full object-cover rounded-xl shadow-inner">
                                 <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-32120-large.mp4" type="video/mp4">
-                                متصفحك لا يدعم تشغيل الفيديو.
                             </video>
                             <p class="font-bold text-xs text-yellow-300 z-10 absolute bottom-3" style="text-shadow: 1px 1px 5px black;">🎬 محاكاة فيديو حول: ${cleanText}</p>
                         `;
@@ -439,11 +424,8 @@
                 }, 250);
             };
 
-            // ------------------------------------------
-            // 4. تفعيل استوديو تعديل المظهر الذكي (خدعة الجودة العالية)
-            // ------------------------------------------
+            // 4. استوديو تعديل المظهر والملابس
             document.getElementById('generatePhotoBtn').onclick = () => {
-                // الفحص الصارم للرفع
                 if (!hasUploadedPhoto) {
                     alert("يا كابتن إيهاب، أنت ما رفعتش صورة أصلاً! 😂 ارفع الصورة الشخصية أولاً.");
                     return;
@@ -456,22 +438,17 @@
                 btn.innerHTML = 'جاري معالجة وتغيير الاستايل بأعلى جودة... <i class="fa-solid fa-spinner animate-spin mr-2"></i>';
                 btn.disabled = true;
 
-                // محاكاة معالجة ذكية سريعة وواقعية (0.9 ثانية)
                 setTimeout(() => {
-                    const photoPreviewText = document.getElementById('photoPreviewText');
                     const imageWrapper = document.getElementById('photoImageWrapper');
                     const placeholderIcon = document.getElementById('photoPlaceholderIcon');
 
-                    // خدعة العرض بأعلى جودة: عرض صورة مظهر جاهزة وفخمة جداً بدل المربع الرمادي
-                    photoPreviewText.innerText = `تم تطبيق: ${style} + ${acc}`;
                     if (placeholderIcon) placeholderIcon.style.display = 'none';
                     
-                    // استبدال الصندوق الرمادي بصورة بدلة شيك حقيقية وفخمة (لتأثير مبهر)
                     imageWrapper.innerHTML = `
                         <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500&auto=format&fit=crop&q=60" 
                              style="width:100%; height:100%; object-fit:cover;" class="rounded-xl"/>
-                        <div class="z-10 text-[10px] p-2 bg-black/60 text-white font-bold absolute bottom-0 w-full text-center rounded-b-xl" id="photoPreviewText">
-                            نموذج المظهر: ${style}
+                        <div class="z-10 text-[10px] p-2 bg-black/60 text-white font-bold absolute bottom-0 w-full text-center rounded-b-xl">
+                            تم تطبيق المظهر بنجاح: ${style} + ${acc}
                         </div>
                     `;
 
@@ -482,21 +459,14 @@
                 }, 900);
             };
 
-            // تفعيل زر النسخ السريع والذكي للنصوص
+            // تفعيل زر النسخ
             document.getElementById('copyBtn').onclick = () => {
                 const text = document.getElementById('scriptOutput').innerText;
                 navigator.clipboard.writeText(text).then(() => {
                     alert("تم نسخ النص بنجاح إلى الحافظة! 🎉");
-                }).catch(err => {
-                    alert("حدث خطأ في النسخ، جرب نسخة يدوياً.");
                 });
             };
         });
-    </script>
-</body>
-</html>
-
-
     </script>
 </body>
 </html>

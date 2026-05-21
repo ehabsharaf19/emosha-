@@ -2,12 +2,31 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الربح من الإنترنت - أكاديمية إيموشا</title>
-    <style>body { background:#121212; color:#fff; font-family:sans-serif; text-align:center; padding-top:100px; } h1{color:#d4af37;}</style>
+    <style>
+        body { background:#121212; color:#fff; font-family:'Segoe UI', sans-serif; margin:0; padding:20px; text-align:center;}
+        .container { max-width:800px; margin:auto; }
+        h1 { color:#d4af37; border-bottom:2px solid #333; padding-bottom:15px; }
+        .article-post { background:#1e1e1e; border-right:4px solid #d4af37; padding:20px; margin-bottom:20px; border-radius:4px; text-align:right; }
+    </style>
 </head>
 <body>
-    <h1>قسم الربح من الإنترنت 💰</h1>
-    <p>هنا ستعرض مقالات وأسرار التجارة الإلكترونية والتسويق بالعمولة المنشورة حديثاً.</p>
-    <a href="index.html" style="color:#d4af37; text-decoration:none; font-weight:bold;">العودة للرئيسية</a>
+    <div class="container">
+        <h1>قسم طرق وأسرار الربح من الإنترنت 💰</h1>
+        <a href="index.html" style="color:#d4af37; text-decoration:none; font-weight:bold; display:block; margin-bottom:30px;">← العودة للصفحة الرئيسية</a>
+        <div id="sectionContainer"><p style="color:#b3b3b3;">لا توجد مقالات منشورة في هذا القسم حالياً.</p></div>
+    </div>
+    <script>
+        var articles = JSON.parse(localStorage.getItem('sharedArticles')) || [];
+        var container = document.getElementById('sectionContainer');
+        var filtered = articles.filter(item => item.category === "الربح من الإنترنت");
+        if(filtered.length > 0) {
+            container.innerHTML = "";
+            filtered.forEach(item => {
+                container.innerHTML += `<div class="article-post"><h3>${item.title}</h3><div style="font-size:12px; color:#d4af37;">${item.date}</div><p style="white-space:pre-line; color:#e0e0e0;">${item.content}</p></div>`;
+            });
+        }
+    </script>
 </body>
 </html>

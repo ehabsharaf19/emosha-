@@ -14,95 +14,30 @@
         }
 
         body {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-color); color: var(--text-color);
         }
 
-        .blessing-bar {
-            background-color: var(--gold-primary);
-            color: #000000;
-            text-align: center;
-            padding: 8px 10px;
-            font-weight: bold;
-            font-size: 14px;
-        }
+        .blessing-bar { background-color: var(--gold-primary); color: #000; text-align: center; padding: 8px 10px; font-weight: bold; font-size: 14px; }
+        header { background-color: #000; border-bottom: 2px solid var(--gold-primary); padding: 15px 20px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+        @media(min-width: 768px) { header { flex-direction: row; justify-content: space-between; gap: 0; } }
+        .logo { font-size: 26px; font-weight: bold; color: var(--gold-primary); text-decoration: none; }
+        nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        nav a { color: var(--text-color); text-decoration: none; font-weight: 500; font-size: 15px; padding: 4px 8px; }
 
-        header {
-            background-color: #000000;
-            border-bottom: 2px solid var(--gold-primary);
-            padding: 15px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-        }
+        .main-container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        .legal-card { background-color: var(--card-bg); border: 1px solid #333; border-radius: 8px; padding: 30px; display: none; line-height: 1.8; }
+        .legal-card h1 { color: var(--gold-primary); margin-top: 0; border-bottom: 1px solid var(--gold-primary); padding-bottom: 10px; font-size: 24px; }
+        .legal-card h2 { color: var(--gold-primary); font-size: 18px; margin-top: 20px; }
+        .legal-card p, .legal-card ul { color: #e0e0e0; font-size: 15px; }
+        .legal-card ul { padding-right: 20px; }
+        .legal-card li { margin-bottom: 10px; }
+        .contact-link { color: var(--gold-primary); text-decoration: none; font-weight: bold; }
+        .contact-link:hover { text-decoration: underline; }
 
-        @media(min-width: 768px) {
-            header {
-                flex-direction: row;
-                justify-content: space-between;
-                gap: 0;
-            }
-        }
-
-        .logo {
-            font-size: 26px;
-            font-weight: bold;
-            color: var(--gold-primary);
-            text-decoration: none;
-        }
-
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        nav a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            padding: 4px 8px;
-        }
-
-        .main-container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .legal-card {
-            background-color: var(--card-bg);
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 30px;
-            display: none;
-            line-height: 1.8;
-        }
-
-        .legal-card h1 {
-            color: var(--gold-primary);
-            margin-top: 0;
-        }
-
-        footer {
-            background-color: #000000;
-            border-top: 2px solid var(--gold-primary);
-            padding: 30px 20px;
-            margin-top: 60px;
-            text-align: center;
-        }
-
-        .footer-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            margin: 0 15px;
-        }
+        footer { background-color: #000000; border-top: 2px solid var(--gold-primary); padding: 30px 20px; margin-top: 60px; text-align: center; }
+        .footer-links a { color: var(--text-color); text-decoration: none; margin: 0 15px; }
     </style>
 </head>
 <body>
@@ -126,23 +61,46 @@
         
         <div id="about" class="legal-card">
             <h1>من نحن</h1>
-            <p>مرحباً بكم في <strong>أكاديمية إيموشا</strong>، منصتكم التعليمية والتدريبية الأولى المتخصصة في تقديم الشروحات الحصرية والموثوقة في مجالات علوم المال الرقمي، الربح من الإنترنت، إدارة منصات التواصل الاجتماعي، وبوابات التعليم المتكاملة.</p>
-            <p>نهدف إلى تمكين الشباب العربي وطلابنا الأجلاء من امتلاك المهارات الحقيقية والعملية للنجاح في العصر الرقمي وبناء مستقبلهم بثقة.</p>
+            <p>مرحباً بكم في <strong>أكاديمية إيموشا</strong>، المنصة الإلكترونية الرائدة تحت إشراف وإدارة <strong>القبطان إيهاب شرف</strong>. تهدف الأكاديمية إلى تقديم محتوى تعليمي وتدريبي عالي الجودة وموثوق بنسبة 100% لمساعدة الشباب والطلاب في العالم العربي على تطوير مهاراتهم الرقمية وبناء مستقبلك العملي.</p>
+            
+            <h2>رؤيتنا ورسالتنا:</h2>
+            <p>تأسست الأكاديمية برؤية واضحة من القبطان إيهاب شرف لتكون دليلاً عملياً حقيقياً يبتعد عن الشروحات العشوائية؛ حيث نركز جهودنا على تقديم استراتيجيات برمجية وتسويقية مجربة ومبسطة تخدم كافة الفئات.</p>
+            
+            <h2>ماذا نقدم في الأكاديمية؟</h2>
+            <ul>
+                <li><strong>الربح من الإنترنت وتطوير الأعمال:</strong> أدلة عملية في مجالات التجارة الإلكترونية، التسويق بالعمولة، وصناعة المحتوى الرقمي.</li>
+                <li><strong>أسرار أرباح فيسبوك:</strong> أحدث الاستراتيجيات لتحقيق الأرباح من مقاطع الريلز والفيديوهات وكيفية إدارة وتكبير الصفحات بكفاءة.</li>
+                <li><strong>بناء وتطوير المواقع:</strong> دروس تقنية متدرجة لتعلم البرمجة، إدارة قواعد البيانات، وتهيئة المواقع لمحركات البحث (SEO).</li>
+                <li><strong>بوابة الثانوية العامة:</strong> توفير ركن مجاني شامل لتحميل المذكرات، الكتب الخارجية، وعرض نتائج الامتحانات الرسمية من السيرفر الوزاري مباشرة داخل موقعنا.</li>
+            </ul>
         </div>
 
         <div id="privacy" class="legal-card">
             <h1>سياسة الخصوصية</h1>
-            <p>في أكاديمية إيموشا، نولي خصوصية زوارنا أهمية بالغة. تلخص هذه الوثيقة أنواع المعلومات الشخصية التي نجمعها وكيفية استخدامها:</p>
-            <ul>
-                <li><strong>ملفات تعريف الارتباط:</strong> نستخدم ملفات الكوكيز لتحسين تجربة تصفحك للموقع وحفظ تفضيلاتك.</li>
-                <li><strong>بيانات الاستخدام:</strong> قد نقوم بتحليل الزيارات مجهولة الهوية لتطوير جودة المحتوى المرفوع وسرعة التصفح.</li>
-                <li>نحن لا نشارك ولا نبيع أي معلومات تخص زوارنا مع أي جهات خارجية تماماً.</li>
-            </ul>
+            <p>في <strong>أكاديمية إيموشا</strong> (تحت إدارة القبطان إيهاب شرف)، نعتبر خصوصية زوارنا ومستخدمينا من أهم أولوياتنا. توضح هذه الصفحة طبيعة البيانات والمعلومات التي قد نتعامل معها لضمان تجربة آمنة تماماً.</p>
+            
+            <h2>1. ملفات تعريف الارتباط (Cookies):</h2>
+            <p>نحن نستخدم ملفات تعريف الارتباط لتحسين تجربة تصفحك داخل الأكاديمية، وتذكر تفضيلاتك وتسهيل عملية انتقالك بين أقسام الموقع المختلفة (مثل أقسام البرمجة وبوابة الثانوية العامة).</p>
+            
+            <h2>2. حماية البيانات والمعلومات:</h2>
+            <p>تلتزم إدارة الأكاديمية بشكل قاطع بعدم بيع، أو تأجير، أو مشاركة أي بيانات شخصية أو معلومات تخص الزوار (مثل أرقام الجلوس أو بيانات الاتصال) مع أي جهة خارجية أو أطراف ترويجية. كل البيانات تُحاط بأعلى مستويات السرية والأمان الرقمي.</p>
+            
+            <h2>3. لوحة التحكم والإدارة:</h2>
+            <p>لوحة التحكم ونشر المقالات محمية بالكامل بأنظمة تشفير وكلمة مرور سرية خاصة بـ <strong>القبطان إيهاب شرف</strong> فقط، مما يضمن عدم وصول أي شخص غير مصرح له إلى المحتوى الداخلي للموقع أو التلاعب بالبيانات المنشورة.</p>
         </div>
 
         <div id="contact" class="legal-card">
             <h1>اتصل بنا</h1>
-            <p>يسعدنا دائماً استقبال استفساراتكم واقتراحاتكم لتطوير الأكاديمية. يمكنك التواصل معنا مباشرة من خلال حساباتنا الرسمية الموضحة في أسفل الموقع، أو عبر إرسال رسالة مباشرة، وسيقوم فريق الدعم بالرد عليك في أقرب وقت ممكن.</p>
+            <p>يسعدنا ويشرفنا دائماً تواصلكم المباشر مع إدارة <strong>أكاديمية إيموشا</strong>. إذا كان لديك أي استفسار، اقتراح لتطوير الموقع، أو رغبة في الإعلان أو الإبلاغ عن مشكلة تقنية، فنحن هنا للاستماع إليك.</p>
+            
+            <h2>طرق التواصل الرسمية المباشرة:</h2>
+            <ul>
+                <li><strong>الإدارة العامة:</strong> القبطان إيهاب شرف</li>
+                <li><strong>البريد الإلكتروني الرسمي:</strong> <a href="mailto:ehabsharaf28@gmail.com" class="contact-link">ehabsharaf28@gmail.com</a></li>
+                <li><strong>الهاتف / الواتساب المباشر:</strong> <a href="https://wa.me/201010202865" target="_blank" class="contact-link">01010202865</a></li>
+                <li><strong>صفحتنا الرسمية على فيسبوك:</strong> <a href="https://www.facebook.com/share/1Dp7juGzxd/" target="_blank" class="contact-link">اضغط هنا لزيارة الصفحة</a></li>
+                <li><strong>قناتنا الرسمية على يوتيوب:</strong> <a href="https://youtube.com/@ehabsharaf19?si=iWT6bv1jDEoqySf4" target="_blank" class="contact-link">اضغط هنا لمتابعة شروحاتنا</a></li>
+            </ul>
         </div>
 
     </div>
@@ -153,11 +111,10 @@
             <a href="legal.html?tab=privacy">سياسة الخصوصية</a> | 
             <a href="legal.html?tab=contact">اتصل بنا</a>
         </div>
-        <p style="color: var(--text-muted); font-size: 13px; margin-top: 15px;">جميع الحقوق محفوظة © 2026 | أكاديمية إيموشا</p>
+        <p style="color: var(--text-muted); font-size: 13px; margin-top: 15px;">جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف</p>
     </footer>
 
     <script>
-        // سكريبت ذكي لإظهار القسم الصحيح بناءً على الرابط المضغطوط
         function showTab() {
             var params = new URLSearchParams(window.location.search);
             var tab = params.get('tab') || 'about';

@@ -76,20 +76,18 @@
     </footer>
 
     <script>
-        function showGeneralResult() {
-            var seatNo = document.getElementById('seatNumber').value;
-            var wrapper = document.getElementById('resultWrapper');
-            var frame = document.getElementById('resultFrame');
-            
-            if(seatNo.trim() === "") {
-                alert("من فضلك أدخل رقم الجلوس أولاً");
-                return;
-            }
-            
-            // تمرير رقم الجلوس مباشرة في رابط السيرفر وتفعيله تحت الخانة
-            frame.src = "https://g12.emis.gov.eg/?seatNo=" + seatNo;
-            wrapper.style.display = "block";
+    function showGeneralResult() {
+        var seatNo = document.getElementById('seatNumber').value;
+        
+        if(seatNo.trim() === "") {
+            alert("من فضلك أدخل رقم الجلوس أولاً");
+            return;
         }
-    </script>
+        
+        // بيفتح رابط السيرفر الحكومي المباشر برقم الجلوس في تابة جديدة فوراً وبدون حجب
+        window.open("https://g12.emis.gov.eg/?seatNo=" + seatNo, "_blank");
+    }
+</script>
+
 </body>
 </html>

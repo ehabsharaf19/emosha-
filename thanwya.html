@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة الثانوية العامة - أكاديمية إيموشا</title>
+    <title>نتيجة الثانوية العامة 2026 - أكاديمية إيموشا</title>
     <style>
         :root {
             --bg-color: #121212;
@@ -20,52 +20,63 @@
             background-color: var(--bg-color); color: var(--text-color);
         }
 
-        .blessing-bar { background-color: var(--gold-primary); color: #000; text-align: center; padding: 8px 10px; font-weight: bold; font-size: 14px; }
-        
-        header { background-color: #000000; border-bottom: 2px solid var(--gold-primary); padding: 15px 20px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
-        @media(min-width: 768px) { header { flex-direction: row; justify-content: space-between; gap: 0; } }
-        .logo { font-size: 26px; font-weight: bold; color: var(--gold-primary); text-decoration: none; }
-        nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-        nav a { color: var(--text-color); text-decoration: none; font-weight: 500; font-size: 15px; padding: 4px 8px; }
-        nav a:hover, nav a.active { color: var(--gold-primary); }
-
-        .main-container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
-
-        .result-box {
-            background: linear-gradient(135deg, #1e1e1e 0%, #000000 100%);
-            border: 2px solid var(--gold-primary); border-radius: 12px;
-            padding: 30px; text-align: center; margin-bottom: 40px;
+        .blessing-bar {
+            background-color: var(--gold-primary); color: #000000;
+            text-align: center; padding: 8px 10px; font-weight: bold; font-size: 14px;
         }
 
-        .search-form { margin-top: 25px; display: flex; flex-direction: column; align-items: center; gap: 15px; justify-content: center; }
-        @media(min-width: 480px) { .search-form { flex-direction: row; } }
-        
-        .search-form input { padding: 14px; width: 100%; max-width: 300px; border: 1px solid #444; border-radius: 6px; background-color: #222; color: #fff; text-align: center; font-size: 16px; }
-        
-        .btn-search { background-color: var(--gold-primary); color: #000; border: none; padding: 14px 30px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 16px; }
+        header {
+            background-color: #000000; border-bottom: 2px solid var(--gold-primary);
+            padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 20px;
+        }
 
-        .btn-more { display: inline-block; background-color: var(--gold-primary); color: #000; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; border: none; font-size: 14px; text-align: center; }
-        .btn-more:hover { background-color: var(--gold-hover); }
+        .logo {
+            font-size: 28px; font-weight: bold; color: var(--gold-primary);
+            text-decoration: none; letter-spacing: 1px;
+        }
 
-        /* الشاشة السحرية لعرض موقع النتيجة داخلياً وبقاء الزائر */
-        .result-frame-container { display: none; margin-top: 30px; border: 2px solid var(--gold-primary); border-radius: 8px; overflow: hidden; background: #fff; }
-        .result-frame { width: 100%; height: 600px; border: none; }
+        nav {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+            width: 100%; max-width: 1200px;
+        }
 
-        .download-table { width: 100%; border-collapse: collapse; background-color: var(--card-bg); margin-top: 15px; }
-        .download-table th, .download-table td { padding: 15px; text-align: right; border-bottom: 1px solid #333; }
-        .download-table th { background-color: #000; color: var(--gold-primary); }
-        
-        .btn-download { display: inline-block; background-color: #333; color: var(--gold-primary); text-decoration: none; padding: 6px 12px; border-radius: 4px; border: 1px solid var(--gold-primary); font-size: 14px; }
+        nav a {
+            color: var(--text-color); text-decoration: none; font-weight: bold; font-size: 12px;
+            padding: 12px 10px; background-color: #1a1a1a; border: 1px solid #333;
+            border-radius: 6px; transition: all 0.3s ease; text-align: center;
+            flex: 1; min-width: 130px;
+        }
 
-        .article-post { background-color: var(--card-bg); border-right: 4px solid var(--gold-primary); padding: 20px; margin-bottom: 20px; border-radius: 4px; text-align: right; }
-        
-        .article-post h3 a { color: #fff; text-decoration: none; transition: color 0.2s; }
-        .article-post h3 a:hover { color: var(--gold-primary); }
+        nav a:hover {
+            background-color: #252525; border-color: var(--gold-primary); color: var(--gold-primary);
+        }
 
-        .article-meta { font-size: 12px; color: var(--gold-primary); margin-bottom: 10px; }
+        nav a.active {
+            background-color: var(--gold-primary); color: #000000; border-color: var(--gold-primary);
+        }
+
+        .main-container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+
+        .result-box {
+            background-color: var(--card-bg); border: 2px solid var(--gold-primary);
+            border-radius: 12px; padding: 30px 20px; text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .result-box h1 { color: var(--gold-primary); font-size: 28px; margin-top: 0; margin-bottom: 15px; }
+        .result-box p { color: var(--text-muted); font-size: 15px; margin-bottom: 30px; }
+
+        .iframe-container {
+            position: relative; overflow: hidden; width: 100%; padding-top: 85%;
+            border-radius: 8px; border: 1px solid #333; background-color: #fff;
+        }
+
+        .iframe-container iframe {
+            position: absolute; top: 0; left: 0; bottom: 0; right: 0;
+            width: 100%; height: 100%; border: none;
+        }
 
         footer { background-color: #000000; border-top: 2px solid var(--gold-primary); padding: 30px 20px; margin-top: 60px; text-align: center; }
-        .footer-links a { color: var(--text-color); text-decoration: none; margin: 0 15px; }
     </style>
 </head>
 <body>
@@ -77,144 +88,30 @@
     <header>
         <a href="index.html" class="logo">أكاديمية إيموشا</a>
         <nav>
-            <a href="index.html">الرئيسية</a>
+            <a href="index.html">الصفحة الرئيسية</a>
             <a href="internet-earning.html">الربح من الإنترنت</a>
-            <a href="facebook.html">فيسبوك</a>
+            <a href="facebook.html">أسرار فيسبوك</a>
             <a href="web-dev.html">تطوير المواقع</a>
-            <a href="thanwya.html" class="active">الثانوية العامة</a>
+            <a href="thanwya-books.html">📚 الثانوية العامة</a>
+            <a href="thanwya.html" class="active">🎓 نتيجة الثانوية العامة</a>
+            <a href="azhar.html">🕌 نتيجة الثانوية الأزهرية</a>
         </nav>
     </header>
 
     <div class="main-container">
-        
         <div class="result-box">
             <h1>نتيجة الثانوية العامة 2026 داخل الأكاديمية</h1>
             <p>اكتب رقم جلوسك بالأسفل لمشاهدة نتيجتك فوراً وبشكل مباشر ومحدث من السيرفر الوزاري:</p>
             
-            <div class="search-form">
-                <input type="number" id="seatNumber" placeholder="أدخل رقم الجلوس المكون من 7 أرقام">
-                <button class="btn-search" onclick="loadResultInside()">عرض النتيجة الآن</button>
-            </div>
-
-            <div class="result-frame-container" id="frameContainer">
-                <div style="background:#000; color:var(--gold-primary); padding:10px; font-weight:bold; text-align:right;">✓ جاري العرض الآمن والمنظم للنتيجة داخل موقعنا...</div>
-                <iframe src="" class="result-frame" id="resultIframe"></iframe>
+            <div class="iframe-container">
+                <iframe src="https://g12.emis.gov.eg/"></iframe>
             </div>
         </div>
-
-        <div style="margin-top:40px;">
-            <h2 style="color:var(--gold-primary); border-bottom:1px solid #333; padding-bottom:10px;">أخبار ونصائح قسم الثانوية العامة</h2>
-            <div id="thanwyaArticles"></div>
-            <button id="loadMoreThanwyaBtn" class="btn-more" style="display:none; margin: 25px auto;" onclick="loadMoreThanwyaArticles()">عرض المزيد من المقالات ⬇</button>
-        </div>
-
-        <div style="margin-top:40px;">
-            <h2 style="color:var(--gold-primary); border-bottom:1px solid #333; padding-bottom:10px;">المكتبة الإلكترونية والمذكرات المضافة</h2>
-            <table class="download-table">
-                <thead>
-                    <tr>
-                        <th>اسم الكتاب / المذكرة</th>
-                        <th>النوع</th>
-                        <th>رابط التحميل المباشر</th>
-                    </tr>
-                </thead>
-                <tbody id="booksTableBody">
-                    </tbody>
-            </table>
-        </div>
-
     </div>
 
     <footer>
-        <div class="footer-links">
-            <a href="legal.html?tab=about">من نحن</a> | 
-            <a href="legal.html?tab=privacy">سياسة الخصوصية</a> | 
-            <a href="legal.html?tab=contact">اتصل بنا</a>
-        </div>
-        <p style="color: var(--text-muted); font-size: 13px; margin-top: 15px;">جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف</p>
+        <p style="color: var(--text-muted); font-size: 13px; margin: 0;">جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف</p>
     </footer>
 
-    <script>
-        var displayedCount = 0;
-        var thanwyaItems = [];
-
-        window.onload = function() {
-            displayThanwyaContent(true);
-        };
-
-        function loadResultInside() {
-            var seat = document.getElementById('seatNumber').value;
-            if(seat === "") { alert("برجاء كتابة رقم الجلوس أولاً يا فندم!"); return; }
-            
-            var officialLink = "https://natega.emis.gov.eg"; 
-            
-            document.getElementById('resultIframe').src = officialLink;
-            document.getElementById('frameContainer').style.display = 'block';
-        }
-
-        function displayThanwyaContent(reset) {
-            var articles = JSON.parse(localStorage.getItem('sharedArticles')) || [];
-            thanwyaItems = articles.filter(item => item.category === "الثانوية العامة" || item.category === "مراجعات الثانوية");
-            var artContainer = document.getElementById('thanwyaArticles');
-            
-            if(reset) {
-                artContainer.innerHTML = "";
-                displayedCount = 0;
-            }
-
-            if(thanwyaItems.length === 0) {
-                artContainer.innerHTML = `<p style="color: var(--text-muted); text-align: right;">لا توجد مقالات وأخبار منشورة لهذا القسم حالياً.</p>`;
-                document.getElementById('loadMoreThanwyaBtn').style.display = 'none';
-            } else {
-                loadMoreThanwyaArticles();
-            }
-
-            // تحميل المذكرات المرفوعة من لوحة التحكم فقط وتصفير الروابط القديمة
-            var books = JSON.parse(localStorage.getItem('sharedBooks')) || [];
-            var tableBody = document.getElementById('booksTableBody');
-            
-            tableBody.innerHTML = "";
-
-            if(books.length === 0) {
-                tableBody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:var(--text-muted); padding:20px;">لا توجد كتب أو مذكرات مضافة حالياً في المكتبة.</td></tr>`;
-            } else {
-                books.forEach(function(b) {
-                    tableBody.innerHTML += `
-                        <tr>
-                            <td>${b.name}</td>
-                            <td>${b.type}</td>
-                            <td><a href="${b.link}" target="_blank" class="btn-download">تحميل مباشر PDF</a></td>
-                        </tr>`;
-                });
-            }
-        }
-
-        function loadMoreThanwyaArticles() {
-            var artContainer = document.getElementById('thanwyaArticles');
-            var nextItems = thanwyaItems.slice(displayedCount, displayedCount + 3);
-            
-            nextItems.forEach(function(item) {
-                var excerpt = item.content.length > 150 ? item.content.substring(0, 150) + "..." : item.content;
-                var articleUrl = "article.html?id=" + (item.id || "");
-
-                artContainer.innerHTML += `
-                    <div class="article-post">
-                        <h3><a href="${articleUrl}">${item.title}</a></h3>
-                        <div class="article-meta">تاريخ النشر: ${item.date}</div>
-                        <p style="line-height: 1.7; color: #e0e0e0; white-space: pre-line;">${excerpt}</p>
-                        <a href="${articleUrl}" style="color: var(--gold-primary); text-decoration: none; font-weight: bold; font-size: 14px;">اقرأ الخبر كاملاً برابط مخصص ومستقل ←</a>
-                    </div>`;
-            });
-
-            displayedCount += nextItems.length;
-            var btn = document.getElementById('loadMoreThanwyaBtn');
-            
-            if(displayedCount >= thanwyaItems.length) {
-                btn.style.display = 'none';
-            } else {
-                btn.style.display = 'block';
-            }
-        }
-    </script>
 </body>
 </html>

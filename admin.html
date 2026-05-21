@@ -13,12 +13,9 @@
         body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; text-align: center; }
         .admin-box { max-width: 700px; margin: 30px auto; background: var(--card-bg); border: 2px solid var(--gold-primary); border-radius: 8px; padding: 25px; text-align: right; }
         h1, h2 { color: var(--gold-primary); text-align: center; }
-        label { display: block; margin: 15px 0 5px; font-weight: bold; }
         input, select, textarea { width: 100%; padding: 12px; box-sizing: border-box; background: #222; color: #fff; border: 1px solid #444; border-radius: 4px; margin-bottom: 10px; }
         .btn-admin { background: var(--gold-primary); color: #000; border: none; padding: 12px; font-weight: bold; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px; }
         .btn-admin:hover { background: var(--gold-hover); }
-        .item-row { background: #151515; padding: 12px; margin-bottom: 10px; display: flex; justify-content: space-between; border-right: 3px solid var(--gold-primary); }
-        .btn-delete { background: #ff4d4d; color: white; border: none; padding: 6px 12px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -30,13 +27,13 @@
             <input type="text" id="artTitle" placeholder="عنوان المقال">
             <select id="artCategory">
                 <option value="الرئيسية">الصفحة الرئيسية</option>
-                <option value="الثانوية العامة">الثانوية العامة (كتب ومذكرات)</option>
+                <option value="الثانوية العامة">الثانوية العامة</option>
                 <option value="الربح من الإنترنت">الربح من الإنترنت</option>
                 <option value="فيسبوك">أسرار فيسبوك</option>
-                <option value="تطوير المواقع">تطوير المواقع</option>
             </select>
+            <input type="text" id="imageURL" placeholder="رابط الصورة (URL)">
             <textarea id="artContent" rows="6" placeholder="المحتوى"></textarea>
-            <button class="btn-admin" onclick="saveNewArticle()">نشر 🚀</button>
+            <button class="btn-admin" onclick="saveNewArticle()">نشر للموقع 🚀</button>
         </div>
 
         <div class="admin-box">
@@ -44,12 +41,10 @@
             <input type="text" id="bookName" placeholder="اسم المذكرة">
             <input type="url" id="bookLink" placeholder="رابط التحميل">
             <button class="btn-admin" onclick="saveNewBook()">إضافة للمكتبة 📥</button>
-            <div id="adminBooksContainer"></div>
         </div>
     </div>
 
     <script>
-        // إعدادات Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyCp-m2DkIIwIoKUeuntHLvDbEclB041pz4",
             authDomain: "shrouk-ehab.firebaseapp.com",
@@ -67,7 +62,6 @@
             var pass = prompt("الرقم السري:");
             if (pass === secretPassword) {
                 document.getElementById('adminWrapper').style.display = 'block';
-                renderLists();
             } else { alert("خطأ!"); window.location.href = "index.html"; }
         };
 
@@ -75,14 +69,24 @@
             var title = document.getElementById('artTitle').value;
             var cat = document.getElementById('artCategory').value;
             var cont = document.getElementById('artContent').value;
-            if(!title || !cont) return alert("املا البيانات!");
+            var img = document.getElementById('imageURL').value; // جلب قيمة الصورة
             
-            // حفظ في Firebase
+            if(!title || !cont) return alert("املا البيانات يا بطل!");
+            
             try {
-                await db.collection("articles").add({ title, category: cat, content: cont, date: new Date().toLocaleDateString('ar-EG') });
-                alert("تم النشر بنجاح على الموقع!");
-                renderLists();
-            } catch (e) { alert("خطأ في النشر: " + e.message); }
+                await db.collection("articles").add({ 
+                    title: title, 
+                    category: cat, 
+                    content: cont, 
+                    image: img, // حفظ الصورة
+                    date: new Date().toLocaleDateString('ar-EG') 
+                });
+                alert("تم النشر بنجاح على الموقع! 🚀");
+                // تفريغ الحقول بعد النشر
+                document.getElementById('artTitle').value = "";
+                document.getElementById('artContent').value = "";
+                document.getElementById('imageURL').value = "";
+            } catch (e) { alert("خطأ: " + e.message); }
         }
 
         async function saveNewBook() {
@@ -90,17 +94,12 @@
             var link = document.getElementById('bookLink').value;
             if(!name || !link) return alert("املا البيانات!");
             
-            // حفظ في Firebase
             try {
                 await db.collection("books").add({ name, link });
-                alert("تم إضافة الكتاب للموقع!");
-                renderLists();
-            } catch (e) { alert("خطأ في إضافة الكتاب: " + e.message); }
-        }
-
-        function renderLists() {
-            // ملاحظة: بما أننا انتقلنا لـ Firebase، عرض القوائم هنا سيحتاج لجلب البيانات من db
-            // الكود الخاص بك سيعمل الآن مع القاعدة الجديدة.
+                alert("تم إضافة الكتاب بنجاح! 📥");
+                document.getElementById('bookName').value = "";
+                document.getElementById('bookLink').value = "";
+            } catch (e) { alert("خطأ: " + e.message); }
         }
     </script>
 </body>

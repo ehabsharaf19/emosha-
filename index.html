@@ -34,46 +34,62 @@
         header {
             background-color: #000000;
             border-bottom: 2px solid var(--gold-primary);
-            padding: 15px 20px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
-        }
-
-        @media(min-width: 768px) {
-            header {
-                flex-direction: row;
-                justify-content: space-between;
-                gap: 0;
-            }
+            gap: 20px;
         }
 
         .logo {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: bold;
             color: var(--gold-primary);
             text-decoration: none;
+            letter-spacing: 1px;
         }
 
+        /* نظام الأزرار العريضة والشيك (Tabs) مثل شروق الذهب */
         nav {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
+            width: 100%;
+            max-width: 1000px;
         }
 
         nav a {
             color: var(--text-color);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            padding: 4px 8px;
-            transition: color 0.3s;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 12px 20px;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            text-align: center;
+            flex: 1; /* تجعل الأزرار تتوزع بالتساوي أفقياً */
+            min-width: 140px; /* تمنع انضغاط الزر في الشاشات الصغيرة */
         }
 
-        nav a:hover, nav a.active {
+        nav a:hover {
+            background-color: #252525;
+            border-color: var(--gold-primary);
             color: var(--gold-primary);
+        }
+
+        nav a.active {
+            background-color: var(--gold-primary);
+            color: #000000;
+            border-color: var(--gold-primary);
+        }
+
+        /* تمييز زر النتيجة بلون جذاب للسيرش والطلاب */
+        nav a.btn-result-nav {
+            border: 1px solid var(--gold-primary);
+            box-shadow: 0 0 8px rgba(214, 175, 55, 0.2);
         }
 
         .hero {
@@ -174,10 +190,6 @@
             text-align: right;
         }
 
-        .article-post h3 {
-            margin-top: 0;
-        }
-
         .article-post h3 a {
             color: #fff;
             text-decoration: none;
@@ -218,11 +230,11 @@
     <header>
         <a href="index.html" class="logo">أكاديمية إيموشا</a>
         <nav>
-            <a href="index.html" class="active">الرئيسية</a>
+            <a href="index.html" class="active">الصفحة الرئيسية</a>
             <a href="internet-earning.html">الربح من الإنترنت</a>
-            <a href="facebook.html">فيسبوك</a>
+            <a href="facebook.html">أسرار فيسبوك</a>
             <a href="web-dev.html">تطوير المواقع</a>
-            <a href="thanwya.html">الثانوية العامة</a>
+            <a href="thanwya.html" class="btn-result-nav">🎓 نتيجة الثانوية العامة</a>
         </nav>
     </header>
 
@@ -250,7 +262,7 @@
                 <a href="web-dev.html" class="btn">تصفح القسم</a>
             </div>
             <div class="section-card">
-                <h2>بوابة الثانوية العامة</h2>
+                <h2>نتيجة الثانوية العامة</h2>
                 <p>ملخصات حصرية، مراجعات نهائية، وتحميل الكتب الخارجية مجاناً ونتائج الامتحانات فور صدورها.</p>
                 <a href="thanwya.html" class="btn">دخول قسم الطلاب</a>
             </div>
@@ -278,9 +290,9 @@
 
         window.onload = function() { displayMainArticles(true); };
 
+        // [نفس كود السكريبت الذكي الخاص بك لقراءة المقالات دون أي تغيير للحفاظ على البيانات]
         function displayMainArticles(reset) {
             var articles = JSON.parse(localStorage.getItem('sharedArticles')) || [];
-            // عرض المقالات المنشورة تحت تصنيف "الرئيسية"
             mainItems = articles.filter(item => item.category === "الرئيسية");
             var container = document.getElementById('mainArticlesContainer');
             

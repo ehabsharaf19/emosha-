@@ -334,13 +334,15 @@
 
     <script>
         function checkResult() {
-            var num = document.getElementById('seatNumber').value;
-            if(num === "") {
-                alert("الرجاء إدخال رقم الجلوس أولاً");
-            } else {
-                document.getElementById('statusMsg').style.display = "block";
-            }
-        }
+    var num = document.getElementById('seatNumber').value;
+    if(num === "") {
+        alert("الرجاء إدخال رقم الجلوس أولاً");
+    } else {
+        // هنا نقوم بتحويل الطالب فوراً لرابط الوزارة الرسمي مضافاً إليه رقم جلوسه إذا كان موقع الوزارة يدعم ذلك
+        window.open("https://natega.emis.gov.eg?seat=" + num, "_blank");
+    }
+}
+
     </script>
 </body>
 </html>

@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة الثانوية العامة - المراجعات والنتيجة</title>
+    <title>بوابة الثانوية العامة - أكاديمية إيموشا</title>
     <style>
         :root {
             --bg-color: #121212;
@@ -13,7 +12,6 @@
             --gold-hover: #f3e5ab;
             --text-color: #ffffff;
             --text-muted: #b3b3b3;
-            --success-color: #28a745;
         }
 
         body {
@@ -24,28 +22,53 @@
             color: var(--text-color);
         }
 
-        /* الهيدر والقائمة */
+        .blessing-bar {
+            background-color: var(--gold-primary);
+            color: #000000;
+            text-align: center;
+            padding: 8px 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
         header {
             background-color: #000000;
             border-bottom: 2px solid var(--gold-primary);
             padding: 15px 20px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            gap: 12px;
+        }
+
+        @media(min-width: 768px) {
+            header {
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 0;
+            }
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
             color: var(--gold-primary);
             text-decoration: none;
         }
 
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
         nav a {
             color: var(--text-color);
             text-decoration: none;
-            margin-right: 20px;
             font-weight: 500;
+            font-size: 15px;
+            padding: 4px 8px;
             transition: color 0.3s;
         }
 
@@ -59,7 +82,6 @@
             padding: 0 20px;
         }
 
-        /* صندوق ترقب النتيجة الاستراتيجي */
         .result-box {
             background: linear-gradient(135deg, #1e1e1e 0%, #000000 100%);
             border: 2px solid var(--gold-primary);
@@ -79,24 +101,35 @@
         .result-box p {
             color: var(--text-muted);
             font-size: 16px;
+            line-height: 1.6;
         }
 
         .search-form {
-            margin-top: 20px;
+            margin-top: 25px;
             display: flex;
-            justify-content: center;
-            gap: 10px;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        @media(min-width: 480px) {
+            .search-form {
+                flex-direction: row;
+                justify-content: center;
+            }
         }
 
         .search-form input {
-            padding: 12px;
-            width: 60%;
+            padding: 14px;
+            width: 100%;
+            max-width: 300px;
             border: 1px solid #444;
             border-radius: 6px;
             background-color: #222;
             color: #fff;
             font-size: 16px;
             text-align: center;
+            box-sizing: border-box;
         }
 
         .search-form input:focus {
@@ -108,12 +141,14 @@
             background-color: var(--gold-primary);
             color: #000;
             border: none;
-            padding: 12px 25px;
+            padding: 14px 30px;
             font-weight: bold;
             border-radius: 6px;
             cursor: pointer;
             font-size: 16px;
             transition: background-color 0.3s;
+            width: 100%;
+            max-width: 150px;
         }
 
         .btn-search:hover {
@@ -121,13 +156,12 @@
         }
 
         .status-msg {
-            margin-top: 15px;
-            font-size: 14px;
+            margin-top: 20px;
+            font-size: 15px;
             color: var(--gold-hover);
             display: none;
         }
 
-        /* جدول تحميل الكتب والمكتبة */
         .library-section h2 {
             color: var(--gold-primary);
             border-bottom: 1px solid #333;
@@ -135,19 +169,25 @@
             margin-top: 40px;
         }
 
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+
         .download-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 15px;
             background-color: var(--card-bg);
-            border-radius: 8px;
-            overflow: hidden;
+            min-width: 500px;
         }
 
         .download-table th, .download-table td {
             padding: 15px;
             text-align: right;
             border-bottom: 1px solid #333;
+            font-size: 15px;
         }
 
         .download-table th {
@@ -160,11 +200,13 @@
             background-color: #333;
             color: var(--gold-primary);
             text-decoration: none;
-            padding: 6px 15px;
+            padding: 8px 16px;
             border-radius: 4px;
             font-size: 14px;
+            font-weight: bold;
             border: 1px solid var(--gold-primary);
             transition: all 0.3s;
+            display: inline-block;
         }
 
         .btn-download:hover {
@@ -185,8 +227,12 @@
 </head>
 <body>
 
+    <div class="blessing-bar">
+        اللهم صلِّ وسلِّم وبارك على نبينا محمد وعلى آله وصحبه أجمعين ✨
+    </div>
+
     <header>
-        <a href="index.html" class="logo">شعار الموقع</a>
+        <a href="index.html" class="logo">أكاديمية إيموشا</a>
         <nav>
             <a href="index.html">الرئيسية</a>
             <a href="#">الربح من الإنترنت</a>
@@ -200,10 +246,10 @@
         
         <div class="result-box">
             <h1>نتيجة الثانوية العامة 2026 برقم الجلوس</h1>
-            <p>تابع معنا ظهور النتيجة فور اعتمادها رسمياً من وزير التربية والتعليم. اكتب رقم جلوسك لترقب النتيجة.</p>
+            <p>تابع معنا ظهور النتيجة فور اعتمادها رسمياً من وزير التربية والتعليم.</p>
             
             <div class="search-form">
-                <input type="number" id="seatNumber" placeholder="أدخل رقم الجلوس المكون من 7 أرقام">
+                <input type="number" id="seatNumber" placeholder="أدخل رقم الجلوس">
                 <button class="btn-search" onclick="checkResult()">عرض النتيجة</button>
             </div>
             <div id="statusMsg" class="status-msg">⚠️ لم يتم اعتماد النتيجة رسمياً بعد، سيتم تفعيل الرابط فور صدورها من الوزارة. احتفظ برابط الصفحة!</div>
@@ -211,45 +257,37 @@
 
         <div class="library-section">
             <h2>المكتبة الإلكترونية والمراجعات النهائية مجاناً</h2>
-            <p style="color: var(--text-muted);">حمل الآن أقوى المذكرات والكتب الخارجية ونماذج الوزارة الاسترشادية بروابط مباشرة وسريعة:</p>
+            <p style="color: var(--text-muted);">حمل الآن أقوى المذكرات والكتب الخارجية ونماذج الوزارة الاسترشادية:</p>
             
-            <table class="download-table">
-                <thead>
-                    <tr>
-                        <th>اسم المادة / الكتاب</th>
-                        <th>النوع</th>
-                        <th>رابط التحميل</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>كتاب مفاهيم الثانوية العامة 2026</td>
-                        <td>رسمي - الوزارة</td>
-                        <td><a href="#" class="btn-download">تحميل PDF</a></td>
-                    </tr>
-                    <tr>
-                        <td>مراجعة ليلة الامتحان في اللغة العربية</td>
-                        <td>ملخص شامل</td>
-                        <td><a href="#" class="btn-download">تحميل PDF</a></td>
-                    </tr>
-                    <tr>
-                        <td>بنك الأسئلة الاسترشادية - رياضيات</td>
-                        <td>نماذج امتحانات</td>
-                        <td><a href="#" class="btn-download">تحميل PDF</a></td>
-                    </tr>
-                    <tr>
-                        <td>مذكرة الكيمياء العضوية الشاملة</td>
-                        <td>ملخص خارجي</td>
-                        <td><a href="#" class="btn-download">تحميل PDF</a></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="download-table">
+                    <thead>
+                        <tr>
+                            <th>اسم المادة / الكتاب</th>
+                            <th>النوع</th>
+                            <th>رابط التحميل</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>كتاب مفاهيم الثانوية العامة 2026</td>
+                            <td>رسمي - الوزارة</td>
+                            <td><a href="#" class="btn-download">تحميل PDF</a></td>
+                        </tr>
+                        <tr>
+                            <td>مراجعة ليلة الامتحان في اللغة العربية</td>
+                            <td>ملخص شامل</td>
+                            <td><a href="#" class="btn-download">تحميل PDF</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
     </div>
 
     <footer>
-        <p>جميع الحقوق محفوظة © 2026 | بوابة الثانوية العامة</p>
+        <p>جميع الحقوق محفوظة © 2026 | بوابة الثانوية العامة - أكاديمية إيموشا</p>
     </footer>
 
     <script>

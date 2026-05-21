@@ -13,78 +13,35 @@
             --text-color: #ffffff;
             --text-muted: #b3b3b3;
         }
-
-        body {
-            margin: 0; padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color); color: var(--text-color);
-        }
-
-        .blessing-bar {
-            background-color: var(--gold-primary); color: #000000;
-            text-align: center; padding: 8px 10px; font-weight: bold; font-size: 14px;
-        }
-
-        header {
-            background-color: #000000; border-bottom: 2px solid var(--gold-primary);
-            padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 20px;
-        }
-
-        .logo {
-            font-size: 28px; font-weight: bold; color: var(--gold-primary);
-            text-decoration: none; letter-spacing: 1px;
-        }
-
-        nav {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
-            width: 100%; max-width: 1200px;
-        }
-
-        nav a {
-            color: var(--text-color); text-decoration: none; font-weight: bold; font-size: 12px;
-            padding: 12px 10px; background-color: #1a1a1a; border: 1px solid #333;
-            border-radius: 6px; transition: all 0.3s ease; text-align: center;
-            flex: 1; min-width: 130px;
-        }
-
-        nav a:hover {
-            background-color: #252525; border-color: var(--gold-primary); color: var(--gold-primary);
-        }
-
-        nav a.active {
-            background-color: var(--gold-primary); color: #000000; border-color: var(--gold-primary);
-        }
-
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--bg-color); color: var(--text-color); }
+        .blessing-bar { background-color: var(--gold-primary); color: #000; text-align: center; padding: 8px 10px; font-weight: bold; font-size: 14px; }
+        header { background-color: #000; border-bottom: 2px solid var(--gold-primary); padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .logo { font-size: 28px; font-weight: bold; color: var(--gold-primary); text-decoration: none; }
+        nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; width: 100%; max-width: 1200px; }
+        nav a { color: var(--text-color); text-decoration: none; font-weight: bold; font-size: 12px; padding: 12px 10px; background-color: #1a1a1a; border: 1px solid #333; border-radius: 6px; transition: all 0.3s ease; text-align: center; flex: 1; min-width: 130px; }
+        nav a:hover { background-color: #252525; border-color: var(--gold-primary); color: var(--gold-primary); }
+        nav a.active { background-color: var(--gold-primary); color: #000; border-color: var(--gold-primary); }
+        
         .main-container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
-
-        .result-box {
-            background-color: var(--card-bg); border: 2px solid var(--gold-primary);
-            border-radius: 12px; padding: 30px 20px; text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-
-        .result-box h1 { color: var(--gold-primary); font-size: 28px; margin-top: 0; margin-bottom: 15px; }
-        .result-box p { color: var(--text-muted); font-size: 15px; margin-bottom: 30px; }
-
-        .iframe-container {
-            position: relative; overflow: hidden; width: 100%; padding-top: 85%;
-            border-radius: 8px; border: 1px solid #333; background-color: #fff;
-        }
-
-        .iframe-container iframe {
-            position: absolute; top: 0; left: 0; bottom: 0; right: 0;
-            width: 100%; height: 100%; border: none;
-        }
-
-        footer { background-color: #000000; border-top: 2px solid var(--gold-primary); padding: 30px 20px; margin-top: 60px; text-align: center; }
+        .result-card { background-color: var(--card-bg); border: 2px solid var(--gold-primary); border-radius: 12px; padding: 35px 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .result-card h1 { color: var(--gold-primary); font-size: 26px; margin-bottom: 10px; }
+        .result-card p { color: var(--text-muted); font-size: 14px; margin-bottom: 25px; }
+        
+        .form-container { max-width: 500px; margin: 0 auto 30px auto; background: #151515; padding: 20px; border-radius: 8px; border: 1px solid #333; }
+        .input-field { width: 100%; padding: 12px; background-color: #000; border: 1px solid #444; border-radius: 6px; color: #fff; font-size: 16px; text-align: center; box-sizing: border-box; outline: none; margin-bottom: 15px; }
+        .input-field:focus { border-color: var(--gold-primary); }
+        .submit-btn { width: 100%; padding: 12px; background-color: var(--gold-primary); color: #000; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
+        .submit-btn:hover { background-color: var(--gold-hover); }
+        
+        /* مربع النتيجة الأزهري */
+        .iframe-wrapper { display: none; margin-top: 20px; border-radius: 8px; border: 2px solid var(--gold-primary); overflow: hidden; background: #fff; position: relative; padding-top: 100%; }
+        .iframe-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        
+        footer { background-color: #000; border-top: 2px solid var(--gold-primary); padding: 20px; text-align: center; margin-top: 60px; }
     </style>
 </head>
 <body>
-
-    <div class="blessing-bar">
-        اللهم صلِّ وسلِّم وبارك على نبينا محمد وعلى آله وصحبه أجمعين ✨
-    </div>
-
+    <div class="blessing-bar">اللهم صلِّ وسلِّم وبارك على نبينا محمد وعلى آله وصحبه أجمعين ✨</div>
     <header>
         <a href="index.html" class="logo">أكاديمية إيموشا</a>
         <nav>
@@ -99,12 +56,17 @@
     </header>
 
     <div class="main-container">
-        <div class="result-box">
-            <h1>نتيجة الثانوية الأزهرية الشريفة 2026</h1>
-            <p>شاشة الاستعلام المباشر لنتائج طلاب المعاهد الأزهرية برقم الجلوس والشبكة الرسمية لبوابة الأزهر:</p>
+        <div class="result-card">
+            <h1>🕌 نتيجة الثانوية الأزهرية الشريفة 2026</h1>
+            <p>أدخل رقم جلوسك واضغط على الزر للاستعلام المباشر تحت الخانة فوراً</p>
             
-            <div class="iframe-container">
-                <iframe src="https://natiga.azhar.eg/"></iframe>
+            <div class="form-container">
+                <input type="number" id="azharSeat" class="input-field" placeholder="أدخل رقم الجلوس هنا" required>
+                <button onclick="showAzharResult()" class="submit-btn">عرض النتيجة بالأسفل ⬇</button>
+            </div>
+
+            <div id="azharWrapper" class="iframe-wrapper">
+                <iframe id="azharFrame" src=""></iframe>
             </div>
         </div>
     </div>
@@ -113,5 +75,21 @@
         <p style="color: var(--text-muted); font-size: 13px; margin: 0;">جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف</p>
     </footer>
 
+    <script>
+        function showAzharResult() {
+            var seatNo = document.getElementById('azharSeat').value;
+            var wrapper = document.getElementById('azharWrapper');
+            var frame = document.getElementById('azharFrame');
+            
+            if(seatNo.trim() === "") {
+                alert("من فضلك أدخل رقم الجلوس أولاً");
+                return;
+            }
+            
+            // توجيه الإطار لعرض بوابة نتائج الأزهر مباشرة بالأسفل
+            frame.src = "https://natiga.azhar.eg/";
+            wrapper.style.display = "block";
+        }
+    </script>
 </body>
 </html>

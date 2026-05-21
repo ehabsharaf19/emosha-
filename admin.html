@@ -24,9 +24,7 @@
         <h1>🔐 لوحة إدارة أكاديمية إيموشا</h1>
         <div class="admin-box">
             <h2>✍️ نشر مقال أو مذكرة تعليمية</h2>
-            <label>عنوان المقال:</label>
-            <input type="text" id="artTitle">
-            <label>القسم (التصنيف):</label>
+            <input type="text" id="artTitle" placeholder="عنوان المقال">
             <select id="artCategory">
                 <option value="الرئيسية">الصفحة الرئيسية</option>
                 <option value="الثانوية العامة">الثانوية العامة (كتب ومذكرات)</option>
@@ -34,17 +32,14 @@
                 <option value="فيسبوك">أسرار فيسبوك</option>
                 <option value="تطوير المواقع">تطوير المواقع</option>
             </select>
-            <label>المحتوى:</label>
-            <textarea id="artContent" rows="6"></textarea>
+            <textarea id="artContent" rows="6" placeholder="المحتوى"></textarea>
             <button class="btn-admin" onclick="saveNewArticle()">نشر 🚀</button>
         </div>
 
         <div class="admin-box">
-            <h2>📚 إضافة روابط تحميل مباشرة</h2>
-            <label>اسم المذكرة:</label>
-            <input type="text" id="bookName">
-            <label>رابط التحميل:</label>
-            <input type="url" id="bookLink">
+            <h2>📚 إضافة رابط تحميل (مذكرة)</h2>
+            <input type="text" id="bookName" placeholder="اسم المذكرة">
+            <input type="url" id="bookLink" placeholder="رابط التحميل">
             <button class="btn-admin" onclick="saveNewBook()">إضافة للمكتبة 📥</button>
             <div id="adminBooksContainer"></div>
         </div>
@@ -52,6 +47,7 @@
 
     <script>
         var secretPassword = "123010111  55Ee"; 
+        
         window.onload = function() {
             var pass = prompt("الرقم السري:");
             if (pass === secretPassword) {
@@ -73,8 +69,34 @@
             renderLists();
         }
 
-        // باقي دوال الحذف والعرض كما هي...
-        function renderLists() { /* نفس كودك اللي كان شغال */ }
+        function saveNewBook() {
+            var name = document.getElementById('bookName').value;
+            var link = document.getElementById('bookLink').value;
+            if(!name || !link) return alert("املا البيانات!");
+            
+            var books = JSON.parse(localStorage.getItem('sharedBooks')) || [];
+            books.unshift({ name, type: "PDF", link });
+            localStorage.setItem('sharedBooks', JSON.stringify(books));
+            alert("تم إضافة الكتاب!");
+            renderLists();
+        }
+
+        function renderLists() {
+            // عرض الكتب
+            var books = JSON.parse(localStorage.getItem('sharedBooks')) || [];
+            var container = document.getElementById('adminBooksContainer');
+            container.innerHTML = "";
+            books.forEach((b, i) => {
+                container.innerHTML += `<div class="item-row"><span>${b.name}</span><button class="btn-delete" onclick="deleteBook(${i})">حذف</button></div>`;
+            });
+        }
+
+        function deleteBook(i) {
+            var books = JSON.parse(localStorage.getItem('sharedBooks')) || [];
+            books.splice(i, 1);
+            localStorage.setItem('sharedBooks', JSON.stringify(books));
+            renderLists();
+        }
     </script>
 </body>
 </html>

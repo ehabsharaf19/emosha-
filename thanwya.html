@@ -75,7 +75,7 @@
         <p style="color: var(--text-muted); font-size: 13px; margin: 0;">جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف</p>
     </footer>
 
-    <script>
+<script>
     function showGeneralResult() {
         var seatNo = document.getElementById('seatNumber').value;
         
@@ -84,10 +84,12 @@
             return;
         }
         
-        // بيفتح رابط السيرفر الحكومي المباشر برقم الجلوس في تابة جديدة فوراً وبدون حجب
-        window.open("https://g12.emis.gov.eg/?seatNo=" + seatNo, "_blank");
+        // بيفتح النتيجة في نافذة منبثقة فوق موقعك، الطالب بيكتب الرقم عندك والنتيجة بتفتح له في نافذة خاصة
+        var url = "https://g12.emis.gov.eg/?seatNo=" + seatNo;
+        window.open(url, "ThanwyaResult", "width=900,height=700,scrollbars=yes,resizable=yes,top=50,left=50");
     }
 </script>
+
 
 </body>
 </html>

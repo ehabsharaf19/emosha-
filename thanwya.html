@@ -15,247 +15,49 @@
         }
 
         body {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-color); color: var(--text-color);
         }
 
-        .blessing-bar {
-            background-color: var(--gold-primary);
-            color: #000000;
-            text-align: center;
-            padding: 8px 10px;
-            font-weight: bold;
-            font-size: 14px;
-        }
+        .blessing-bar { background-color: var(--gold-primary); color: #000; text-align: center; padding: 8px 10px; font-weight: bold; font-size: 14px; }
+        
+        header { background-color: #000000; border-bottom: 2px solid var(--gold-primary); padding: 15px 20px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+        @media(min-width: 768px) { header { flex-direction: row; justify-content: space-between; gap: 0; } }
+        .logo { font-size: 26px; font-weight: bold; color: var(--gold-primary); text-decoration: none; }
+        nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        nav a { color: var(--text-color); text-decoration: none; font-weight: 500; font-size: 15px; padding: 4px 8px; }
+        nav a:hover, nav a.active { color: var(--gold-primary); }
 
-        header {
-            background-color: #000000;
-            border-bottom: 2px solid var(--gold-primary);
-            padding: 15px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-        }
-
-        @media(min-width: 768px) {
-            header {
-                flex-direction: row;
-                justify-content: space-between;
-                gap: 0;
-            }
-        }
-
-        .logo {
-            font-size: 26px;
-            font-weight: bold;
-            color: var(--gold-primary);
-            text-decoration: none;
-        }
-
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        nav a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            padding: 4px 8px;
-            transition: color 0.3s;
-        }
-
-        nav a:hover, nav a.active {
-            color: var(--gold-primary);
-        }
-
-        .main-container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
+        .main-container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
 
         .result-box {
             background: linear-gradient(135deg, #1e1e1e 0%, #000000 100%);
-            border: 2px solid var(--gold-primary);
-            border-radius: 12px;
-            padding: 30px;
-            text-align: center;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
+            border: 2px solid var(--gold-primary); border-radius: 12px;
+            padding: 30px; text-align: center; margin-bottom: 40px;
         }
 
-        .result-box h1 {
-            color: var(--gold-primary);
-            margin-top: 0;
-            font-size: 28px;
-        }
+        .search-form { margin-top: 25px; display: flex; flex-direction: column; align-items: center; gap: 15px; justify-content: center; }
+        @media(min-width: 480px) { .search-form { flex-direction: row; } }
+        
+        .search-form input { padding: 14px; width: 100%; max-width: 300px; border: 1px solid #444; border-radius: 6px; background-color: #222; color: #fff; text-align: center; font-size: 16px; }
+        
+        .btn-search { background-color: var(--gold-primary); color: #000; border: none; padding: 14px 30px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 16px; }
 
-        .result-box p {
-            color: var(--text-muted);
-            font-size: 16px;
-            line-height: 1.6;
-        }
+        /* الشاشة السحرية لعرض موقع النتيجة داخلياً وبقاء الزائر */
+        .result-frame-container { display: none; margin-top: 30px; border: 2px solid var(--gold-primary); border-radius: 8px; overflow: hidden; background: #fff; }
+        .result-frame { width: 100%; height: 600px; border: none; }
 
-        .search-form {
-            margin-top: 25px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
+        .download-table { width: 100%; border-collapse: collapse; background-color: var(--card-bg); margin-top: 15px; }
+        .download-table th, .download-table td { padding: 15px; text-align: right; border-bottom: 1px solid #333; }
+        .download-table th { background-color: #000; color: var(--gold-primary); }
+        
+        .btn-download { background-color: #333; color: var(--gold-primary); text-decoration: none; padding: 6px 12px; border-radius: 4px; border: 1px solid var(--gold-primary); font-size: 14px; }
 
-        @media(min-width: 480px) {
-            .search-form {
-                flex-direction: row;
-                justify-content: center;
-            }
-        }
+        .article-post { background-color: var(--card-bg); border-right: 4px solid var(--gold-primary); padding: 20px; margin-bottom: 20px; border-radius: 4px; text-align: right; }
 
-        .search-form input {
-            padding: 14px;
-            width: 100%;
-            max-width: 300px;
-            border: 1px solid #444;
-            border-radius: 6px;
-            background-color: #222;
-            color: #fff;
-            font-size: 16px;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        .search-form input:focus {
-            outline: none;
-            border-color: var(--gold-primary);
-        }
-
-        .btn-search {
-            background-color: var(--gold-primary);
-            color: #000;
-            border: none;
-            padding: 14px 30px;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-            width: 100%;
-            max-width: 150px;
-        }
-
-        .btn-search:hover {
-            background-color: var(--gold-hover);
-        }
-
-        .status-msg {
-            margin-top: 20px;
-            font-size: 15px;
-            color: var(--gold-hover);
-            display: none;
-        }
-
-        .library-section h2 {
-            color: var(--gold-primary);
-            border-bottom: 1px solid #333;
-            padding-bottom: 10px;
-            margin-top: 40px;
-        }
-
-        .table-responsive {
-            width: 100%;
-            overflow-x: auto;
-            margin-top: 15px;
-            border-radius: 8px;
-        }
-
-        .download-table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: var(--card-bg);
-            min-width: 500px;
-        }
-
-        .download-table th, .download-table td {
-            padding: 15px;
-            text-align: right;
-            border-bottom: 1px solid #333;
-            font-size: 15px;
-        }
-
-        .download-table th {
-            background-color: #000;
-            color: var(--gold-primary);
-            font-weight: bold;
-        }
-
-        .btn-download {
-            background-color: #333;
-            color: var(--gold-primary);
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: bold;
-            border: 1px solid var(--gold-primary);
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .btn-download:hover {
-            background-color: var(--gold-primary);
-            color: #000;
-        }
-
-        footer {
-            background-color: #000000;
-            border-top: 2px solid var(--gold-primary);
-            padding: 30px 20px;
-            margin-top: 60px;
-            text-align: center;
-        }
-
-        .footer-links {
-            margin-bottom: 20px;
-        }
-
-        .footer-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 15px;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--gold-primary);
-        }
-
-        .social-links a {
-            display: inline-block;
-            background-color: #222;
-            color: var(--gold-primary);
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 5px;
-            margin: 0 10px 10px 0;
-            font-weight: bold;
-            font-size: 14px;
-            border: 1px solid var(--gold-primary);
-            transition: all 0.3s;
-        }
-
-        .social-links a:hover {
-            background-color: var(--gold-primary);
-            color: #000;
-        }
+        footer { background-color: #000000; border-top: 2px solid var(--gold-primary); padding: 30px 20px; margin-top: 60px; text-align: center; }
+        .footer-links a { color: var(--text-color); text-decoration: none; margin: 0 15px; }
     </style>
 </head>
 <body>
@@ -278,52 +80,50 @@
     <div class="main-container">
         
         <div class="result-box">
-            <h1>نتيجة الثانوية العامة 2026 برقم الجلوس</h1>
-            <p>تابع معنا ظهور النتيجة فور اعتمادها رسمياً من وزير التربية والتعليم.</p>
+            <h1>نتيجة الثانوية العامة 2026 داخل الأكاديمية</h1>
+            <p>اكتب رقم جلوسك بالأسفل لمشاهدة نتيجتك فوراً وبشكل مباشر ومحدث من السيرفر الوزاري:</p>
             
             <div class="search-form">
-                <input type="number" id="seatNumber" placeholder="أدخل رقم الجلوس">
-                <button class="btn-search" onclick="checkResult()">عرض النتيجة</button>
+                <input type="number" id="seatNumber" placeholder="أدخل رقم الجلوس المكون من 7 أرقام">
+                <button class="btn-search" onclick="loadResultInside()">عرض النتيجة الآن</button>
             </div>
-            <div id="statusMsg" class="status-msg">⚠️ لم يتم اعتماد النتيجة رسمياً بعد، سيتم تفعيل الرابط فور صدورها من الوزارة. احتفظ برابط الصفحة!</div>
+
+            <div class="result-frame-container" id="frameContainer">
+                <div style="background:#000; color:var(--gold-primary); padding:10px; font-weight:bold; text-align:right;">✓ جاري العرض الآمن والمنظم للنتيجة داخل موقعنا...</div>
+                <iframe src="" class="result-frame" id="resultIframe"></iframe>
+            </div>
         </div>
 
-        <div class="library-section">
-            <h2>المكتبة الإلكترونية والمراجعات النهائية مجاناً</h2>
-            <p style="color: var(--text-muted);">حمل الآن أقوى المذكرات والكتب الخارجية ونماذج الوزارة الاسترشادية:</p>
-            
-            <div class="table-responsive">
-                <table class="download-table">
-                    <thead>
-                        <tr>
-                            <th>اسم المادة / الكتاب</th>
-                            <th>النوع</th>
-                            <th>رابط التحميل</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>كتاب مفاهيم الثانوية العامة 2026</td>
-                            <td>رسمي - الوزارة</td>
-                            <td><a href="#" class="btn-download">تحميل PDF</a></td>
-                        </tr>
-                        <tr>
-                            <td>مراجعة ليلة الامتحان في اللغة العربية</td>
-                            <td>ملخص شامل</td>
-                            <td><a href="#" class="btn-download">تحميل PDF</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div style="margin-top:40px;">
+            <h2 style="color:var(--gold-primary); border-bottom:1px solid #333; padding-bottom:10px;">أخبار ونصائح قسم الثانوية العامة</h2>
+            <div id="thanwyaArticles">
+                <p style="color: var(--text-muted);">لا توجد مقالات وأخبار منشورة لهذا القسم حالياً.</p>
             </div>
+        </div>
+
+        <div style="margin-top:40px;">
+            <h2 style="color:var(--gold-primary); border-bottom:1px solid #333; padding-bottom:10px;">المكتبة الإلكترونية والمذكرات المضافة</h2>
+            <table class="download-table">
+                <thead>
+                    <tr>
+                        <th>اسم الكتاب / المذكرة</th>
+                        <th>النوع</th>
+                        <th>رابط التحميل المباشر</th>
+                    </tr>
+                </thead>
+                <tbody id="booksTableBody">
+                    <tr>
+                        <td>كتاب مفاهيم الثانوية العامة 2026 الرسمي</td>
+                        <td>وزاري رسمي</td>
+                        <td><a href="https://moe.gov.eg" target="_blank" class="btn-download">تحميل PDF</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
     </div>
 
     <footer>
-        <div class="social-links">
-            <a href="https://www.facebook.com/share/1Dp7juGzxd/" target="_blank">صفحتنا على فيسبوك 🔗</a>
-            <a href="https://youtube.com/@ehabsharaf19?si=iWT6bv1jDEoqySf4" target="_blank">قناتنا على يوتيوب 📺</a>
-        </div>
         <div class="footer-links">
             <a href="legal.html?tab=about">من نحن</a> | 
             <a href="legal.html?tab=privacy">سياسة الخصوصية</a> | 
@@ -333,16 +133,52 @@
     </footer>
 
     <script>
-        function checkResult() {
-    var num = document.getElementById('seatNumber').value;
-    if(num === "") {
-        alert("الرجاء إدخال رقم الجلوس أولاً");
-    } else {
-        // هنا نقوم بتحويل الطالب فوراً لرابط الوزارة الرسمي مضافاً إليه رقم جلوسه إذا كان موقع الوزارة يدعم ذلك
-        window.open("https://natega.emis.gov.eg?seat=" + num, "_blank");
-    }
-}
+        window.onload = function() {
+            displayThanwyaContent();
+        };
 
+        // دالة عرض النتيجة داخلياً بالكامل لمنع خروج الزائر
+        function loadResultInside() {
+            var seat = document.getElementById('seatNumber').value;
+            if(seat === "") { alert("برجاء كتابة رقم الجلوس أولاً يا فندم!"); return; }
+            
+            // هنا تضع الرابط الرسمي للوزارة فور صدوره (استبدل الرابط الافتراضي بالأسفل بالرابط الحقيقي للنتيجة)
+            var officialLink = "https://natega.emis.gov.eg"; 
+            
+            document.getElementById('resultIframe').src = officialLink;
+            document.getElementById('frameContainer').style.display = 'block';
+        }
+
+        function displayThanwyaContent() {
+            // تحميل المقالات
+            var articles = JSON.parse(localStorage.getItem('sharedArticles')) || [];
+            var artContainer = document.getElementById('thanwyaArticles');
+            var thanwyaItems = articles.filter(item => item.category === "الثانوية العامة" || item.category === "مراجعات الثانوية");
+            
+            if(thanwyaItems.length > 0) {
+                artContainer.innerHTML = "";
+                thanwyaItems.forEach(function(item) {
+                    artContainer.innerHTML += `
+                        <div class="article-post">
+                            <h3>${item.title}</h3>
+                            <div class="article-meta">تاريخ النشر: ${item.date}</div>
+                            <p style="line-height: 1.7; color: #e0e0e0; white-space: pre-line;">${item.content}</p>
+                        </div>`;
+                });
+            }
+
+            // تحميل الكتب المرفوعة من لوحة التحكم
+            var books = JSON.parse(localStorage.getItem('sharedBooks')) || [];
+            var tableBody = document.getElementById('booksTableBody');
+            books.forEach(function(b) {
+                tableBody.innerHTML += `
+                    <tr>
+                        <td>${b.name}</td>
+                        <td>${b.type}</td>
+                        <td><a href="${b.link}" target="_blank" class="btn-download">تحميل مباشر PDF</a></td>
+                    </tr>`;
+            });
+        }
     </script>
 </body>
 </html>

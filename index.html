@@ -9,14 +9,16 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 
     <style>
-        :root { --bg-color: #121212; --card-bg: #1e1e1e; --gold-primary: #d4af37; --text-color: #ffffff; --text-muted: #b3b3b3; }
+        :root { --bg-color: #121212; --card-bg: #1e1e1e; --gold-primary: #d4af37; --gold-hover: #f3e5ab; --text-color: #ffffff; --text-muted: #b3b3b3; }
         body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-color); }
         .blessing-bar { background-color: var(--gold-primary); color: #000; text-align: center; padding: 8px; font-weight: bold; }
-        header { background-color: #000; border-bottom: 2px solid var(--gold-primary); padding: 20px; text-align: center; }
+        header { background-color: #000; border-bottom: 2px solid var(--gold-primary); padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
         .logo { font-size: 28px; font-weight: bold; color: var(--gold-primary); text-decoration: none; }
+        nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; width: 100%; max-width: 1200px; }
+        nav a { color: #fff; text-decoration: none; padding: 12px 10px; background: #1a1a1a; border: 1px solid #333; border-radius: 6px; }
         .main-container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
         .article-post { background-color: var(--card-bg); border-right: 4px solid var(--gold-primary); padding: 20px; margin-bottom: 20px; border-radius: 4px; text-align: right; }
-        .btn { display: inline-block; background-color: var(--gold-primary); color: #000; padding: 10px 20px; border-radius: 6px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; }
+        .btn { background-color: var(--gold-primary); color: #000; padding: 10px 20px; border-radius: 6px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -25,15 +27,20 @@
 
     <header>
         <a href="index.html" class="logo">أكاديمية إيموشا</a>
+        <nav>
+            <a href="index.html">الصفحة الرئيسية</a>
+            <a href="internet-earning.html">الربح من الإنترنت</a>
+            <a href="facebook.html">أسرار فيسبوك</a>
+        </nav>
     </header>
 
     <div class="main-container">
-        <h2>آخر المقالات العامة</h2>
-        <div id="mainArticlesContainer">جاري تحميل المقالات من الأكاديمية...</div>
+        <h2>آخر المقالات المنشورة</h2>
+        <div id="mainArticlesContainer">جاري تحميل المقالات...</div>
     </div>
 
     <script>
-        // إعدادات الربط الخاصة بمشروعك (emosha-academy)
+        // إعدادات الربط
         const firebaseConfig = {
             apiKey: "AIzaSyCp-m2DkIIwIoKUeuntHLvDbEclB041pz4",
             authDomain: "shrouk-ehab.firebaseapp.com",
@@ -43,11 +50,10 @@
             appId: "1:1015714183835:web:cd71ea6fd14a6a2ef7643e"
         };
 
-        // تهيئة Firebase
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // جلب المقالات من فايربيس وعرضها
+        // جلب المقالات من فايربيس بدلاً من localStorage
         db.collection("articles").onSnapshot((snapshot) => {
             const container = document.getElementById('mainArticlesContainer');
             container.innerHTML = ""; 
@@ -58,7 +64,7 @@
                     <div class="article-post">
                         <h3>${article.title || 'بدون عنوان'}</h3>
                         ${article.image ? `<img src="${article.image}" style="width: 100%; border-radius: 5px; margin-bottom: 10px;">` : ''}
-                        <p style="white-space: pre-line;">${article.content || ''}</p>
+                        <p>${article.content || ''}</p>
                         <small style="color: var(--gold-primary);">تاريخ النشر: ${article.date || ''}</small>
                     </div>
                 `;

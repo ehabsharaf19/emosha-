@@ -119,12 +119,7 @@
                     </tr>
                 </thead>
                 <tbody id="booksTableBody">
-                    <tr>
-                        <td>كتاب مفاهيم الثانوية العامة Official الرسمي</td>
-                        <td>وزاري رسمي</td>
-                        <td><a href="https://moe.gov.eg" target="_blank" class="btn-download">تحميل PDF</a></td>
-                    </tr>
-                </tbody>
+                    </tbody>
             </table>
         </div>
 
@@ -174,26 +169,24 @@
                 loadMoreThanwyaArticles();
             }
 
-            // تحميل الكتب المرفوعة بشكل ثابت ودائم
+            // تحميل المذكرات المرفوعة من لوحة التحكم فقط وتصفير الروابط القديمة
             var books = JSON.parse(localStorage.getItem('sharedBooks')) || [];
             var tableBody = document.getElementById('booksTableBody');
             
-            // لتجنب تكرار الكتب الوزارية الأساسية عند إعادة التحميل
-            tableBody.innerHTML = `
-                <tr>
-                    <td>كتاب مفاهيم الثانوية العامة Official الرسمي</td>
-                    <td>وزاري رسمي</td>
-                    <td><a href="https://moe.gov.eg" target="_blank" class="btn-download">تحميل PDF</a></td>
-                </tr>`;
+            tableBody.innerHTML = "";
 
-            books.forEach(function(b) {
-                tableBody.innerHTML += `
-                    <tr>
-                        <td>${b.name}</td>
-                        <td>${b.type}</td>
-                        <td><a href="${b.link}" target="_blank" class="btn-download">تحميل مباشر PDF</a></td>
-                    </tr>`;
-            });
+            if(books.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:var(--text-muted); padding:20px;">لا توجد كتب أو مذكرات مضافة حالياً في المكتبة.</td></tr>`;
+            } else {
+                books.forEach(function(b) {
+                    tableBody.innerHTML += `
+                        <tr>
+                            <td>${b.name}</td>
+                            <td>${b.type}</td>
+                            <td><a href="${b.link}" target="_blank" class="btn-download">تحميل مباشر PDF</a></td>
+                        </tr>`;
+                });
+            }
         }
 
         function loadMoreThanwyaArticles() {
@@ -202,7 +195,6 @@
             
             nextItems.forEach(function(item) {
                 var excerpt = item.content.length > 150 ? item.content.substring(0, 150) + "..." : item.content;
-                // استخدام معرف المقال الفريد للرابط الخاص
                 var articleUrl = "article.html?id=" + (item.id || "");
 
                 artContainer.innerHTML += `

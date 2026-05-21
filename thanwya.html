@@ -44,6 +44,9 @@
         
         .btn-search { background-color: var(--gold-primary); color: #000; border: none; padding: 14px 30px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 16px; }
 
+        .btn-more { display: inline-block; background-color: var(--gold-primary); color: #000; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; border: none; font-size: 14px; text-align: center; }
+        .btn-more:hover { background-color: var(--gold-hover); }
+
         /* الشاشة السحرية لعرض موقع النتيجة داخلياً وبقاء الزائر */
         .result-frame-container { display: none; margin-top: 30px; border: 2px solid var(--gold-primary); border-radius: 8px; overflow: hidden; background: #fff; }
         .result-frame { width: 100%; height: 600px; border: none; }
@@ -52,9 +55,14 @@
         .download-table th, .download-table td { padding: 15px; text-align: right; border-bottom: 1px solid #333; }
         .download-table th { background-color: #000; color: var(--gold-primary); }
         
-        .btn-download { background-color: #333; color: var(--gold-primary); text-decoration: none; padding: 6px 12px; border-radius: 4px; border: 1px solid var(--gold-primary); font-size: 14px; }
+        .btn-download { display: inline-block; background-color: #333; color: var(--gold-primary); text-decoration: none; padding: 6px 12px; border-radius: 4px; border: 1px solid var(--gold-primary); font-size: 14px; }
 
         .article-post { background-color: var(--card-bg); border-right: 4px solid var(--gold-primary); padding: 20px; margin-bottom: 20px; border-radius: 4px; text-align: right; }
+        
+        .article-post h3 a { color: #fff; text-decoration: none; transition: color 0.2s; }
+        .article-post h3 a:hover { color: var(--gold-primary); }
+
+        .article-meta { font-size: 12px; color: var(--gold-primary); margin-bottom: 10px; }
 
         footer { background-color: #000000; border-top: 2px solid var(--gold-primary); padding: 30px 20px; margin-top: 60px; text-align: center; }
         .footer-links a { color: var(--text-color); text-decoration: none; margin: 0 15px; }
@@ -96,9 +104,8 @@
 
         <div style="margin-top:40px;">
             <h2 style="color:var(--gold-primary); border-bottom:1px solid #333; padding-bottom:10px;">أخبار ونصائح قسم الثانوية العامة</h2>
-            <div id="thanwyaArticles">
-                <p style="color: var(--text-muted);">لا توجد مقالات وأخبار منشورة لهذا القسم حالياً.</p>
-            </div>
+            <div id="thanwyaArticles"></div>
+            <button id="loadMoreThanwyaBtn" class="btn-more" style="display:none; margin: 25px auto;" onclick="loadMoreThanwyaArticles()">عرض المزيد من المقالات ⬇</button>
         </div>
 
         <div style="margin-top:40px;">
@@ -113,7 +120,7 @@
                 </thead>
                 <tbody id="booksTableBody">
                     <tr>
-                        <td>كتاب مفاهيم الثانوية العامة 2026 الرسمي</td>
+                        <td>كتاب مفاهيم الثانوية العامة Official الرسمي</td>
                         <td>وزاري رسمي</td>
                         <td><a href="https://moe.gov.eg" target="_blank" class="btn-download">تحميل PDF</a></td>
                     </tr>
@@ -123,7 +130,7 @@
 
     </div>
 
-        <footer>
+    <footer>
         <div class="footer-links">
             <a href="legal.html?tab=about">من نحن</a> | 
             <a href="legal.html?tab=privacy">سياسة الخصوصية</a> | 
@@ -132,45 +139,53 @@
         <p style="color: var(--text-muted); font-size: 13px; margin-top: 15px;">جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف</p>
     </footer>
 
-
     <script>
+        var displayedCount = 0;
+        var thanwyaItems = [];
+
         window.onload = function() {
-            displayThanwyaContent();
+            displayThanwyaContent(true);
         };
 
-        // دالة عرض النتيجة داخلياً بالكامل لمنع خروج الزائر
         function loadResultInside() {
             var seat = document.getElementById('seatNumber').value;
             if(seat === "") { alert("برجاء كتابة رقم الجلوس أولاً يا فندم!"); return; }
             
-            // هنا تضع الرابط الرسمي للوزارة فور صدوره (استبدل الرابط الافتراضي بالأسفل بالرابط الحقيقي للنتيجة)
             var officialLink = "https://natega.emis.gov.eg"; 
             
             document.getElementById('resultIframe').src = officialLink;
             document.getElementById('frameContainer').style.display = 'block';
         }
 
-        function displayThanwyaContent() {
-            // تحميل المقالات
+        function displayThanwyaContent(reset) {
             var articles = JSON.parse(localStorage.getItem('sharedArticles')) || [];
+            thanwyaItems = articles.filter(item => item.category === "الثانوية العامة" || item.category === "مراجعات الثانوية");
             var artContainer = document.getElementById('thanwyaArticles');
-            var thanwyaItems = articles.filter(item => item.category === "الثانوية العامة" || item.category === "مراجعات الثانوية");
             
-            if(thanwyaItems.length > 0) {
+            if(reset) {
                 artContainer.innerHTML = "";
-                thanwyaItems.forEach(function(item) {
-                    artContainer.innerHTML += `
-                        <div class="article-post">
-                            <h3>${item.title}</h3>
-                            <div class="article-meta">تاريخ النشر: ${item.date}</div>
-                            <p style="line-height: 1.7; color: #e0e0e0; white-space: pre-line;">${item.content}</p>
-                        </div>`;
-                });
+                displayedCount = 0;
             }
 
-            // تحميل الكتب المرفوعة من لوحة التحكم
+            if(thanwyaItems.length === 0) {
+                artContainer.innerHTML = `<p style="color: var(--text-muted); text-align: right;">لا توجد مقالات وأخبار منشورة لهذا القسم حالياً.</p>`;
+                document.getElementById('loadMoreThanwyaBtn').style.display = 'none';
+            } else {
+                loadMoreThanwyaArticles();
+            }
+
+            // تحميل الكتب المرفوعة بشكل ثابت ودائم
             var books = JSON.parse(localStorage.getItem('sharedBooks')) || [];
             var tableBody = document.getElementById('booksTableBody');
+            
+            // لتجنب تكرار الكتب الوزارية الأساسية عند إعادة التحميل
+            tableBody.innerHTML = `
+                <tr>
+                    <td>كتاب مفاهيم الثانوية العامة Official الرسمي</td>
+                    <td>وزاري رسمي</td>
+                    <td><a href="https://moe.gov.eg" target="_blank" class="btn-download">تحميل PDF</a></td>
+                </tr>`;
+
             books.forEach(function(b) {
                 tableBody.innerHTML += `
                     <tr>
@@ -179,6 +194,34 @@
                         <td><a href="${b.link}" target="_blank" class="btn-download">تحميل مباشر PDF</a></td>
                     </tr>`;
             });
+        }
+
+        function loadMoreThanwyaArticles() {
+            var artContainer = document.getElementById('thanwyaArticles');
+            var nextItems = thanwyaItems.slice(displayedCount, displayedCount + 3);
+            
+            nextItems.forEach(function(item) {
+                var excerpt = item.content.length > 150 ? item.content.substring(0, 150) + "..." : item.content;
+                // استخدام معرف المقال الفريد للرابط الخاص
+                var articleUrl = "article.html?id=" + (item.id || "");
+
+                artContainer.innerHTML += `
+                    <div class="article-post">
+                        <h3><a href="${articleUrl}">${item.title}</a></h3>
+                        <div class="article-meta">تاريخ النشر: ${item.date}</div>
+                        <p style="line-height: 1.7; color: #e0e0e0; white-space: pre-line;">${excerpt}</p>
+                        <a href="${articleUrl}" style="color: var(--gold-primary); text-decoration: none; font-weight: bold; font-size: 14px;">اقرأ الخبر كاملاً برابط مخصص ومستقل ←</a>
+                    </div>`;
+            });
+
+            displayedCount += nextItems.length;
+            var btn = document.getElementById('loadMoreThanwyaBtn');
+            
+            if(displayedCount >= thanwyaItems.length) {
+                btn.style.display = 'none';
+            } else {
+                btn.style.display = 'block';
+            }
         }
     </script>
 </body>

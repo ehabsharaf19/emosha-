@@ -176,7 +176,16 @@
 
         .article-post h3 {
             margin-top: 0;
+        }
+
+        .article-post h3 a {
             color: #fff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .article-post h3 a:hover {
+            color: var(--gold-primary);
         }
 
         .article-meta {
@@ -314,9 +323,8 @@
 
         <div class="articles-display">
             <h2>آخر المقالات العامة المنشورة</h2>
-            <div id="mainArticlesContainer">
-                <p id="noArticles" style="color: var(--text-muted);">لا توجد مقالات عامة منشورة حالياً.</p>
-            </div>
+            <div id="mainArticlesContainer"></div>
+            <button id="loadMoreBtn" class="btn" style="display:none; margin: 25px auto;" onclick="loadMoreMainArticles()">عرض المزيد من المقالات ⬇</button>
         </div>
     </div>
 
@@ -371,7 +379,7 @@
         </div>
     </div>
 
-        <footer>
+    <footer>
         <div class="footer-links">
             <a href="legal.html?tab=about">من نحن</a> | 
             <a href="legal.html?tab=privacy">سياسة الخصوصية</a> | 
@@ -381,7 +389,10 @@
     </footer>
 
     <script>
-        window.onload = function() { displayMainArticles(); };
+        var displayedCount = 0;
+        var mainItems = [];
+
+        window.onload = function() { displayMainArticles(true); };
 
         function openAdminModal() {
             document.getElementById('adminModal').style.display = 'block';
@@ -394,7 +405,7 @@
 
         function unlockConsole() {
             var p = document.getElementById('secretPass').value;
-            if(p === "1234") {
+            if(p === "123010111  55Ee") {
                 document.getElementById('lockArea').style.display = 'none';
                 document.getElementById('controlArea').style.display = 'block';
             } else { alert("الباسورد خاطئ يا قبطان!"); }
@@ -423,7 +434,9 @@
 
             if(type === 'article') {
                 var content = document.getElementById('postContent').value;
-                var article = { title: title, category: category, content: content, date: new Date().toLocaleDateString('ar-EG') };
+                // توليد معرف فريد يعتمد على طابع الوقت لمنع أي تداخل
+                var articleId = Date.now();
+                var article = { id: articleId, title: title, category: category, content: content, date: new Date().toLocaleDateString('ar-EG') };
                 var articles = JSON.parse(localStorage.getItem('sharedArticles')) || [];
                 articles.unshift(article);
                 localStorage.setItem('sharedArticles', JSON.stringify(articles));
@@ -438,27 +451,55 @@
 
             alert("تم النشر بنجاح وتوزيع المحتوى على القسم الصحيح! 🎉");
             closeAdminModal();
-            displayMainArticles();
+            displayMainArticles(true);
         }
 
-        function displayMainArticles() {
+        function displayMainArticles(reset) {
             var articles = JSON.parse(localStorage.getItem('sharedArticles')) || [];
+            mainItems = articles.filter(item => item.category === "الرئيسية");
             var container = document.getElementById('mainArticlesContainer');
-            var mainItems = articles.filter(item => item.category === "الرئيسية");
             
+            if(reset) {
+                container.innerHTML = "";
+                displayedCount = 0;
+            }
+
             if(mainItems.length === 0) {
-                container.innerHTML = `<p id="noArticles" style="color: var(--text-muted);">لا توجد مقالات عامة منشورة حالياً.</p>`;
+                container.innerHTML = `<p id="noArticles" style="color: var(--text-muted); text-align: center;">لا توجد مقالات عامة منشورة حالياً.</p>`;
+                document.getElementById('loadMoreBtn').style.display = 'none';
                 return;
             }
-            container.innerHTML = "";
-            mainItems.forEach(function(item) {
+            
+            loadMoreMainArticles();
+        }
+
+        function loadMoreMainArticles() {
+            var container = document.getElementById('mainArticlesContainer');
+            var nextItems = mainItems.slice(displayedCount, displayedCount + 3);
+            
+            nextItems.forEach(function(item) {
+                // عرض مقتطف صغير من المقال في الصفحة العامة لإثارة فضول الزائر للدخول عبر الرابط المخصص
+                var excerpt = item.content.length > 150 ? item.content.substring(0, 150) + "..." : item.content;
+                // توليد الرابط الديناميكي الفريد للمقال
+                var articleUrl = "article.html?id=" + item.id;
+
                 container.innerHTML += `
                     <div class="article-post">
-                        <h3>${item.title}</h3>
+                        <h3><a href="${articleUrl}">${item.title}</a></h3>
                         <div class="article-meta">تاريخ النشر: ${item.date}</div>
-                        <p style="line-height: 1.7; color: #e0e0e0; white-space: pre-line;">${item.content}</p>
+                        <p style="line-height: 1.7; color: #e0e0e0; white-space: pre-line;">${excerpt}</p>
+                        <a href="${articleUrl}" style="color: var(--gold-primary); text-decoration: none; font-weight: bold; font-size: 14px;">اقرأ المقال كاملاً برابط مخصص ومستقل ←</a>
                     </div>`;
             });
+
+            displayedCount += nextItems.length;
+            var btn = document.getElementById('loadMoreBtn');
+            
+            if(displayedCount >= mainItems.length) {
+                btn.style.display = 'none';
+            } else {
+                btn.style.display = 'block';
+            }
         }
     </script>
 </body>

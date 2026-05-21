@@ -116,6 +116,9 @@
             padding: 25px;
             text-align: center;
             transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .section-card:hover {
@@ -133,6 +136,7 @@
             color: var(--text-muted);
             font-size: 15px;
             line-height: 1.6;
+            margin-bottom: 15px;
         }
 
         .btn {
@@ -143,11 +147,12 @@
             padding: 12px 24px;
             border-radius: 6px;
             font-weight: bold;
-            margin-top: 15px;
+            margin-top: auto;
             transition: background-color 0.3s;
             cursor: pointer;
             border: none;
             font-size: 15px;
+            text-align: center;
         }
 
         .btn:hover {
@@ -183,7 +188,6 @@
             margin-bottom: 10px;
         }
 
-        /* إدارة المحتوى المقفلة */
         .cms-section {
             background-color: #1a1a1a;
             border: 1px dashed var(--gold-primary);
@@ -229,13 +233,46 @@
         }
 
         footer {
-            text-align: center;
-            padding: 20px;
             background-color: #000000;
-            border-top: 1px solid #333;
-            color: var(--text-muted);
+            border-top: 2px solid var(--gold-primary);
+            padding: 30px 20px;
             margin-top: 60px;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-primary);
+        }
+
+        .social-links a {
+            display: inline-block;
+            background-color: #222;
+            color: var(--gold-primary);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            margin: 0 10px 10px 0;
+            font-weight: bold;
             font-size: 14px;
+            border: 1px solid var(--gold-primary);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--gold-primary);
+            color: #000;
         }
     </style>
 </head>
@@ -249,9 +286,9 @@
         <a href="index.html" class="logo">أكاديمية إيموشا</a>
         <nav>
             <a href="index.html" class="active">الرئيسية</a>
-            <a href="#">الربح من الإنترنت</a>
-            <a href="#">فيسبوك</a>
-            <a href="#">تطوير المواقع</a>
+            <a href="internet-earning.html">الربح من الإنترنت</a>
+            <a href="facebook.html">فيسبوك</a>
+            <a href="web-dev.html">تطوير المواقع</a>
             <a href="thanwya.html">الثانوية العامة</a>
         </nav>
     </header>
@@ -267,14 +304,17 @@
             <div class="section-card">
                 <h2>كيف تربح من الإنترنت</h2>
                 <p>تعلم طرق الربح الحقيقية والمجربة مثل التسويق بالعمولة والتجارة الإلكترونية خطوة بخطوة.</p>
+                <a href="internet-earning.html" class="btn">تصفح القسم</a>
             </div>
             <div class="section-card">
                 <h2>أسرار أرباح فيسبوك</h2>
                 <p>اكتشف أسرار الربح من مقاطع الريلز والفيديوهات، وكيفية تكبير صفحاتك وزيادة التفاعل.</p>
+                <a href="facebook.html" class="btn">تصفح القسم</a>
             </div>
             <div class="section-card">
                 <h2>بناء وتطوير المواقع</h2>
                 <p>شروحات مبسطة لتعلم البرمجة، إدارة قواعد البيانات، وتهيئية موقعك لمحركات البحث.</p>
+                <a href="web-dev.html" class="btn">تصفح القسم</a>
             </div>
             <div class="section-card">
                 <h2>بوابة الثانوية العامة</h2>
@@ -294,7 +334,6 @@
 
         <div class="cms-section">
             <h2>🛠️ لوحة تحكم الإدارة (خاصة بالمسؤول)</h2>
-            
             <div id="loginArea" class="login-box">
                 <p style="color: var(--text-muted);">ادخل كلمة المرور لتفعيل لوحة كتابة المقالات:</p>
                 <input type="password" id="cmsPassword" placeholder="كلمة المرور" style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff; text-align: center; margin-bottom: 10px;"><br>
@@ -304,7 +343,7 @@
             <div id="uploadArea" style="display: none;">
                 <div class="form-group">
                     <label>عنوان المقال:</label>
-                    <input type="text" id="postTitle" placeholder="مثال: دليلك الشامل للربح من ريلز فيسبوك 2026">
+                    <input type="text" id="postTitle" placeholder="مثال: دليلك الشامل للربح من ريلز فيسبوك">
                 </div>
 
                 <div class="form-group">
@@ -329,7 +368,16 @@
     </div>
 
     <footer>
-        <p>جميع الحقوق محفوظة © 2026 | أكاديمية إيموشا</p>
+        <div class="social-links">
+            <a href="#" target="_blank">صفحتنا على فيسبوك 🔗</a>
+            <a href="#" target="_blank">قناتنا على يوتيوب 📺</a>
+        </div>
+        <div class="footer-links">
+            <a href="legal.html?tab=about">من نحن</a> | 
+            <a href="legal.html?tab=privacy">سياسة الخصوصية</a> | 
+            <a href="legal.html?tab=contact">اتصل بنا</a>
+        </div>
+        <p style="color: var(--text-muted); font-size: 13px; margin-top: 15px;">جميع الحقوق محفوظة © 2026 | أكاديمية إيموشا</p>
     </footer>
 
     <script>
@@ -337,10 +385,9 @@
             displayStoredArticles();
         };
 
-        // التحقق من الباسورد لفتح لوحة التحكم
         function checkCmsPassword() {
             var pass = document.getElementById('cmsPassword').value;
-            if(pass === "1234") { // الباسورد الافتراضي
+            if(pass === "1234") {
                 document.getElementById('loginArea').style.display = "none";
                 document.getElementById('uploadArea').style.display = "block";
             } else {
@@ -367,7 +414,6 @@
 
             var articles = JSON.parse(localStorage.getItem('myArticles')) || [];
             articles.unshift(article);
-
             localStorage.setItem('myArticles', JSON.stringify(articles));
 
             document.getElementById('postTitle').value = "";

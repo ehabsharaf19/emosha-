@@ -215,13 +215,46 @@
         }
 
         footer {
-            text-align: center;
-            padding: 20px;
             background-color: #000000;
-            border-top: 1px solid #333;
-            color: var(--text-muted);
+            border-top: 2px solid var(--gold-primary);
+            padding: 30px 20px;
             margin-top: 60px;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-primary);
+        }
+
+        .social-links a {
+            display: inline-block;
+            background-color: #222;
+            color: var(--gold-primary);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            margin: 0 10px 10px 0;
+            font-weight: bold;
             font-size: 14px;
+            border: 1px solid var(--gold-primary);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--gold-primary);
+            color: #000;
         }
     </style>
 </head>
@@ -235,9 +268,9 @@
         <a href="index.html" class="logo">أكاديمية إيموشا</a>
         <nav>
             <a href="index.html">الرئيسية</a>
-            <a href="#">الربح من الإنترنت</a>
-            <a href="#">فيسبوك</a>
-            <a href="#">تطوير المواقع</a>
+            <a href="internet-earning.html">الربح من الإنترنت</a>
+            <a href="facebook.html">فيسبوك</a>
+            <a href="web-dev.html">تطوير المواقع</a>
             <a href="thanwya.html" class="active">الثانوية العامة</a>
         </nav>
     </header>
@@ -287,7 +320,16 @@
     </div>
 
     <footer>
-        <p>جميع الحقوق محفوظة © 2026 | بوابة الثانوية العامة - أكاديمية إيموشا</p>
+        <div class="social-links">
+            <a href="#" target="_blank">صفحتنا على فيسبوك 🔗</a>
+            <a href="#" target="_blank">قناتنا على يوتيوب 📺</a>
+        </div>
+        <div class="footer-links">
+            <a href="legal.html?tab=about">من نحن</a> | 
+            <a href="legal.html?tab=privacy">سياسة الخصوصية</a> | 
+            <a href="legal.html?tab=contact">اتصل بنا</a>
+        </div>
+        <p style="color: var(--text-muted); font-size: 13px; margin-top: 15px;">جميع الحقوق محفوظة © 2026 | أكاديمية إيموشا</p>
     </footer>
 
     <script>

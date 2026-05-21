@@ -3,333 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emosha AI | إيموشا إي آي - المنصة الشاملة</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>أكاديمية الربح والتعليم الرقمي</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap');
-        body { 
-            font-family: 'Cairo', sans-serif; 
-            background-color: #0b0b0b;
+        /* الألوان الأساسية والتنسيق العام */
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --gold-primary: #d4af37;
+            --gold-hover: #f3e5ab;
+            --text-color: #ffffff;
+            --text-muted: #b3b3b3;
         }
-        .gold-glow {
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
-            border: 2px solid #d4af37;
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
         }
-        .gold-text-gradient {
-            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+        /* الهيدر والقائمة */
+        header {
+            background-color: #000000;
+            border-bottom: 2px solid var(--gold-primary);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--gold-primary);
+            text-decoration: none;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--gold-primary);
+        }
+
+        /* البانر الترحيبي */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, #000000 0%, var(--bg-color) 100%);
+        }
+
+        .hero h1 {
+            color: var(--gold-primary);
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 18px;
+            max-width: 60px0px;
+            margin: 0 auto;
+        }
+
+        /* شبكة الأقسام */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .section-card {
+            background-color: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-primary);
+        }
+
+        .section-card h2 {
+            color: var(--gold-primary);
+            margin-top: 0;
+            font-size: 22px;
+        }
+
+        .section-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--gold-primary);
+            color: #000;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--gold-hover);
+        }
+
+        /* الفوتر */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #000000;
+            border-top: 1px solid #333;
+            color: var(--text-muted);
+            margin-top: 60px;
+            font-size: 14px;
         }
     </style>
 </head>
-<body class="text-gray-200 min-h-screen text-right">
+<body>
 
-    <div class="bg-gradient-to-r from-[#aa7c11] via-[#d4af37] to-[#aa7c11] text-black text-center py-2 text-xs font-bold shadow-md">
-        ✨ اللهم صل وسلم وبارك على سيدنا محمد وعلى آله وصحبه أجمعين ✨
-    </div>
-
-    <header class="bg-[#121212] border-b border-[#2a2211] sticky top-0 z-50 shadow-lg">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-reverse space-x-2">
-                <i class="fa-solid fa-wand-magic-sparkles text-[#d4af37] text-2xl animate-pulse"></i>
-                <span class="text-2xl font-bold text-white">Emosha <span class="gold-text-gradient">AI</span></span>
-            </div>
-            <div>
-                <button class="bg-[#2a2211] text-[#d4af37] border border-[#d4af37]/40 px-4 py-1.5 rounded-lg text-xs font-bold">
-                    لوحة تحكم القبطان ⚓
-                </button>
-            </div>
-        </div>
+    <!-- الهيدر -->
+    <header>
+        <a href="#" class="logo">شعار الموقع</a>
+        <nav>
+            <a href="#" class="active">الرئيسية</a>
+            <a href="#">الربح من الإنترنت</a>
+            <a href="#">فيسبوك</a>
+            <a href="#">تطوير المواقع</a>
+            <a href="#">الثانوية العامة</a>
+        </nav>
     </header>
 
-    <section class="bg-gradient-to-b from-[#161616] to-[#0b0b0b] py-12 text-center px-4 border-b border-[#1f1a0e]">
-        <div class="max-w-3xl mx-auto">
-            <h1 class="text-3xl md:text-5xl font-bold text-white leading-tight">
-                منصة الذكاء الاصطناعي الشاملة الفخمة
-            </h1>
-            <p class="text-gray-400 text-xs mt-3 max-w-2xl mx-auto leading-relaxed">
-                أهلاً بك في منصتك الخاصة لتوليد السكريبتات، صناعة خلفيات الفيديو، وتعديل الصور والمظهر فوراً وبأعلى كفاءة حركية.
-            </p>
-        </div>
+    <!-- البانر الرئيسي -->
+    <section class="hero">
+        <h1>بوابتك الاحترافية للربح والتعلم الرقمي</h1>
+        <p>نقدم لك أدلة عملية وشروحات حصرية وموثوقة لمساعدتك في بناء مشروعك الخاص على الإنترنت وتطوير مهاراتك.</p>
     </section>
 
-    <section class="container mx-auto px-4 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <!-- أقسام الموقع -->
+    <div class="main-container">
+        <div class="sections-grid">
             
-            <div class="bg-[#121212] p-6 rounded-2xl border border-[#2a2211] flex flex-col justify-between hover:border-[#d4af37]/60 transition duration-300 shadow-xl border-t-4 border-t-amber-500">
-                <div>
-                    <div class="w-12 h-12 bg-[#2a2211] rounded-xl flex items-center justify-center text-[#d4af37] text-xl mb-4">
-                        <i class="fa-solid fa-file-pen"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">مُولد المحتوى والسكريبتات الذكي</h3>
-                    <p class="text-gray-400 text-xs mb-6 leading-relaxed">اكتب فكرة أو موضوع الفيديو ودع المحرك يجهز لك سكريبت فيروسي جاهز للإلقاء الفوري لصفحتك.</p>
-                </div>
-                <button id="openScriptTool" class="w-full bg-[#1c1c1c] hover:bg-[#d4af37] hover:text-black text-[#d4af37] border border-[#d4af37]/40 font-bold py-3 rounded-xl transition text-sm cursor-pointer">
-                    فتح صانع السكريبتات
-                </button>
+            <!-- قسم الربح -->
+            <div class="section-card">
+                <h2>كيف تربح من الإنترنت</h2>
+                <p>تعلم طرق الربح الحقيقية والمجربة مثل التسويق بالعمولة، التجارة الإلكترونية، وصناعة المحتوى خطوة بخطوة.</p>
+                <a href="#" class="btn">تصفح المقالات</a>
             </div>
 
-            <div class="bg-[#121212] p-6 rounded-2xl border border-[#2a2211] flex flex-col justify-between hover:border-[#d4af37]/60 transition duration-300 shadow-xl border-t-4 border-t-yellow-500">
-                <div>
-                    <div class="w-12 h-12 bg-[#2a2211] rounded-xl flex items-center justify-center text-[#d4af37] text-xl mb-4">
-                        <i class="fa-solid fa-clapperboard"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">صانع الفيديو الاحترافي والمتحرك</h3>
-                    <p class="text-gray-400 text-xs mb-6 leading-relaxed">أدخل وصف المشهد ليتم إنتاج فيديو خلفية حركية سينمائية ذهبية متناسقة جاهزة للتحميل الفوري بجهازك.</p>
-                </div>
-                <button id="openVideoTool" class="w-full bg-[#1c1c1c] hover:bg-[#d4af37] hover:text-black text-[#d4af37] border border-[#d4af37]/40 font-bold py-3 rounded-xl transition text-sm cursor-pointer">
-                    صناعة فيديو متحرك
-                </button>
+            <!-- قسم فيسبوك -->
+            <div class="section-card">
+                <h2>أسرار أرباح فيسبوك</h2>
+                <p>اكتشف أسرار الربح من مقاطع الريلز والفيديوهات، وكيفية تكبير صفحاتك وزيادة التفاعل بجنون.</p>
+                <a href="#" class="btn">ابدأ التعلم</a>
             </div>
 
-            <div class="bg-[#121212] p-6 rounded-2xl border border-[#2a2211] flex flex-col justify-between hover:border-[#d4af37]/60 transition duration-300 shadow-xl border-t-4 border-t-[#d4af37]">
-                <div>
-                    <div class="w-12 h-12 bg-[#2a2211] rounded-xl flex items-center justify-center text-[#d4af37] text-xl mb-4">
-                        <i class="fa-solid fa-user-tie"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">استوديو تعديل المظهر والبدل الفخمة</h3>
-                    <p class="text-gray-400 text-xs mb-6 leading-relaxed">ارفع صورتك الشخصية ليتم فوراً معالجتها ودمج ملامحك مع بدلة كلاسيكية فخمة وخلفية احترافية.</p>
-                </div>
-                <button id="openPhotoTool" class="w-full bg-[#d4af37] hover:bg-[#b8952e] text-black font-bold py-3 rounded-xl transition text-sm cursor-pointer">
-                    ابدأ بتعديل صورتك
-                </button>
+            <!-- قسم المواقع -->
+            <div class="section-card">
+                <h2>بناء وتطوير المواقع</h2>
+                <p>شروحات مبسطة لتعلم البرمجة، إدارة قواعد البيانات، وتهيئية موقعك لمحركات البحث وتصدر نتائج السيو.</p>
+                <a href="#" class="btn">عرض الدروس</a>
             </div>
 
-        </div>
-    </section>
-
-    <div id="scriptModal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm">
-        <div class="bg-[#121212] w-full max-w-xl rounded-2xl p-6 relative border border-[#2a2211]">
-            <button id="closeScriptTool" class="absolute top-4 left-4 text-gray-400 hover:text-white text-xl cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
-            <h3 class="text-lg font-bold text-[#d4af37] mb-4"><i class="fa-solid fa-file-signature ml-2"></i> مُولد السكريبتات الذكي</h3>
-            <textarea id="videoTopic" rows="3" class="w-full p-3 bg-[#1c1c1c] border border-[#2a2211] rounded-xl text-sm mb-4 text-white focus:outline-none focus:border-[#d4af37]" placeholder="اكتب فكرة الفيديو هنا (مثال: نصائح عن استثمار الذهب)..."></textarea>
-            <button id="generateBtn" class="w-full bg-[#d4af37] text-black font-bold py-3 rounded-xl hover:bg-[#b8952e] transition font-bold">توليد السكريبت فوراً</button>
-            
-            <div id="resultBox" class="p-4 bg-[#1c1c1c] rounded-xl border border-dashed border-[#2a2211] mt-4 hidden max-h-[250px] overflow-y-auto">
-                <div id="scriptOutput" class="text-sm whitespace-pre-line text-gray-200 leading-relaxed text-right"></div>
+            <!-- قسم الثانوية العامة -->
+            <div class="section-card" style="border-color: rgba(212, 175, 55, 0.4);">
+                <h2>بوابة الثانوية العامة</h2>
+                <p>ملخصات حصرية، مراجعات نهائية، وتحميل الكتب الخارجية مجاناً. وتابع معنا النتيجة فور ظهورها.</p>
+                <a href="#" class="btn">قسم الطلاب</a>
             </div>
+
         </div>
     </div>
 
-    <div id="videoModal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm">
-        <div class="bg-[#121212] w-full max-w-xl rounded-2xl p-6 relative border border-[#2a2211]">
-            <button id="closeVideoTool" class="absolute top-4 left-4 text-gray-400 hover:text-white text-xl cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
-            <h3 class="text-lg font-bold text-[#d4af37] mb-4"><i class="fa-solid fa-clapperboard ml-2"></i> صانع الفيديو الاحترافي والمتحرك</h3>
-            
-            <textarea id="videoTextPrompt" rows="3" class="w-full p-3 bg-[#1c1c1c] border border-[#2a2211] rounded-xl text-sm mb-4 text-white focus:outline-none focus:border-[#d4af37]" placeholder="اكتب قصة أو فكرة المشهد هنا..."></textarea>
-            
-            <button id="generateVideoBtn" class="w-full bg-[#d4af37] text-black font-bold py-3 rounded-xl hover:bg-[#b8952e] transition cursor-pointer">إنتاج وتوليد مقطع الفيديو</button>
-
-            <div id="videoProgressContainer" class="hidden mt-4 text-center">
-                <p class="text-xs text-[#d4af37] font-bold animate-pulse"><i class="fa-solid fa-spinner animate-spin ml-1"></i> جاري معالجة وتوليد كادرات خلفية الفيديو الحركية...</p>
-            </div>
-
-            <div id="videoResultBox" class="mt-4 p-4 bg-[#1c1c1c] rounded-xl border border-dashed border-[#2a2211] hidden text-center space-y-3">
-                <p class="text-xs font-bold text-green-400">✨ تم إنتاج ومعالجة الفيديو بنجاح واكتملت الكادرات!</p>
-                <div class="max-w-[260px] mx-auto rounded-xl overflow-hidden shadow-lg border border-[#2a2211]">
-                    <canvas id="animatedCanvas" class="w-full bg-black rounded-xl" width="300" height="400"></canvas>
-                </div>
-                <button id="downloadVideoBtn" class="w-full bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-yellow-600 hover:to-amber-500 text-black text-xs font-bold py-3 rounded-xl transition-all">
-                    📥 حفظ وتحميل ملف الفيديو النهائي بجهازك
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <div id="photoModal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm">
-        <div class="bg-[#121212] w-full max-w-xl rounded-2xl p-6 relative border border-[#2a2211]">
-            <button id="closePhotoTool" class="absolute top-4 left-4 text-gray-400 hover:text-white text-xl cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
-            <h3 class="text-lg font-bold text-[#d4af37] mb-4"><i class="fa-solid fa-user-tie ml-2"></i> استوديو دمج الملامح والملابس الفخمة</h3>
-            
-            <div class="border-2 border-dashed border-[#2a2211] rounded-xl p-6 text-center relative mb-4 bg-[#1c1c1c] hover:border-[#d4af37]/40 transition">
-                <input type="file" id="userPhotoInput" class="absolute inset-0 opacity-0 cursor-pointer" accept="image/*">
-                <i class="fa-solid fa-cloud-arrow-up text-[#d4af37] text-xl mb-2 block"></i>
-                <p class="text-xs text-gray-300 font-bold" id="uploadStatus">اضغط هنا لرفع صورتك الشخصية بوضوح</p>
-            </div>
-
-            <button id="generatePhotoBtn" class="w-full bg-[#d4af37] text-black font-bold py-3 rounded-xl hover:bg-[#b8952e] transition cursor-pointer">تركيب البدلة الفخمة فوراً</button>
-
-            <div id="photoProgressContainer" class="hidden mt-4 text-center">
-                <p class="text-xs text-[#d4af37] font-bold animate-pulse"><i class="fa-solid fa-circle-notch animate-spin ml-1"></i> جاري استخلاص الملامح وتركيب طقم البدلة الملكية كلاسيك...</p>
-            </div>
-
-            <div id="photoResultBox" class="mt-4 p-4 bg-[#1c1c1c] rounded-xl border border-dashed border-[#2a2211] text-center hidden space-y-3">
-                <p class="text-xs font-bold text-green-400">✨ تم دمج ملامح وجهك على البدلة بنجاح!</p>
-                <div class="max-w-[220px] mx-auto rounded-2xl overflow-hidden gold-glow bg-black">
-                    <canvas id="photoCanvas" class="w-full h-auto" width="400" height="450"></canvas>
-                </div>
-                <button id="downloadPhotoBtn" class="w-full bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-yellow-600 hover:to-amber-500 text-black text-xs font-bold py-3 rounded-xl transition-all">
-                    📥 حفظ وتحميل صورتك الفخمة الجديدة HD بجهازك
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <footer class="bg-[#090909] text-gray-600 py-6 text-center text-xs border-t border-[#1a150a] mt-12">
-        <p>&copy; 2026 منصة Emosha AI الملكية. جميع الحقوق محفوظة للقبطان إيهاب.</p>
+    <!-- الفوتر -->
+    <footer>
+        <p>جميع الحقوق محفوظة © 2026 | تم التطوير بكل احترافية</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const scriptModal = document.getElementById('scriptModal');
-            const videoModal = document.getElementById('videoModal');
-            const photoModal = document.getElementById('photoModal');
-            let uploadedImgElement = null;
-
-            // فتح وإغلاق الموديلات
-            document.getElementById('openScriptTool').onclick = () => scriptModal.classList.remove('hidden');
-            document.getElementById('openVideoTool').onclick = () => videoModal.classList.remove('hidden');
-            document.getElementById('openPhotoTool').onclick = () => photoModal.classList.remove('hidden');
-            
-            document.getElementById('closeScriptTool').onclick = () => scriptModal.classList.add('hidden');
-            document.getElementById('closeVideoTool').onclick = () => videoModal.classList.add('hidden');
-            document.getElementById('closePhotoTool').onclick = () => photoModal.classList.add('hidden');
-
-            // --- 1. تشغيل مولد السكريبتات الأصلي الفعال ---
-            document.getElementById('generateBtn').onclick = () => {
-                const topic = document.getElementById('videoTopic').value.trim();
-                if(!topic) { alert("اكتب فكرة السكريبت أولاً يا فنان!"); return; }
-                
-                document.getElementById('scriptOutput').innerHTML = `🔥 <b>سكريبت احترافي جاهز للإلقاء الفوري حول:</b> ${topic}\n\n<b>[المقدمة المدوية]:</b> هل عمرك سألت نفسك السؤال ده؟ الكل بيدور على الأمان، بس الحقيقة غير اللي أنت شايفه تماماً!\n\n<b>[المحتوى والعمق]:</b> لما بنتحرك صح وبندرس السوق وعوامل القوة والأسعار اللحظية، بنقدر نحمي نفسنا ونحقق أرباح حقيقية بذكاء وبأقل مجهود.\n\n<b>[النهاية القوية]:</b> تابعني وفعل زر الجرس عشان يوصلك التحديث الجاي أول بأول، وما يفوتكش سر اللعبة!`;
-                document.getElementById('resultBox').classList.remove('hidden');
-            };
-
-            // قراءة الصورة الشخصية المرفوعة
-            const userPhotoInput = document.getElementById('userPhotoInput');
-            userPhotoInput.onchange = () => {
-                if(userPhotoInput.files.length > 0) {
-                    const file = userPhotoInput.files[0];
-                    document.getElementById('uploadStatus').innerText = `✅ تم قراءة صورتك بنجاح`;
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        uploadedImgElement = new Image();
-                        uploadedImgElement.src = e.target.result;
-                    };
-                    reader.readAsDataURL(file);
-                }
-            };
-
-            // --- 2. محرك دمج الوجوه على البدلة (برمجة محلية آمنة 100%) ---
-            document.getElementById('generatePhotoBtn').onclick = () => {
-                if (!uploadedImgElement) { alert("برجاء رفع صورتك الشخصية أولاً يا قبطان!"); return; }
-                
-                document.getElementById('photoProgressContainer').classList.remove('hidden');
-                document.getElementById('photoResultBox').classList.add('hidden');
-
-                setTimeout(() => {
-                    const canvas = document.getElementById('photoCanvas');
-                    const ctx = canvas.getContext('2d');
-                    
-                    // مسح الكانفاس ورسم خلفية فخمة
-                    ctx.fillStyle = '#161616';
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    
-                    // رسم بدلة كلاسيكية فخمة كقالب ثابت
-                    ctx.fillStyle = '#1e293b';
-                    ctx.fillRect(50, 220, 300, 230); // الجاكيت
-                    ctx.fillStyle = '#ffffff';
-                    ctx.fillRect(150, 220, 100, 60); // القميص الأبيض
-                    ctx.fillStyle = '#d4af37';
-                    ctx.fillRect(190, 250, 20, 200); // الكرافتة الذهبية الفخمة
-
-                    // دمج وش القبطان الحقيقي من الصورة المرفوعة في كادر الوجه المستدير
-                    ctx.save();
-                    ctx.beginPath();
-                    ctx.arc(200, 130, 80, 0, Math.PI * 2, true);
-                    ctx.closePath();
-                    ctx.clip();
-                    ctx.drawImage(uploadedImgElement, 120, 50, 160, 160);
-                    ctx.restore();
-
-                    // عمل إطار توهج ذهبي حول دمج الوش
-                    ctx.strokeStyle = '#d4af37';
-                    ctx.lineWidth = 4;
-                    ctx.beginPath();
-                    ctx.arc(200, 130, 80, 0, Math.PI * 2, true);
-                    ctx.stroke();
-
-                    document.getElementById('photoProgressContainer').classList.add('hidden');
-                    document.getElementById('photoResultBox').classList.remove('hidden');
-                }, 1500);
-            };
-
-            // دالة تنزيل وحفظ الصور
-            document.getElementById('downloadPhotoBtn').onclick = () => {
-                const canvas = document.getElementById('photoCanvas');
-                const link = document.createElement('a');
-                link.download = 'Emosha-AI-Premium-Suit.jpg';
-                link.href = canvas.toDataURL('image/jpeg');
-                link.click();
-            };
-
-            // --- 3. محرك الفيديو الرقمي الحركي الذهبي لمنع الصفحات البيضاء ---
-            let animationInterval = null;
-            document.getElementById('generateVideoBtn').onclick = () => {
-                const prompt = document.getElementById('videoTextPrompt').value.trim();
-                if(!prompt) { alert("ادخل وصف مشهد الفيديو أولاً!"); return; }
-
-                document.getElementById('videoProgressContainer').classList.remove('hidden');
-                document.getElementById('videoResultBox').classList.add('hidden');
-                if(animationInterval) clearInterval(animationInterval);
-
-                setTimeout(() => {
-                    document.getElementById('videoProgressContainer').classList.add('hidden');
-                    document.getElementById('videoResultBox').classList.remove('hidden');
-                    
-                    const canvas = document.getElementById('animatedCanvas');
-                    const ctx = canvas.getContext('2d');
-                    let particles = [];
-                    
-                    for(let i=0; i<40; i++) {
-                        particles.push({
-                            x: Math.random() * canvas.width,
-                            y: Math.random() * canvas.height,
-                            r: Math.random() * 4 + 2,
-                            d: Math.random() * 2 + 1
-                        });
-                    }
-
-                    // تشغيل حركية السينما الذهبية حية على جهازك
-                    animationInterval = setInterval(() => {
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        ctx.fillStyle = '#0b0b0b';
-                        ctx.fillRect(0, 0, canvas.width, canvas.height);
-                        
-                        // نص المشهد المكتوب يتحرك كترجمة سينمائية فخمة
-                        ctx.fillStyle = '#d4af37';
-                        ctx.font = '14px Cairo';
-                        ctx.textAlign = 'center';
-                        ctx.fillText(prompt.substring(0, 30), canvas.width/2, canvas.height - 40);
-
-                        // تأثير جزيئات الذهب المتساقطة سينمائياً
-                        ctx.fillStyle = 'rgba(212, 175, 55, 0.8)';
-                        for(let i = 0; i < particles.length; i++) {
-                            let p = particles[i];
-                            ctx.beginPath();
-                            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, true);
-                            ctx.fill();
-                            
-                            p.y += p.d;
-                            if(p.y > canvas.height) {
-                                particles[i] = { x: Math.random() * canvas.width, y: 0, r: p.r, d: p.d };
-                            }
-                        }
-                    }, 30);
-
-                }, 2000);
-            };
-
-            // دالة تحميل وحفظ مقطع الميديا الفوري
-            document.getElementById('downloadVideoBtn').onclick = () => {
-                const canvas = document.getElementById('animatedCanvas');
-                const link = document.createElement('a');
-                link.download = 'Emosha-AI-Motion-Video.jpg';
-                link.href = canvas.toDataURL('image/jpeg');
-                link.click();
-                alert("✅ تم حفظ كادر الفيديو الحركي الرئيسي بنجاح في جهازك!");
-            };
-        });
-    </script>
 </body>
 </html>

@@ -5,19 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الربح من الإنترنت - أكاديمية إيموشا</title>
     <style>
-        body { background:#121212; color:#fff; font-family:'Segoe UI', sans-serif; margin:0; padding:20px; text-align:center;}
-        .container { max-width:800px; margin:auto; }
-        h1 { color:#d4af37; border-bottom:2px solid #333; padding-bottom:15px; }
-        .article-post { background:#1e1e1e; border-right:4px solid #d4af37; padding:20px; margin-bottom:20px; border-radius:4px; text-align:right; }
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --gold-primary: #d4af37;
+            --gold-hover: #f3e5ab;
+            --text-color: #ffffff;
+            --text-muted: #b3b3b3;
+        }
+
+        body { 
+            background: var(--bg-color); 
+            color: var(--text-color); 
+            font-family: 'Segoe UI', sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            text-align: center;
+        }
+
+        .container { max-width: 800px; margin: auto; }
+        
+        h1 { color: var(--gold-primary); border-bottom: 2px solid #333; padding-bottom: 15px; }
+        
+        .article-post { 
+            background: var(--card-bg); 
+            border-right: 4px solid var(--gold-primary); 
+            padding: 20px; 
+            margin-bottom: 20px; 
+            border-radius: 4px; 
+            text-align: right; 
+        }
+
+        .article-post h3 a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .article-post h3 a:hover {
+            color: var(--gold-primary);
+        }
+
+        .btn-more { 
+            display: inline-block; 
+            background-color: var(--gold-primary); 
+            color: #000; 
+            text-decoration: none; 
+            padding: 10px 20px; 
+            border-radius: 6px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            border: none; 
+            font-size: 14px; 
+            text-align: center; 
+        }
+        
+        .btn-more:hover { background-color: var(--gold-hover); }
+
+        footer { 
+            background-color: #000000; 
+            border-top: 2px solid var(--gold-primary); 
+            padding: 30px 20px; 
+            margin-top: 60px; 
+            text-align: center; 
+        }
+        
+        .footer-links a { 
+            color: var(--text-color); 
+            text-decoration: none; 
+            margin: 0 15px; 
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>قسم طرق وأسرار الربح من الإنترنت 💰</h1>
-        <a href="index.html" style="color:#d4af37; text-decoration:none; font-weight:bold; display:block; margin-bottom:30px;">← العودة للصفحة الرئيسية</a>
-        <div id="sectionContainer"><p style="color:#b3b3b3;">لا توجد مقالات منشورة في هذا القسم حالياً.</p></div>
+        <a href="index.html" style="color: var(--gold-primary); text-decoration: none; font-weight: bold; display: block; margin-bottom: 30px;">← العودة للصفحة الرئيسية</a>
+        
+        <div id="sectionContainer">
+            <p style="color: var(--text-muted);">لا توجد مقالات منشورة في هذا القسم حالياً.</p>
+        </div>
+
+        <button id="loadMoreEarningBtn" class="btn-more" style="display:none; margin: 25px auto;" onclick="loadMoreEarningArticles()">عرض المزيد من المقالات ⬇</button>
     </div>
-        <footer>
+
+    <footer>
         <div class="footer-links">
             <a href="legal.html?tab=about">من نحن</a> | 
             <a href="legal.html?tab=privacy">سياسة الخصوصية</a> | 
@@ -27,14 +99,56 @@
     </footer>
 
     <script>
-        var articles = JSON.parse(localStorage.getItem('sharedArticles')) || [];
-        var container = document.getElementById('sectionContainer');
-        var filtered = articles.filter(item => item.category === "الربح من الإنترنت");
-        if(filtered.length > 0) {
-            container.innerHTML = "";
-            filtered.forEach(item => {
-                container.innerHTML += `<div class="article-post"><h3>${item.title}</h3><div style="font-size:12px; color:#d4af37;">${item.date}</div><p style="white-space:pre-line; color:#e0e0e0;">${item.content}</p></div>`;
+        var displayedCount = 0;
+        var earningItems = [];
+
+        window.onload = function() {
+            displayEarningContent();
+        };
+
+        function displayEarningContent() {
+            var articles = JSON.parse(localStorage.getItem('sharedArticles')) || [];
+            // فلترة المقالات الخاصة بقسم الربح من الإنترنت فقط
+            earningItems = articles.filter(item => item.category === "الربح من الإنترنت");
+            var container = document.getElementById('sectionContainer');
+
+            if(earningItems.length === 0) {
+                container.innerHTML = `<p style="color: var(--text-muted);">لا توجد مقالات منشورة في هذا القسم حالياً.</p>`;
+                document.getElementById('loadMoreEarningBtn').style.display = 'none';
+            } else {
+                container.innerHTML = "";
+                loadMoreEarningArticles();
+            }
+        }
+
+        function loadMoreEarningArticles() {
+            var container = document.getElementById('sectionContainer');
+            // عرض 3 مقالات فقط في كل مرة
+            var nextItems = earningItems.slice(displayedCount, displayedCount + 3);
+            
+            nextItems.forEach(function(item) {
+                var excerpt = item.content.length > 150 ? item.content.substring(0, 150) + "..." : item.content;
+                // توليد رابط المقال الفريد باستخدام الـ ID الخاص به
+                var articleUrl = "article.html?id=" + (item.id || "");
+
+                container.innerHTML += `
+                    <div class="article-post">
+                        <h3><a href="${articleUrl}">${item.title}</a></h3>
+                        <div style="font-size:12px; color: var(--gold-primary); margin-bottom: 8px;">${item.date}</div>
+                        <p style="white-space: pre-line; color: #e0e0e0; line-height: 1.7;">${excerpt}</p>
+                        <a href="${articleUrl}" style="color: var(--gold-primary); text-decoration: none; font-weight: bold; font-size: 14px;">اقرأ المقال كاملاً برابط مخصص ومستقل ←</a>
+                    </div>`;
             });
+
+            displayedCount += nextItems.length;
+            var btn = document.getElementById('loadMoreEarningBtn');
+            
+            // التحكم في ظهور وإخفاء زر عرض المزيد
+            if(displayedCount >= earningItems.length) {
+                btn.style.display = 'none';
+            } else {
+                btn.style.display = 'block';
+            }
         }
     </script>
 </body>

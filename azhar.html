@@ -75,21 +75,19 @@
         <p style="color: var(--text-muted); font-size: 13px; margin: 0;">جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف</p>
     </footer>
 
-    <script>
-        function showAzharResult() {
-            var seatNo = document.getElementById('azharSeat').value;
-            var wrapper = document.getElementById('azharWrapper');
-            var frame = document.getElementById('azharFrame');
-            
-            if(seatNo.trim() === "") {
-                alert("من فضلك أدخل رقم الجلوس أولاً");
-                return;
-            }
-            
-            // توجيه الإطار لعرض بوابة نتائج الأزهر مباشرة بالأسفل
-            frame.src = "https://natiga.azhar.eg/";
-            wrapper.style.display = "block";
+<script>
+    function showAzharResult() {
+        var seatNo = document.getElementById('azharSeat').value;
+        
+        if(seatNo.trim() === "") {
+            alert("من فضلك أدخل رقم الجلوس أولاً");
+            return;
         }
-    </script>
+        
+        // بيحير الطالب مباشرة لبوابة نتائج الأزهر الشريف في صفحة مستقلة عشان تفتح بسرعة
+        window.open("https://natiga.azhar.eg/", "_blank");
+    }
+</script>
+
 </body>
 </html>

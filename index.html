@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أكاديمية الربح والتعليم الرقمي</title>
+    <title>أكاديمية الملاح لعلوم المال والتعليم</title>
     <style>
-        /* الألوان الأساسية والتنسيق العام */
         :root {
             --bg-color: #121212;
             --card-bg: #1e1e1e;
@@ -21,6 +20,17 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
+        }
+
+        /* شريط الصلاة على النبي العلمي العلوي */
+        .blessing-bar {
+            background-color: var(--gold-primary);
+            color: #000000;
+            text-align: center;
+            padding: 6px 0;
+            font-weight: bold;
+            font-size: 15px;
+            letter-spacing: 1px;
         }
 
         /* الهيدر والقائمة */
@@ -55,7 +65,7 @@
         /* البانر الترحيبي */
         .hero {
             text-align: center;
-            padding: 60px 20px;
+            padding: 50px 20px;
             background: linear-gradient(180deg, #000000 0%, var(--bg-color) 100%);
         }
 
@@ -68,21 +78,22 @@
         .hero p {
             color: var(--text-muted);
             font-size: 18px;
-            max-width: 60px0px;
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        /* شبكة الأقسام */
         .main-container {
             max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
         }
 
+        /* شبكة الأقسام */
         .sections-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
+            margin-bottom: 50px;
         }
 
         .section-card {
@@ -121,13 +132,83 @@
             font-weight: bold;
             margin-top: 15px;
             transition: background-color 0.3s;
+            cursor: pointer;
+            border: none;
         }
 
         .btn:hover {
             background-color: var(--gold-hover);
         }
 
-        /* الفوتر */
+        /* قسم إدارة المحتوى والمقالات المنشورة */
+        .cms-section {
+            background-color: #1a1a1a;
+            border: 1px dashed var(--gold-primary);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .cms-section h2 {
+            color: var(--gold-primary);
+            margin-top: 0;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-muted);
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            background-color: #2b2b2b;
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* عرض المقالات المضافة */
+        .articles-display {
+            margin-top: 40px;
+        }
+
+        .articles-display h2 {
+            color: var(--gold-primary);
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .article-post {
+            background-color: var(--card-bg);
+            border-right: 4px solid var(--gold-primary);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .article-post h3 {
+            margin-top: 0;
+            color: #fff;
+        }
+
+        .article-meta {
+            font-size: 12px;
+            color: var(--gold-primary);
+            margin-bottom: 10px;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -141,63 +222,147 @@
 </head>
 <body>
 
-    <!-- الهيدر -->
+    <div class="blessing-bar">
+        اللهم صلِّ وسلِّم وبارك على نبينا محمد وعلى آله وصحبه أجمعين ✨
+    </div>
+
     <header>
-        <a href="#" class="logo">شعار الموقع</a>
+        <a href="index.html" class="logo">أكاديمية الملاح</a>
         <nav>
-            <a href="#" class="active">الرئيسية</a>
+            <a href="index.html" class="active">الرئيسية</a>
             <a href="#">الربح من الإنترنت</a>
             <a href="#">فيسبوك</a>
-            <a href="#">تطوير المواقع</a>
-            <a href="#">الثانوية العامة</a>
+            <a href="thanwya.html">الثانوية العامة</a>
         </nav>
     </header>
 
-    <!-- البانر الرئيسي -->
     <section class="hero">
         <h1>بوابتك الاحترافية للربح والتعلم الرقمي</h1>
         <p>نقدم لك أدلة عملية وشروحات حصرية وموثوقة لمساعدتك في بناء مشروعك الخاص على الإنترنت وتطوير مهاراتك.</p>
     </section>
 
-    <!-- أقسام الموقع -->
     <div class="main-container">
+        
         <div class="sections-grid">
-            
-            <!-- قسم الربح -->
             <div class="section-card">
                 <h2>كيف تربح من الإنترنت</h2>
-                <p>تعلم طرق الربح الحقيقية والمجربة مثل التسويق بالعمولة، التجارة الإلكترونية، وصناعة المحتوى خطوة بخطوة.</p>
-                <a href="#" class="btn">تصفح المقالات</a>
+                <p>تعلم طرق الربح الحقيقية والمجربة مثل التسويق بالعمولة والتجارة الإلكترونية خطوة بخطوة.</p>
             </div>
-
-            <!-- قسم فيسبوك -->
             <div class="section-card">
                 <h2>أسرار أرباح فيسبوك</h2>
-                <p>اكتشف أسرار الربح من مقاطع الريلز والفيديوهات، وكيفية تكبير صفحاتك وزيادة التفاعل بجنون.</p>
-                <a href="#" class="btn">ابدأ التعلم</a>
+                <p>اكتشف أسرار الربح من مقاطع الريلز والفيديوهات، وكيفية تكبير صفحاتك وزيادة التفاعل.</p>
             </div>
-
-            <!-- قسم المواقع -->
             <div class="section-card">
-                <h2>بناء وتطوير المواقع</h2>
-                <p>شروحات مبسطة لتعلم البرمجة، إدارة قواعد البيانات، وتهيئية موقعك لمحركات البحث وتصدر نتائج السيو.</p>
-                <a href="#" class="btn">عرض الدروس</a>
-            </div>
-
-            <!-- قسم الثانوية العامة -->
-            <div class="section-card" style="border-color: rgba(212, 175, 55, 0.4);">
                 <h2>بوابة الثانوية العامة</h2>
-                <p>ملخصات حصرية، مراجعات نهائية، وتحميل الكتب الخارجية مجاناً. وتابع معنا النتيجة فور ظهورها.</p>
-                <a href="thanwya.html" class="btn">قسم الطلاب</a>
+                <p>ملخصات حصرية، مراجعات نهائية، وتحميل الكتب الخارجية مجاناً ونتائج الامتحانات فور صدورها.</p>
+                <a href="thanwya.html" class="btn">دخول قسم الطلاب</a>
+            </div>
+        </div>
+
+        <div class="articles-display">
+            <h2>آخر المقالات المنشورة بالموقع</h2>
+            <div id="articlesContainer">
+                <p id="noArticles" style="color: var(--text-muted);">لا توجد مقالات منشورة حالياً، استخدم لوحة التحكم بالأسفل لإضافة مقالك الأول!</p>
+            </div>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid #333; margin: 50px 0;">
+
+        <div class="cms-section">
+            <h2>🛠️ لوحة تحكم الإدارة (إضافة مقال جديد)</h2>
+            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">خاصة بك فقط كصاحب موقع: اكتب المقال هنا وسيظهر للجمهور في الأعلى فوراً!</p>
+            
+            <div class="form-group">
+                <label>عنوان المقال:</label>
+                <input type="text" id="postTitle" placeholder="مثال: دليلك الشامل للربح من ريلز فيسبوك 2026">
             </div>
 
+            <div class="form-group">
+                <label>قسم المقال:</label>
+                <select id="postCategory">
+                    <option value="أرباح فيسبوك">أرباح فيسبوك</option>
+                    <option value="الربح من الإنترنت">الربح من الإنترنت</option>
+                    <option value="مراجعات الثانوية">مراجعات الثانوية</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>محتوى المقال بالكامل:</label>
+                <textarea id="postContent" placeholder="اكتب شروحاتك ونصائحك بالتفصيل هنا..."></textarea>
+            </div>
+
+            <button class="btn" onclick="publishArticle()">اضغط لنشر المقال فوراً 🚀</button>
         </div>
+
     </div>
 
-    <!-- الفوتر -->
     <footer>
-        <p>جميع الحقوق محفوظة © 2026 | تم التطوير بكل احترافية</p>
+        <p>جميع الحقوق محفوظة © 2026 | أكاديمية الملاح</p>
     </footer>
 
+    <script>
+        // دالة لتحميل المقالات القديمة المحفوظة في المتصفح عند فتح الموقع
+        window.onload = function() {
+            displayStoredArticles();
+        };
+
+        function publishArticle() {
+            var title = document.getElementById('postTitle').value;
+            var category = document.getElementById('postCategory').value;
+            var content = document.getElementById('postContent').value;
+
+            if(title === "" || content === "") {
+                alert("برجاء ملء العنوان ومحتوى المقال أولاً يا قبطان!");
+                return;
+            }
+
+            // إنشاء كائن المقال
+            var article = {
+                title: title,
+                category: category,
+                content: content,
+                date: new Date().toLocaleDateString('ar-EG')
+            };
+
+            // جلب المقالات الحالية من ذاكرة المتصفح
+            var articles = JSON.parse(localStorage.getItem('myArticles')) || [];
+            articles.unshift(article); // إضافة المقال الجديد في البداية
+
+            // حفظ التحديث
+            localStorage.setItem('myArticles', JSON.stringify(articles));
+
+            // إعادة تعيين الخانات
+            document.getElementById('postTitle').value = "";
+            document.getElementById('postContent').value = "";
+
+            // تحديث العرض في الأعلى
+            displayStoredArticles();
+            alert("تم نشر المقال بنجاح وظهر في قسم المقالات بالأعلى! 🎉");
+        }
+
+        function displayStoredArticles() {
+            var articles = JSON.parse(localStorage.getItem('myArticles')) || [];
+            var container = document.getElementById('articlesContainer');
+            
+            if(articles.length === 0) {
+                document.getElementById('noArticles').style.display = "block";
+                return;
+            }
+
+            document.getElementById('noArticles').style.display = "none";
+            container.innerHTML = ""; // تنظيف الحاوية
+
+            articles.forEach(function(item) {
+                var html = `
+                    <div class="article-post">
+                        <h3>${item.title}</h3>
+                        <div class="article-meta">القسم: ${item.category} | تاريخ النشر: ${item.date}</div>
+                        <p style="line-height: 1.7; color: #e0e0e0; white-space: pre-line;">${item.content}</p>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
+    </script>
 </body>
 </html>

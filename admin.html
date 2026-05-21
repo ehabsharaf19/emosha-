@@ -14,7 +14,6 @@
             --text-muted: #b3b3b3;
         }
 
-        /* إخفاء المحتوى بالكامل حتى يتم التحقق من الرقم السري */
         #adminWrapper { display: none; }
 
         body {
@@ -82,9 +81,10 @@
 
             <label>قسم المقال (التصنيف):</label>
             <select id="artCategory">
-                <option value="الثانوية العامة">الثانوية العامة</option>
+                <option value="الرئيسية">الصفحة الرئيسية العامة</option>
+                <option value="الثانوية العامة">نتيجة الثانوية العامة</option>
                 <option value="الربح من الإنترنت">الربح من الإنترنت</option>
-                <option value="فيسبوك">فيسبوك</option>
+                <option value="فيسبوك">أسرار فيسبوك</option>
                 <option value="تطوير المواقع">تطوير المواقع</option>
             </select>
 
@@ -121,19 +121,16 @@
     </div>
 
     <script>
-        // هنا الرقم السري الخاص بك يا قبطان (يمكنك تغييره من هنا في أي وقت)
+        // الرقم السري الخاص بك يا قبطان
         var secretPassword = "123010111  55Ee"; 
 
-        // تشغيل نظام الحماية فور تحميل الصفحة وقبل عرض أي عنصر
         window.onload = function() {
             var inputPassword = prompt("الرجاء إدخال الرقم السري للدخول إلى لوحة تحكم القبطان:");
             
             if (inputPassword === secretPassword) {
-                // لو الباسورد صح، يظهر محتوى اللوحة السرية
                 document.getElementById('adminWrapper').style.display = 'block';
                 renderAdminLists();
             } else {
-                // لو غلط، يعطيه تنبيه ويطرده للصفحة الرئيسية فوراً
                 alert("رقم سري خاطئ! لا تملك صلاحية دخول هذه الصفحة.");
                 window.location.href = "index.html"; 
             }
@@ -143,7 +140,6 @@
             return '_' + Math.random().toString(36).substr(2, 9);
         }
 
-        // حفظ المقالات
         function saveNewArticle() {
             var title = document.getElementById('artTitle').value.trim();
             var category = document.getElementById('artCategory').value;
@@ -163,14 +159,13 @@
             });
 
             localStorage.setItem('sharedArticles', JSON.stringify(articles));
-            alert("✓ تم نشر المقال بنجاح وتوليد رابط السيو الخاص به!");
+            alert("✓ تم نشر المقال بنجاح وتوجيهه للقسم المختار!");
             
             document.getElementById('artTitle').value = "";
             document.getElementById('artContent').value = "";
             renderAdminLists();
         }
 
-        // حفظ الكتب
         function saveNewBook() {
             var name = document.getElementById('bookName').value.trim();
             var type = document.getElementById('bookType').value.trim();

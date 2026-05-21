@@ -11,8 +11,8 @@
         #adminWrapper { display: none; }
         body { background-color: var(--bg-color); color: var(--text-color); font-family: sans-serif; padding: 20px; text-align: center; }
         .admin-box { max-width: 700px; margin: 30px auto; background: var(--card-bg); border: 2px solid var(--gold-primary); padding: 25px; text-align: right; }
-        input, select, textarea { width: 100%; padding: 12px; background: #222; color: #fff; border: 1px solid #444; margin-bottom: 10px; }
-        .btn-admin { background: var(--gold-primary); color: #000; padding: 12px; cursor: pointer; width: 100%; font-weight: bold; }
+        input, select, textarea { width: 100%; padding: 12px; background: #222; color: #fff; border: 1px solid #444; margin-bottom: 10px; border-radius: 4px; }
+        .btn-admin { background: var(--gold-primary); color: #000; padding: 12px; cursor: pointer; width: 100%; font-weight: bold; border: none; border-radius: 4px; }
     </style>
 </head>
 <body>
@@ -20,12 +20,18 @@
     <div id="adminWrapper">
         <h1>🔐 لوحة إدارة أكاديمية إيموشا</h1>
         <div class="admin-box">
-            <h2>✍️ نشر مقال</h2>
+            <h2>✍️ نشر مقال جديد</h2>
             <input type="text" id="artTitle" placeholder="عنوان المقال">
+            
+            <label>اختر القسم:</label>
             <select id="artCategory">
                 <option value="الرئيسية">الصفحة الرئيسية</option>
+                <option value="الثانوية العامة">الثانوية العامة</option>
+                <option value="الربح من الإنترنت">الربح من الإنترنت</option>
+                <option value="فيسبوك">أسرار فيسبوك</option>
             </select>
-            <textarea id="artContent" rows="6" placeholder="المحتوى (يمكنك وضع كود HTML هنا)"></textarea>
+            
+            <textarea id="artContent" rows="6" placeholder="المحتوى (ضع الكود هنا)"></textarea>
             <input type="text" id="imageURL" placeholder="رابط الصورة">
             <button class="btn-admin" onclick="saveNewArticle()">نشر للموقع 🚀</button>
         </div>
@@ -69,8 +75,9 @@
                 alert("تم النشر بنجاح! 🚀");
                 document.getElementById('artTitle').value = "";
                 document.getElementById('artContent').value = "";
+                document.getElementById('imageURL').value = "";
             } catch (error) {
-                alert("حدث خطأ: " + error.message);
+                alert("خطأ في النشر: " + error.message);
             }
         }
     </script>

@@ -2,17 +2,22 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>لوحة تحكم القبطان - أكاديمية إيموشا</title>
+    
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
     
     <style>
-        :root { --bg-color: #121212; --card-bg: #1e1e1e; --gold-primary: #d4af37; --text-color: #ffffff; }
+        :root { --bg-color: #121212; --card-bg: #1e1e1e; --gold-primary: #d4af37; --gold-hover: #f3e5ab; --text-color: #ffffff; }
         #adminWrapper { display: none; }
-        body { background-color: var(--bg-color); color: var(--text-color); font-family: sans-serif; padding: 20px; text-align: center; }
-        .admin-box { max-width: 700px; margin: 30px auto; background: var(--card-bg); border: 2px solid var(--gold-primary); padding: 25px; text-align: right; }
-        input, select, textarea { width: 100%; padding: 12px; background: #222; color: #fff; border: 1px solid #444; margin-bottom: 10px; border-radius: 4px; }
-        .btn-admin { background: var(--gold-primary); color: #000; padding: 12px; cursor: pointer; width: 100%; font-weight: bold; border: none; border-radius: 4px; }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; text-align: center; }
+        .admin-box { max-width: 700px; margin: 30px auto; background: var(--card-bg); border: 2px solid var(--gold-primary); border-radius: 8px; padding: 25px; text-align: right; }
+        h1, h2 { color: var(--gold-primary); text-align: center; }
+        label { display: block; margin: 15px 0 5px; font-weight: bold; }
+        input, select, textarea { width: 100%; padding: 12px; box-sizing: border-box; background: #222; color: #fff; border: 1px solid #444; border-radius: 4px; margin-bottom: 10px; }
+        .btn-admin { background: var(--gold-primary); color: #000; border: none; padding: 12px; font-weight: bold; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px; }
+        .item-row { background: #151515; padding: 12px; margin-bottom: 10px; display: flex; justify-content: space-between; border-right: 3px solid var(--gold-primary); }
     </style>
 </head>
 <body>
@@ -20,24 +25,21 @@
     <div id="adminWrapper">
         <h1>🔐 لوحة إدارة أكاديمية إيموشا</h1>
         <div class="admin-box">
-            <h2>✍️ نشر مقال جديد</h2>
+            <h2>✍️ نشر مقال أو مذكرة تعليمية</h2>
             <input type="text" id="artTitle" placeholder="عنوان المقال">
-            
-            <label>اختر القسم:</label>
             <select id="artCategory">
                 <option value="الرئيسية">الصفحة الرئيسية</option>
                 <option value="الثانوية العامة">الثانوية العامة</option>
                 <option value="الربح من الإنترنت">الربح من الإنترنت</option>
-                <option value="فيسبوك">أسرار فيسبوك</option>
             </select>
-            
-            <textarea id="artContent" rows="6" placeholder="المحتوى (ضع الكود هنا)"></textarea>
+            <textarea id="artContent" rows="6" placeholder="المحتوى"></textarea>
             <input type="text" id="imageURL" placeholder="رابط الصورة">
             <button class="btn-admin" onclick="saveNewArticle()">نشر للموقع 🚀</button>
         </div>
     </div>
 
     <script>
+        // إعدادات Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyCp-m2DkIIwIoKUeuntHLvDbEclB041pz4",
             authDomain: "shrouk-ehab.firebaseapp.com",
@@ -49,9 +51,11 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
+        var secretPassword = "123010111  55Ee"; 
+        
         window.onload = function() {
             var pass = prompt("الرقم السري:");
-            if (pass === "123010111  55Ee") {
+            if (pass === secretPassword) {
                 document.getElementById('adminWrapper').style.display = 'block';
             } else { alert("خطأ!"); window.location.href = "index.html"; }
         };
@@ -62,7 +66,7 @@
             var cont = document.getElementById('artContent').value;
             var img = document.getElementById('imageURL').value;
             
-            if(!title || !cont) return alert("املا البيانات يا بطل!");
+            if(!title || !cont) return alert("املا البيانات!");
             
             try {
                 await db.collection("articles").add({
@@ -72,12 +76,9 @@
                     image: img,
                     date: new Date().toLocaleDateString('ar-EG')
                 });
-                alert("تم النشر بنجاح! 🚀");
-                document.getElementById('artTitle').value = "";
-                document.getElementById('artContent').value = "";
-                document.getElementById('imageURL').value = "";
-            } catch (error) {
-                alert("خطأ في النشر: " + error.message);
+                alert("تم النشر بنجاح في قاعدة البيانات! 🚀");
+            } catch (e) {
+                alert("خطأ في النشر: " + e.message);
             }
         }
     </script>

@@ -84,10 +84,12 @@
             return;
         }
         
-        // بيحير الطالب مباشرة لبوابة نتائج الأزهر الشريف في صفحة مستقلة عشان تفتح بسرعة
-        window.open("https://natiga.azhar.eg/", "_blank");
+        // فتح النتيجة في نافذة منبثقة احترافية (Popup) تظهر فوق الموقع
+        var url = "https://natiga.azhar.eg/";
+        window.open(url, "AzharResult", "width=800,height=600,scrollbars=yes,resizable=yes,top=100,left=100");
     }
 </script>
+
 
 </body>
 </html>

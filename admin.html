@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم الإدارة السرية - أكاديمية إيموشا</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --gold-primary: #d4af37;
+            --gold-hover: #f3e5ab;
+            --text-color: #ffffff;
+            --text-muted: #b3b3b3;
+        }
+
+        /* إخفاء المحتوى بالكامل حتى يتم التحقق من الرقم السري */
+        #adminWrapper { display: none; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0; padding: 20px;
+            text-align: center;
+        }
+
+        .admin-box {
+            max-width: 700px;
+            margin: 30px auto;
+            background: var(--card-bg);
+            border: 2px solid var(--gold-primary);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: right;
+        }
+
+        h1, h2 { color: var(--gold-primary); text-align: center; }
+        
+        label { display: block; margin: 15px 0 5px; font-weight: bold; }
+        
+        input, select, textarea {
+            width: 100%; padding: 12px;
+            box-sizing: border-box;
+            background: #222; color: #fff;
+            border: 1px solid #444; border-radius: 4px;
+            font-size: 15px; margin-bottom: 10px;
+        }
+
+        .btn-admin {
+            background: var(--gold-primary); color: #000;
+            border: none; padding: 12px 25px;
+            font-weight: bold; border-radius: 4px;
+            cursor: pointer; width: 100%; font-size: 16px;
+            margin-top: 10px;
+        }
+        .btn-admin:hover { background: var(--gold-hover); }
+
+        .items-list { margin-top: 30px; border-top: 1px solid #333; padding-top: 20px; }
+        .item-row { 
+            background: #151515; padding: 12px; 
+            margin-bottom: 10px; border-radius: 4px; 
+            display: flex; justify-content: space-between; align-items: center;
+            border-right: 3px solid var(--gold-primary);
+        }
+        .btn-delete { background: #ff4d4d; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+        .btn-delete:hover { background: #ff3333; }
+    </style>
+</head>
+<body>
+
+    <div id="adminWrapper">
+        <h1>🔐 لوحة إدارة أكاديمية إيموشا السرية</h1>
+        <p style="color: var(--text-muted);">مرحباً بك يا قبطان. من هنا يمكنك التحكم الكامل في محتوى الأكاديمية.</p>
+        <a href="index.html" style="color: var(--gold-primary); text-decoration: none; font-weight: bold;">← العودة للصفحة الرئيسية للموقع</a>
+
+        <div class="admin-box">
+            <h2>✍️ نشر مقال أو خبر جديد</h2>
+            
+            <label>عنوان المقال:</label>
+            <input type="text" id="artTitle" placeholder="مثال: مراجعة ليلة الامتحان في الفيزياء">
+
+            <label>قسم المقال (التصنيف):</label>
+            <select id="artCategory">
+                <option value="الثانوية العامة">الثانوية العامة</option>
+                <option value="الربح من الإنترنت">الربح من الإنترنت</option>
+                <option value="فيسبوك">فيسبوك</option>
+                <option value="تطوير المواقع">تطوير المواقع</option>
+            </select>
+
+            <label>محتوى المقال بالكامل:</label>
+            <textarea id="artContent" rows="6" placeholder="اكتب تفاصيل المقال هنا..."></textarea>
+
+            <button class="btn-admin" onclick="saveNewArticle()">نشر المقال الآن بقوة 🚀</button>
+
+            <div class="items-list">
+                <h3>المقالات المنشورة حالياً (يمكنك حذف أي مقال):</h3>
+                <div id="adminArticlesContainer"></div>
+            </div>
+        </div>
+
+        <div class="admin-box">
+            <h2>📚 إضافة كتاب أو مذكرة للمكتبة (الثانوية العامة)</h2>
+            
+            <label>اسم الكتاب أو المذكرة:</label>
+            <input type="text" id="bookName" placeholder="مثال: كتاب الشامل في الأحياء 2026">
+
+            <label>نوع المذكرة:</label>
+            <input type="text" id="bookType" placeholder="مثال: مراجعة نهائية / وزاري رسمي">
+
+            <label>رابط التحميل المباشر (رابط الـ PDF أو Drive):</label>
+            <input type="url" id="bookLink" placeholder="https://example.com/file.pdf">
+
+            <button class="btn-admin" onclick="saveNewBook()">إضافة المذكرة للمكتبة 📥</button>
+
+            <div class="items-list">
+                <h3>المذكرات المضافة حالياً:</h3>
+                <div id="adminBooksContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // هنا الرقم السري الخاص بك يا قبطان (يمكنك تغييره من هنا في أي وقت)
+        var secretPassword = "123010111  55Ee"; 
+
+        // تشغيل نظام الحماية فور تحميل الصفحة وقبل عرض أي عنصر
+        window.onload = function() {
+            var inputPassword = prompt("الرجاء إدخال الرقم السري للدخول إلى لوحة تحكم القبطان:");
+            
+            if (inputPassword === secretPassword) {
+                // لو الباسورد صح، يظهر محتوى اللوحة السرية
+                document.getElementById('adminWrapper').style.display = 'block';
+                renderAdminLists();
+            } else {
+                // لو غلط، يعطيه تنبيه ويطرده للصفحة الرئيسية فوراً
+                alert("رقم سري خاطئ! لا تملك صلاحية دخول هذه الصفحة.");
+                window.location.href = "index.html"; 
+            }
+        };
+
+        function generateId() {
+            return '_' + Math.random().toString(36).substr(2, 9);
+        }
+
+        // حفظ المقالات
+        function saveNewArticle() {
+            var title = document.getElementById('artTitle').value.trim();
+            var category = document.getElementById('artCategory').value;
+            var content = document.getElementById('artContent').value.trim();
+            
+            if(!title || !content) { alert("برجاء ملء جميع الحقول يا قبطان!"); return; }
+
+            var articles = JSON.parse(localStorage.getItem('sharedArticles')) || [];
+            var today = new Date().toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            articles.unshift({
+                id: generateId(),
+                title: title,
+                category: category,
+                content: content,
+                date: today
+            });
+
+            localStorage.setItem('sharedArticles', JSON.stringify(articles));
+            alert("✓ تم نشر المقال بنجاح وتوليد رابط السيو الخاص به!");
+            
+            document.getElementById('artTitle').value = "";
+            document.getElementById('artContent').value = "";
+            renderAdminLists();
+        }
+
+        // حفظ الكتب
+        function saveNewBook() {
+            var name = document.getElementById('bookName').value.trim();
+            var type = document.getElementById('bookType').value.trim();
+            var link = document.getElementById('bookLink').value.trim();
+
+            if(!name || !type || !link) { alert("برجاء ملء بيانات الكتاب كاملة!"); return; }
+
+            var books = JSON.parse(localStorage.getItem('sharedBooks')) || [];
+            books.unshift({ name: name, type: type, link: link });
+
+            localStorage.setItem('sharedBooks', JSON.stringify(books));
+            alert("✓ تم إضافة الكتاب للمكتبة بنجاح!");
+
+            document.getElementById('bookName').value = "";
+            document.getElementById('bookType').value = "";
+            document.getElementById('bookLink').value = "";
+            renderAdminLists();
+        }
+
+        function renderAdminLists() {
+            var articles = JSON.parse(localStorage.getItem('sharedArticles')) || [];
+            var artContainer = document.getElementById('adminArticlesContainer');
+            artContainer.innerHTML = articles.length === 0 ? "<p style='color:gray;'>لا توجد مقالات منشورة.</p>" : "";
+            
+            articles.forEach((item, index) => {
+                artContainer.innerHTML += `
+                    <div class="item-row">
+                        <div><strong>[${item.category}]</strong> ${item.title}</div>
+                        <button class="btn-delete" onclick="deleteArticle(${index})">حذف 🗑</button>
+                    </div>`;
+            });
+
+            var books = JSON.parse(localStorage.getItem('sharedBooks')) || [];
+            var bookContainer = document.getElementById('adminBooksContainer');
+            bookContainer.innerHTML = books.length === 0 ? "<p style='color:gray;'>لا توجد مذكرات مضافة.</p>" : "";
+
+            books.forEach((b, index) => {
+                bookContainer.innerHTML += `
+                    <div class="item-row">
+                        <div><strong>${b.name}</strong> (${b.type})</div>
+                        <button class="btn-delete" onclick="deleteBook(${index})">حذف 🗑</button>
+                    </div>`;
+            });
+        }
+
+        function deleteArticle(index) {
+            if(confirm("هل أنت متأكد من حذف هذا المقال نهائياً يا قبطان؟")) {
+                var articles = JSON.parse(localStorage.getItem('sharedArticles')) || [];
+                articles.splice(index, 1);
+                localStorage.setItem('sharedArticles', JSON.stringify(articles));
+                renderAdminLists();
+            }
+        }
+
+        function deleteBook(index) {
+            if(confirm("هل أنت متأكد من حذف هذه المذكرة؟")) {
+                var books = JSON.parse(localStorage.getItem('sharedBooks')) || [];
+                books.splice(index, 1);
+                localStorage.setItem('sharedBooks', JSON.stringify(books));
+                renderAdminLists();
+            }
+        }
+    </script>
+</body>
+</html>

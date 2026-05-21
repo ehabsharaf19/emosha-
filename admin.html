@@ -7,13 +7,12 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
     
     <style>
-        :root { --bg-color: #121212; --card-bg: #1e1e1e; --gold-primary: #d4af37; --gold-hover: #f3e5ab; --text-color: #ffffff; }
+        :root { --bg-color: #121212; --card-bg: #1e1e1e; --gold-primary: #d4af37; --text-color: #ffffff; }
         #adminWrapper { display: none; }
-        body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; text-align: center; }
-        .admin-box { max-width: 700px; margin: 30px auto; background: var(--card-bg); border: 2px solid var(--gold-primary); border-radius: 8px; padding: 25px; text-align: right; }
-        h1, h2 { color: var(--gold-primary); text-align: center; }
-        input, select, textarea { width: 100%; padding: 12px; box-sizing: border-box; background: #222; color: #fff; border: 1px solid #444; border-radius: 4px; margin-bottom: 10px; }
-        .btn-admin { background: var(--gold-primary); color: #000; border: none; padding: 12px; font-weight: bold; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px; }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: sans-serif; padding: 20px; text-align: center; }
+        .admin-box { max-width: 700px; margin: 30px auto; background: var(--card-bg); border: 2px solid var(--gold-primary); padding: 25px; text-align: right; }
+        input, select, textarea { width: 100%; padding: 12px; background: #222; color: #fff; border: 1px solid #444; margin-bottom: 10px; }
+        .btn-admin { background: var(--gold-primary); color: #000; padding: 12px; cursor: pointer; width: 100%; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -21,22 +20,18 @@
     <div id="adminWrapper">
         <h1>🔐 لوحة إدارة أكاديمية إيموشا</h1>
         <div class="admin-box">
-            <h2>✍️ نشر مقال (مع صورة)</h2>
+            <h2>✍️ نشر مقال</h2>
             <input type="text" id="artTitle" placeholder="عنوان المقال">
             <select id="artCategory">
                 <option value="الرئيسية">الصفحة الرئيسية</option>
-                <option value="الثانوية العامة">الثانوية العامة</option>
-                <option value="الربح من الإنترنت">الربح من الإنترنت</option>
-                <option value="فيسبوك">أسرار فيسبوك</option>
             </select>
-            <textarea id="artContent" rows="6" placeholder="المحتوى"></textarea>
-            <input type="text" id="imageURL" placeholder="ضع هنا رابط الصورة (URL)">
+            <textarea id="artContent" rows="6" placeholder="المحتوى (يمكنك وضع كود HTML هنا)"></textarea>
+            <input type="text" id="imageURL" placeholder="رابط الصورة">
             <button class="btn-admin" onclick="saveNewArticle()">نشر للموقع 🚀</button>
         </div>
     </div>
 
     <script>
-        // إعدادات Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyCp-m2DkIIwIoKUeuntHLvDbEclB041pz4",
             authDomain: "shrouk-ehab.firebaseapp.com",
@@ -48,7 +43,6 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // فحص الباسورد
         window.onload = function() {
             var pass = prompt("الرقم السري:");
             if (pass === "123010111  55Ee") {
@@ -56,24 +50,28 @@
             } else { alert("خطأ!"); window.location.href = "index.html"; }
         };
 
-        // دالة الحفظ في Firebase
-        function saveNewArticle() {
+        async function saveNewArticle() {
             var title = document.getElementById('artTitle').value;
             var cat = document.getElementById('artCategory').value;
             var cont = document.getElementById('artContent').value;
             var img = document.getElementById('imageURL').value;
             
-            if(!title || !cont) return alert("املا البيانات!");
+            if(!title || !cont) return alert("املا البيانات يا بطل!");
             
-            db.collection("articles").add({
-                title: title,
-                category: cat,
-                content: cont,
-                image: img,
-                date: new Date().toLocaleDateString('ar-EG')
-            })
-            .then(() => alert("تم النشر بنجاح على الموقع!"))
-            .catch((e) => alert("حدث خطأ: " + e));
+            try {
+                await db.collection("articles").add({
+                    title: title,
+                    category: cat,
+                    content: cont,
+                    image: img,
+                    date: new Date().toLocaleDateString('ar-EG')
+                });
+                alert("تم النشر بنجاح! 🚀");
+                document.getElementById('artTitle').value = "";
+                document.getElementById('artContent').value = "";
+            } catch (error) {
+                alert("حدث خطأ: " + error.message);
+            }
         }
     </script>
 </body>

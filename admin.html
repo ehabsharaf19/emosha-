@@ -2,49 +2,25 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة تحكم القبطان - أكاديمية إيموشا</title>
+    <title>لوحة تحكم إيموشا - نسخة الفحص</title>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-    
-    <style>
-        :root { --bg-color: #121212; --card-bg: #1e1e1e; --gold-primary: #d4af37; --text-color: #ffffff; }
-        #adminWrapper { display: none; }
-        body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Segoe UI', sans-serif; padding: 20px; text-align: center; }
-        .admin-box { max-width: 700px; margin: 30px auto; background: var(--card-bg); border: 2px solid var(--gold-primary); padding: 25px; text-align: right; }
-        input, select, textarea { width: 100%; padding: 12px; background: #222; color: #fff; border: 1px solid #444; margin-bottom: 10px; }
-        .btn-admin { background: var(--gold-primary); color: #000; padding: 12px; font-weight: bold; cursor: pointer; width: 100%; }
-    </style>
 </head>
 <body>
-
-    <div id="adminWrapper">
-        <h1>🔐 لوحة إدارة أكاديمية إيموشا</h1>
-        <div class="admin-box">
-            <h2>✍️ نشر مقال جديد</h2>
-            <input type="text" id="artTitle" placeholder="عنوان المقال">
-            <select id="artCategory">
-                <option value="الرئيسية">الصفحة الرئيسية</option>
-                <option value="الثانوية العامة">الثانوية العامة</option>
-                <option value="الربح من الإنترنت">الربح من الإنترنت</option>
-                <option value="فيسبوك">أسرار فيسبوك</option>
-                <option value="تطوير المواقع">تطوير المواقع</option>
-            </select>
-            <input type="text" id="imageURL" placeholder="رابط الصورة">
-            <textarea id="artContent" rows="6" placeholder="المحتوى"></textarea>
-            <button class="btn-admin" onclick="saveNewArticle()">نشر للموقع 🚀</button>
-        </div>
-
-        <div class="admin-box">
-            <h2>📚 إضافة رابط تحميل (مذكرة)</h2>
-            <input type="text" id="bookName" placeholder="اسم المذكرة">
-            <input type="url" id="bookLink" placeholder="رابط التحميل">
-            <button class="btn-admin" onclick="saveNewBook()">إضافة للمكتبة 📥</button>
-        </div>
+    <div id="adminWrapper" style="display:none; padding: 20px; background: #222; color: #fff;">
+        <h1>لوحة التحكم النشطة</h1>
+        <input type="text" id="artTitle" placeholder="عنوان المقال" style="width:100%; padding:10px; margin-bottom:10px;">
+        <textarea id="artContent" rows="4" style="width:100%; margin-bottom:10px;"></textarea>
+        <button id="btnPublish" style="padding:15px; width:100%; background:gold; font-weight:bold;">نشر المقال الآن</button>
     </div>
 
     <script>
-        const firebaseConfig = {
+        // 1. فحص هل Firebase محمل أم لا؟
+        if (typeof firebase === 'undefined') {
+            alert("تحذير: مكتبة Firebase لم يتم تحميلها! تأكد من اتصال الإنترنت.");
+        }
+
+        const config = {
             apiKey: "AIzaSyCp-m2DkIIwIoKUeuntHLvDbEclB041pz4",
             authDomain: "shrouk-ehab.firebaseapp.com",
             projectId: "shrouk-ehab",
@@ -52,33 +28,23 @@
             messagingSenderId: "1015714183835",
             appId: "1:1015714183835:web:cd71ea6fd14a6a2ef7643e"
         };
-        firebase.initializeApp(firebaseConfig);
+        
+        firebase.initializeApp(config);
         const db = firebase.firestore();
 
-        window.onload = function() {
-            var pass = prompt("الرقم السري:");
-            if (pass === "123010111  55Ee") {
-                document.getElementById('adminWrapper').style.display = 'block';
-            } else { alert("كلمة المرور خاطئة!"); window.location.href = "index.html"; }
-        };
+        if(prompt("الباسورد:") === "123010111  55Ee") {
+            document.getElementById('adminWrapper').style.display = 'block';
+        }
 
-        function saveNewArticle() {
-            var title = document.getElementById('artTitle').value;
-            var cat = document.getElementById('artCategory').value;
-            var cont = document.getElementById('artContent').value;
-            var img = document.getElementById('imageURL').value;
-            
+        document.getElementById("btnPublish").addEventListener("click", () => {
             db.collection("articles").add({
-                title: title, category: cat, content: cont, image: img, date: new Date().toLocaleDateString()
-            }).then(() => alert("تم النشر بنجاح!")).catch((e) => alert("خطأ: " + e.message));
-        }
-
-        function saveNewBook() {
-            db.collection("books").add({
-                name: document.getElementById('bookName').value,
-                link: document.getElementById('bookLink').value
-            }).then(() => alert("تم إضافة الكتاب!")).catch((e) => alert("خطأ: " + e.message));
-        }
+                title: document.getElementById("artTitle").value,
+                content: document.getElementById("artContent").value,
+                date: new Date().toISOString()
+            })
+            .then(() => alert("تم النشر بنجاح!"))
+            .catch(err => alert("خطأ في Firebase: " + err.code + " - " + err.message));
+        });
     </script>
 </body>
 </html>

@@ -4,222 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أكاديمية إيموشا لعلوم المال والتعليم</title>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
     <style>
-        :root {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --gold-primary: #d4af37;
-            --gold-hover: #f3e5ab;
-            --text-color: #ffffff;
-            --text-muted: #b3b3b3;
-        }
-
-        body {
-            margin: 0; padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color); color: var(--text-color);
-        }
-
-        .blessing-bar {
-            background-color: var(--gold-primary); color: #000000;
-            text-align: center; padding: 8px 10px; font-weight: bold; font-size: 14px;
-        }
-
-        header {
-            background-color: #000000; border-bottom: 2px solid var(--gold-primary);
-            padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 20px;
-        }
-
-        .logo {
-            font-size: 28px; font-weight: bold; color: var(--gold-primary);
-            text-decoration: none; letter-spacing: 1px;
-        }
-
-        /* نظام الـ 7 أزرار العريضة الموزعة بالتساوي */
-        nav {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
-            width: 100%; max-width: 1200px;
-        }
-
-        nav a {
-            color: var(--text-color); text-decoration: none; font-weight: bold; font-size: 12px;
-            padding: 12px 10px; background-color: #1a1a1a; border: 1px solid #333;
-            border-radius: 6px; transition: all 0.3s ease; text-align: center;
-            flex: 1; min-width: 130px;
-        }
-
-        nav a:hover {
-            background-color: #252525; border-color: var(--gold-primary); color: var(--gold-primary);
-        }
-
-        nav a.active {
-            background-color: var(--gold-primary); color: #000000; border-color: var(--gold-primary);
-        }
-
-        /* تمييز أزرار النتائج لجذب عيون الطلاب */
-        nav a.btn-result-nav {
-            border: 1px solid var(--gold-primary);
-            box-shadow: 0 0 8px rgba(214, 175, 55, 0.15);
-        }
-
-        .hero {
-            text-align: center; padding: 50px 20px;
-            background: linear-gradient(180deg, #000000 0%, var(--bg-color) 100%);
-        }
-
-        .hero h1 { color: var(--gold-primary); font-size: 32px; margin-bottom: 10px; }
-        .hero p { color: var(--text-muted); font-size: 16px; max-width: 600px; margin: 0 auto; line-height: 1.6; }
-
+        :root { --bg-color: #121212; --card-bg: #1e1e1e; --gold-primary: #d4af37; --text-color: #ffffff; --text-muted: #b3b3b3; }
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-color); }
+        .blessing-bar { background-color: var(--gold-primary); color: #000; text-align: center; padding: 8px; font-weight: bold; }
+        header { background-color: #000; border-bottom: 2px solid var(--gold-primary); padding: 20px; text-align: center; }
+        .logo { font-size: 28px; font-weight: bold; color: var(--gold-primary); text-decoration: none; }
         .main-container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
-
-        .sections-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px; margin-bottom: 50px;
-        }
-
-        .section-card {
-            background-color: var(--card-bg); border: 1px solid #333; border-radius: 8px;
-            padding: 20px; text-align: center; transition: transform 0.3s, border-color 0.3s;
-            display: flex; flex-direction: column; justify-content: space-between;
-        }
-
-        .section-card:hover { transform: translateY(-5px); border-color: var(--gold-primary); }
-        .section-card h2 { color: var(--gold-primary); margin-top: 0; font-size: 18px; }
-        .section-card p { color: var(--text-muted); font-size: 13px; line-height: 1.6; margin-bottom: 15px; }
-
-        .btn {
-            display: inline-block; background-color: var(--gold-primary); color: #000;
-            text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: bold;
-            margin-top: auto; transition: background-color 0.3s; cursor: pointer; border: none; font-size: 14px; text-align: center;
-        }
-        .btn:hover { background-color: var(--gold-hover); }
-
-        .articles-display h2 { color: var(--gold-primary); border-bottom: 1px solid #333; padding-bottom: 10px; }
         .article-post { background-color: var(--card-bg); border-right: 4px solid var(--gold-primary); padding: 20px; margin-bottom: 20px; border-radius: 4px; text-align: right; }
-        .article-post h3 a { color: #fff; text-decoration: none; transition: color 0.2s; }
-        .article-post h3 a:hover { color: var(--gold-primary); }
-        .article-meta { font-size: 12px; color: var(--gold-primary); margin-bottom: 10px; }
-
-        footer { background-color: #000000; border-top: 2px solid var(--gold-primary); padding: 30px 20px; margin-top: 60px; text-align: center; }
-        .footer-links a { color: var(--text-color); text-decoration: none; margin: 0 15px; }
+        .btn { display: inline-block; background-color: var(--gold-primary); color: #000; padding: 10px 20px; border-radius: 6px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <div class="blessing-bar">
-        اللهم صلِّ وسلِّم وبارك على نبينا محمد وعلى آله وصحبه أجمعين ✨
-    </div>
+    <div class="blessing-bar">اللهم صلِّ وسلِّم وبارك على نبينا محمد وعلى آله وصحبه أجمعين ✨</div>
 
     <header>
         <a href="index.html" class="logo">أكاديمية إيموشا</a>
-        <nav>
-            <a href="index.html" class="active">الصفحة الرئيسية</a>
-            <a href="internet-earning.html">الربح من الإنترنت</a>
-            <a href="facebook.html">أسرار فيسبوك</a>
-            <a href="web-dev.html">تطوير المواقع</a>
-            <a href="thanwya-books.html">📚 ثانوية عامة</a>
-            <a href="thanwya.html" class="btn-result-nav">🎓 نتيجة الثانوية العامة</a>
-            <a href="azhar.html" class="btn-result-nav">🕌 نتيجة الثانوية الأزهرية</a>
-        </nav>
     </header>
 
-    <section class="hero">
-        <h1>بوابتك الاحترافية للربح والتعلم الرقمي</h1>
-        <p>نقدم لك أدلة عملية وشروحات حصرية وموثوقة لمساعدتك في بناء مشروعك الخاص على الإنترنت وتطوير مهاراتك.</p>
-    </section>
-
     <div class="main-container">
-        
-        <div class="sections-grid">
-            <div class="section-card">
-                <h2>كيف تربح من الإنترنت</h2>
-                <p>تعلم طرق الربح الحقيقية والمجربة مثل التسويق بالعمولة والتجارة الإلكترونية.</p>
-                <a href="internet-earning.html" class="btn">تصفح القسم</a>
-            </div>
-            <div class="section-card">
-                <h2>أسرار أرباح فيسبوك</h2>
-                <p>اكتشف أسرار الربح من مقاطع الريلز والفيديوهات وتكبير الصفحات.</p>
-                <a href="facebook.html" class="btn">تصفح القسم</a>
-            </div>
-            <div class="section-card">
-                <h2>بناء وتطوير المواقع</h2>
-                <p>شروحات مبسطة لتعلم البرمجة، إدارة البيانات، وتجهيز المواقع للسيرش.</p>
-                <a href="web-dev.html" class="btn">تصفح القسم</a>
-            </div>
-            <div class="section-card">
-                <h2>بوابة الثانوية العامة</h2>
-                <p>ملخصات حصرية، كتب خارجية، مذكرات ومراجعات نهائية مجانية طول السنة.</p>
-                <a href="thanwya-books.html" class="btn">دخول المكتبة</a>
-            </div>
-            <div class="section-card">
-                <h2>نتيجة الثانوية العامة</h2>
-                <p>بوابة الاستعلام عن نتيجتك برقم الجلوس فور صدورها من السيرفر الوزاري مباشرة.</p>
-                <a href="thanwya.html" class="btn">عرض النتيجة</a>
-            </div>
-            <div class="section-card">
-                <h2>نتيجة الثانوية الأزهرية</h2>
-                <p>متابعة حصرية لنتائج طلاب الأزهر الشريف والمذكرات والمراجعات الخاصة بهم.</p>
-                <a href="azhar.html" class="btn">دخول قسم الأزهر</a>
-            </div>
-        </div>
-
-        <div class="articles-display">
-            <h2>آخر المقالات العامة المنشورة</h2>
-            <div id="mainArticlesContainer"></div>
-            <button id="loadMoreBtn" class="btn" style="display:none; margin: 25px auto;" onclick="loadMoreMainArticles()">عرض المزيد من المقالات ⬇</button>
-        </div>
+        <h2>آخر المقالات العامة</h2>
+        <div id="mainArticlesContainer">جاري تحميل المقالات من الأكاديمية...</div>
     </div>
 
-    <footer>
-        <div class="footer-links">
-            <a href="legal.html?tab=about">من نحن</a> | 
-            <a href="legal.html?tab=privacy">سياسة الخصوصية</a> | 
-            <a href="legal.html?tab=contact">اتصل بنا</a>
-        </div>
-        <p style="color: var(--text-muted); font-size: 13px; margin-top: 15px;">جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف</p>
-    </footer>
-
     <script>
-        var displayedCount = 0;
-        var mainItems = [];
+        // إعدادات الربط الخاصة بمشروعك (emosha-academy)
+        const firebaseConfig = {
+            apiKey: "AIzaSyCp-m2DkIIwIoKUeuntHLvDbEclB041pz4",
+            authDomain: "shrouk-ehab.firebaseapp.com",
+            projectId: "shrouk-ehab",
+            storageBucket: "shrouk-ehab.firebasestorage.app",
+            messagingSenderId: "1015714183835",
+            appId: "1:1015714183835:web:cd71ea6fd14a6a2ef7643e"
+        };
 
-        window.onload = function() { displayMainArticles(true); };
+        // تهيئة Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
 
-        function displayMainArticles(reset) {
-            var articles = JSON.parse(localStorage.getItem('sharedArticles')) || [];
-            mainItems = articles.filter(item => item.category === "الرئيسية");
-            var container = document.getElementById('mainArticlesContainer');
+        // جلب المقالات من فايربيس وعرضها
+        db.collection("articles").onSnapshot((snapshot) => {
+            const container = document.getElementById('mainArticlesContainer');
+            container.innerHTML = ""; 
             
-            if(reset) { container.innerHTML = ""; displayedCount = 0; }
-            if(mainItems.length === 0) {
-                container.innerHTML = `<p id="noArticles" style="color: var(--text-muted); text-align: center;">لا توجد مقالات عامة منشورة حالياً.</p>`;
-                document.getElementById('loadMoreBtn').style.display = 'none';
-                return;
-            }
-            loadMoreMainArticles();
-        }
-
-        function loadMoreMainArticles() {
-            var container = document.getElementById('mainArticlesContainer');
-            var nextItems = mainItems.slice(displayedCount, displayedCount + 3);
-            
-            nextItems.forEach(function(item) {
-                var excerpt = item.content.length > 150 ? item.content.substring(0, 150) + "..." : item.content;
-                var articleUrl = "article.html?id=" + item.id;
-
+            snapshot.forEach((doc) => {
+                const article = doc.data();
                 container.innerHTML += `
                     <div class="article-post">
-                        <h3><a href="${articleUrl}">${item.title}</a></h3>
-                        <div class="article-meta">تاريخ النشر: ${item.date}</div>
-                        <p style="line-height: 1.7; color: #e0e0e0; white-space: pre-line;">${excerpt}</p>
-                        <a href="${articleUrl}" style="color: var(--gold-primary); text-decoration: none; font-weight: bold; font-size: 14px;">اقرأ المقال كاملاً برابط مخصص ومستقل ←</a>
-                    </div>`;
+                        <h3>${article.title || 'بدون عنوان'}</h3>
+                        ${article.image ? `<img src="${article.image}" style="width: 100%; border-radius: 5px; margin-bottom: 10px;">` : ''}
+                        <p style="white-space: pre-line;">${article.content || ''}</p>
+                        <small style="color: var(--gold-primary);">تاريخ النشر: ${article.date || ''}</small>
+                    </div>
+                `;
             });
-
-            displayedCount += nextItems.length;
-            var btn = document.getElementById('loadMoreBtn');
-            if(displayedCount >= mainItems.length) { btn.style.display = 'none'; } else { btn.style.display = 'block'; }
-        }
+        });
     </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة تحكم إيموشا - إدارة الأقسام</title>
+    <title>لوحة تحكم إيموشا - إدارة الأقسام الجديدة</title>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
     
@@ -88,25 +88,30 @@
     </div>
 
     <script>
-        const config = {
-            apiKey: "AIzaSyCp-m2DkIIwIoKUeuntHLvDbEclB041pz4",
-            authDomain: "shrouk-ehab.firebaseapp.com",
-            projectId: "shrouk-ehab",
-            storageBucket: "shrouk-ehab.firebasestorage.app",
-            messagingSenderId: "1015714183835",
-            appId: "1:1015714183835:web:cd71ea6fd14a6a2ef7643e"
+        // بيانات مشروع الفايربيس الجديد الخاص بك 100%
+        const firebaseConfig = {
+            apiKey: "AIzaSyBORppTYoq6wbsoM8cED7T_cW5UHVX5XbE",
+            authDomain: "emosha-b67a3.firebaseapp.com",
+            databaseURL: "https://emosha-b67a3-default-rtdb.firebaseio.com",
+            projectId: "emosha-b67a3",
+            storageBucket: "emosha-b67a3.firebasestorage.app",
+            messagingSenderId: "136317351287",
+            appId: "1:136317351287:web:f9b7186384278ba6c21d72",
+            measurementId: "G-G4F8CDJV0L"
         };
         
-        firebase.initializeApp(config);
+        // تشغيل الفايربيس
+        firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // تفعيل فوري بدون مشاكل
+        // نظام الحماية والباسورد الخاص بك
         if(prompt("الباسورد الخاص بالإدارة:") === "123010111  55Ee") {
             document.getElementById('adminWrapper').style.display = 'block';
         } else {
-            alert("الباسورد خطأ!");
+            alert("الباسورد خطأ! لا يمكنك دخول لوحة التحكم.");
         }
 
+        // كود معالجة النشر الذكي والتلقائي
         document.getElementById("btnPublish").addEventListener("click", () => {
             const titleInput = document.getElementById("artTitle");
             const contentInput = document.getElementById("artContent");
@@ -121,7 +126,7 @@
                 return;
             }
 
-            // النشر في الكوليكشن الموحد "articles" مع وسم القسم بوضوح لمنع التعارض بالفايربيس
+            // حفظ المقال داخل كوليكشن موحد اسمه "articles" وتحديد قسمه بالداخل لسهولة الفرز
             db.collection("articles").add({
                 title: title,
                 content: content,
@@ -129,13 +134,13 @@
                 date: new Date().toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' })
             })
             .then(() => {
-                alert("تم النشر بنجاح! جاري تفريغ الخانات...");
-                // تفريغ الحقول أوتوماتيكياً فور النجاح
+                alert("تم النشر بنجاح في مشروعك الجديد وتوجيهه إلى [" + category + "] !");
+                // تفريغ الحقول أوتوماتيكياً فور نجاح العملية
                 titleInput.value = "";
                 contentInput.value = "";
             })
             .catch(err => {
-                alert("حدث خطأ أثناء النشر: " + err.message);
+                alert("حدث خطأ أثناء النشر: " + err.message + "\nتأكد من تفعيل Firestore Database وفتح الـ Rules في المشروع الجديد.");
             });
         });
     </script>

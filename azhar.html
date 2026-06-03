@@ -36,8 +36,6 @@
         /* مربع النتيجة الأزهري */
         .iframe-wrapper { display: none; margin-top: 20px; border-radius: 8px; border: 2px solid var(--gold-primary); overflow: hidden; background: #fff; position: relative; padding-top: 100%; }
         .iframe-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-        
-        footer { background-color: #000; border-top: 2px solid var(--gold-primary); padding: 20px; text-align: center; margin-top: 60px; }
     </style>
 </head>
 <body>
@@ -71,15 +69,17 @@
         </div>
     </div>
 
-<footer>
-    <div class="footer-links">
-        <a href="about.html#about">من نحن</a> | 
-        <a href="about.html#privacy">سياسة الخصوصية</a> | 
-        <a href="about.html#contact">اتصل بنا</a>
-    </div>
-    <div class="footer-rights">جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف</div>
-</footer>
-
+    <!-- الفوتر الموحد والمعدل للموبايل -->
+    <footer style="background: #000; border-top: 2px solid var(--gold-primary); padding: 25px 10px; text-align: center; margin-top: 60px; font-family: sans-serif;">
+        <div class="footer-links" style="margin-bottom: 15px;">
+            <a href="about.html#about" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">من نحن</a>
+            <a href="about.html#privacy" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">سياسة الخصوصية</a>
+            <a href="about.html#contact" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">اتصل بنا</a>
+        </div>
+        <div class="footer-rights" style="font-size: 12px; color: #666; border-top: 1px solid #111; padding-top: 15px; max-width: 400px; margin: 0 auto;">
+            جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف
+        </div>
+    </footer>
 
 <script>
     function showAzharResult() {
@@ -90,12 +90,9 @@
             return;
         }
         
-        // فتح النتيجة في نافذة منبثقة احترافية (Popup) تظهر فوق الموقع
         var url = "https://natiga.azhar.eg/";
         window.open(url, "AzharResult", "width=800,height=600,scrollbars=yes,resizable=yes,top=100,left=100");
     }
 </script>
-
-
 </body>
 </html>

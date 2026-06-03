@@ -70,11 +70,11 @@
             
             <label for="artCategory">اختر الصفحة التي تريد ظهور المقال فيها:</label>
             <select id="artCategory" class="form-control">
-                <option value="articles">🏠 الصفحة الرئيسية</option>
-                <option value="internet_earning">💰 قسم الربح من الإنترنت</option>
-                <option value="facebook_secrets">🔥 قسم أسرار فيسبوك</option>
-                <option value="web_development">🌐 قسم بناء وتطوير المواقع</option>
-                <option value="sharedArticles">📚 قسم أخبار ونصائح الثانوية العامة</option>
+                <option value="الرئيسية">🏠 الصفحة الرئيسية</option>
+                <option value="الربح من الإنترنت">💰 قسم الربح من الإنترنت</option>
+                <option value="أسرار فيسبوك">🔥 قسم أسرار فيسبوك</option>
+                <option value="تطوير المواقع">🌐 قسم بناء وتطوير المواقع</option>
+                <option value="الثانوية العامة">📚 قسم أخبار ونصائح الثانوية العامة</option>
             </select>
 
             <label for="artTitle">عنوان المقال أو المنشور:</label>
@@ -100,37 +100,43 @@
         firebase.initializeApp(config);
         const db = firebase.firestore();
 
-        // الباسورد الخاص بك
+        // تفعيل فوري بدون مشاكل
         if(prompt("الباسورد الخاص بالإدارة:") === "123010111  55Ee") {
             document.getElementById('adminWrapper').style.display = 'block';
         } else {
             alert("الباسورد خطأ!");
         }
 
-        // كود النشر المباشر حسب القسم المختار
         document.getElementById("btnPublish").addEventListener("click", () => {
-            const title = document.getElementById("artTitle").value.trim();
-            const content = document.getElementById("artContent").value.trim();
-            const targetCollection = document.getElementById("artCategory").value; // اسم المخزن في الفايربيس
+            const titleInput = document.getElementById("artTitle");
+            const contentInput = document.getElementById("artContent");
+            const categorySelect = document.getElementById("artCategory");
+
+            const title = titleInput.value.trim();
+            const content = contentInput.value.trim();
+            const category = categorySelect.value;
 
             if(title === "" || content === "") {
                 alert("من فضلك املأ العنوان والمحتوى أولاً قبل النشر!");
                 return;
             }
 
-            // النشر مباشرة في المخزن الصح اللي اخترته
-            db.collection(targetCollection).add({
+            // النشر في الكوليكشن الموحد "articles" مع وسم القسم بوضوح لمنع التعارض بالفايربيس
+            db.collection("articles").add({
                 title: title,
                 content: content,
-                category: "الثانوية العامة", // مخصصة فقط لصفحة الثانوية العامة لكي تقرأها بشكل صحيح
+                category: category,
                 date: new Date().toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' })
             })
             .then(() => {
-                alert("تم النشر بنجاح والمقال متوفر في صفحتك الآن!");
-                document.getElementById("artTitle").value = "";
-                document.getElementById("artContent").value = "";
+                alert("تم النشر بنجاح! جاري تفريغ الخانات...");
+                // تفريغ الحقول أوتوماتيكياً فور النجاح
+                titleInput.value = "";
+                contentInput.value = "";
             })
-            .catch(err => alert("خطأ أثناء النشر: " + err.message));
+            .catch(err => {
+                alert("حدث خطأ أثناء النشر: " + err.message);
+            });
         });
     </script>
 </body>

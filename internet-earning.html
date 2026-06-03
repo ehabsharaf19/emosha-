@@ -15,6 +15,7 @@
         }
 
         body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-color); }
+        .blessing-bar { background-color: var(--gold-primary); color: #000; text-align: center; padding: 8px 10px; font-weight: bold; font-size: 14px; }
 
         /* الهيدر الذهبي الموحد */
         header { background-color: #000; border-bottom: 2px solid var(--gold-primary); padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
@@ -25,20 +26,20 @@
         nav a.active { background-color: var(--gold-primary); color: #000; border-color: var(--gold-primary); }
 
         .container { max-width: 800px; margin: 40px auto; padding: 0 20px; text-align: center; }
-        h1 { color: var(--gold-primary); border-bottom: 2px solid #333; padding-bottom: 15px; margin-bottom: 30px; }
+        h1 { color: var(--gold-primary); border-bottom: 2px solid #333; padding-bottom: 15px; margin-bottom: 30px; font-size: 28px; }
         
-        .article-post { background: var(--card-bg); border-right: 4px solid var(--gold-primary); padding: 20px; margin-bottom: 20px; border-radius: 4px; text-align: right; }
-        .article-post h3 a { color: #fff; text-decoration: none; transition: color 0.2s; }
-        .article-post h3 a:hover { color: var(--gold-primary); }
+        .article-card { background: var(--card-bg); border: 1px solid #333; padding: 20px; margin-bottom: 20px; border-radius: 8px; text-align: right; direction: rtl; transition: border-color 0.3s; }
+        .article-card:hover { border-color: var(--gold-primary); }
+        .article-card h3 { color: var(--gold-primary); margin-top: 0; font-size: 20px; }
+        .article-card p { color: #fff; line-height: 1.7; font-size: 15px; }
 
-        .btn-more { display: inline-block; background-color: var(--gold-primary); color: #000; text-decoration: none; padding: 12px 25px; border-radius: 6px; font-weight: bold; cursor: pointer; border: none; font-size: 14px; margin-top: 20px; }
-        .btn-more:hover { background-color: var(--gold-hover); }
-
-        footer { background-color: #000; border-top: 2px solid var(--gold-primary); padding: 30px 20px; margin-top: 60px; text-align: center; }
-        .footer-links a { color: var(--text-color); text-decoration: none; margin: 0 15px; }
+        .read-more-btn { display: inline-block; color: #000; background: var(--gold-primary); text-decoration: none; font-weight: bold; padding: 6px 14px; border-radius: 4px; font-size: 13px; transition: background 0.3s; }
+        .read-more-btn:hover { background: var(--gold-hover); }
     </style>
 </head>
 <body>
+
+    <div class="blessing-bar">اللهم صلِّ وسلِّم وبارك على نبينا محمد وعلى آله وصحبه أجمعين ✨</div>
 
     <header>
         <a href="index.html" class="logo">أكاديمية إيموشا</a>
@@ -57,64 +58,70 @@
         <h1>قسم طرق وأسرار الربح من الإنترنت 💰</h1>
         
         <div id="sectionContainer">
-            <p style="color: var(--text-muted);">جاري تحميل المقالات...</p>
+            <p style="color: var(--text-muted); text-align: center;">جاري تحميل المقالات...</p>
         </div>
-
-        <button id="loadMoreEarningBtn" class="btn-more" style="display:none;" onclick="loadMoreEarningArticles()">عرض المزيد من المقالات ⬇</button>
     </div>
 
-    <footer>
-    <div class="footer-links">
-        <a href="about.html#about">من نحن</a> | 
-        <a href="about.html#privacy">سياسة الخصوصية</a> | 
-        <a href="about.html#contact">اتصل بنا</a>
-    </div>
-    <div class="footer-rights">جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف</div>
-</footer>
+    <!-- الفوتر الموحد المعدل للموبايل -->
+    <footer style="background: #000; border-top: 2px solid var(--gold-primary); padding: 25px 10px; text-align: center; margin-top: 60px; font-family: sans-serif;">
+        <div class="footer-links" style="margin-bottom: 15px;">
+            <a href="about.html#about" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">من نحن</a>
+            <a href="about.html#privacy" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">سياسة الخصوصية</a>
+            <a href="about.html#contact" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">اتصل بنا</a>
+        </div>
+        <div class="footer-rights" style="font-size: 12px; color: #666; border-top: 1px solid #111; padding-top: 15px; max-width: 400px; margin: 0 auto;">
+            جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف
+        </div>
+    </footer>
 
-
-
+    <!-- سكربتات الفايربيس الاسترجاعية -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-<script>
-    // بيانات مشروع الفايربيس الجديد للأكاديمية
-    const firebaseConfig = {
-        apiKey: "AIzaSyBORppTYoq6wbsoM8cED7T_cW5UHVX5XbE",
-        authDomain: "emosha-b67a3.firebaseapp.com",
-        projectId: "emosha-b67a3",
-        storageBucket: "emosha-b67a3.firebasestorage.app",
-        messagingSenderId: "136317351287",
-        appId: "1:136317351287:web:f9b7186384278ba6c21d72"
-    };
-
-    // تشغيل الفايربيس
-    if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
-    const db = firebase.firestore();
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
     
-    // تحديد مكان عرض المقالات في الصفحة
-    const container = document.getElementById("sectionContainer") || document.body;
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBORppTYoq6wbsoM8cED7T_cW5UHVX5XbE",
+            authDomain: "emosha-b67a3.firebaseapp.com",
+            projectId: "emosha-b67a3",
+            storageBucket: "emosha-b67a3.firebasestorage.app",
+            messagingSenderId: "136317351287",
+            appId: "1:136317351287:web:f9b7186384278ba6c21d72"
+        };
 
-    // جلب المقالات المخصصة لقسم الربح من الإنترنت فقط
-    db.collection("articles").where("category", "==", "الربح من الإنترنت").get().then((querySnapshot) => {
-        const loadingText = container.querySelector('p') || container;
-        if(loadingText && loadingText.innerText.includes("جاري")) { loadingText.remove(); }
-        
-        if (querySnapshot.empty) {
-            container.innerHTML += "<p style='color:#666; text-align:center; padding: 20px;'>لا توجد مقالات منشورة في هذا القسم حالياً.</p>";
-            return;
-        }
-        
-        querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            container.innerHTML += `
-                <div style="background:#1e1e1e; border:1px solid #d4af37; padding:20px; border-radius:8px; margin-bottom:20px; text-align:right; direction:rtl;">
-                    <h3 style="color:#d4af37; margin-top:0;">${data.title}</h3>
-                    <p style="color:#fff; line-height:1.7; white-space: pre-wrap;">${data.content}</p>
-                    <small style="color:#666;">تاريخ النشر: ${data.date || ''}</small>
-                </div>`;
+        if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+        const db = firebase.firestore();
+        const container = document.getElementById("sectionContainer");
+
+        // جلب المقالات المخصصة لقسم الربح من الإنترنت فقط
+        db.collection("articles").where("category", "==", "الربح من الإنترنت").get().then((querySnapshot) => {
+            container.innerHTML = ""; // مسح جملة جاري التحميل
+            
+            if (querySnapshot.empty) {
+                container.innerHTML = "<p style='color:#666; text-align:center; padding: 20px;'>لا توجد مقالات منشورة في هذا القسم حالياً.</p>";
+                return;
+            }
+            
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                const docId = doc.id;
+                
+                // قص المقال عند أول 150 حرف من أجل المظهر والأرشفة السليمة
+                const snippet = data.content.substring(0, 150) + "...";
+                
+                container.innerHTML += `
+                    <div class="article-card">
+                        <h3>${data.title}</h3>
+                        <p>${snippet}</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px; border-top: 1px solid #2a2a2a; padding-top: 10px;">
+                            <small style="color:#666;">تاريخ النشر: ${data.date || ''}</small>
+                            <a href="article.html?id=${docId}" class="read-more-btn">اقرأ المقال كاملاً ➔</a>
+                        </div>
+                    </div>`;
+            });
+        }).catch(err => { 
+            container.innerHTML = "<p style='color:red; text-align:center;'>حدث خطأ أثناء تحميل المقالات.</p>"; 
         });
-    }).catch(err => { container.innerHTML += "<p style='color:red; text-align:center;'>حدث خطأ أثناء تحميل المقالات.</p>"; });
-</script>
+    </script>
 
 </body>
 </html>

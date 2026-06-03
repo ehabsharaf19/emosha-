@@ -3,46 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة الثانوية العامة - مذكرات ومراجعات إيموشا</title>
+    <title>بوابة الثانوية العامة - أكاديمية إيموشا</title>
     <style>
-        :root { --bg-color: #121212; --card-bg: #1e1e1e; --gold-primary: #d4af37; --gold-hover: #f3e5ab; --text-color: #ffffff; --text-muted: #b3b3b3; }
-        body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-color); }
-        .blessing-bar { background-color: var(--gold-primary); color: #000; text-align: center; padding: 8px 10px; font-weight: bold; font-size: 14px; }
-        header { background-color: #000; border-bottom: 2px solid var(--gold-primary); padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
-        .logo { font-size: 28px; font-weight: bold; color: var(--gold-primary); text-decoration: none; }
-        nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; width: 100%; max-width: 1200px; }
-        nav a { color: var(--text-color); text-decoration: none; font-weight: bold; font-size: 12px; padding: 12px 10px; background-color: #1a1a1a; border: 1px solid #333; border-radius: 6px; transition: all 0.3s ease; text-align: center; flex: 1; min-width: 130px; }
-        nav a:hover { background-color: #252525; border-color: var(--gold-primary); color: var(--gold-primary); }
-        nav a.active { background-color: var(--gold-primary); color: #000; border-color: var(--gold-primary); }
-        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
-        h1.section-title { color: var(--gold-primary); border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 30px; }
-        .article-card { background:#1e1e1e; border:1px solid #333; padding:20px; border-radius:8px; margin-bottom:20px; text-align:right; transition: border-color 0.3s; }
-        .article-card:hover { border-color: var(--gold-primary); }
-        .article-card h3 { color: var(--gold-primary); margin-top: 0; font-size: 20px; }
-        .article-card p { color: #fff; line-height: 1.7; font-size: 15px; }
-        .read-more-btn { display: inline-block; color: #000; background: var(--gold-primary); text-decoration: none; font-weight: bold; padding: 6px 14px; border-radius: 4px; font-size: 13px; }
-        .read-more-btn:hover { background: var(--gold-hover); }
+        :root { --bg-color: #121212; --card-bg: #1e1e1e; --gold-primary: #d4af37; --text-color: #ffffff; --text-muted: #b3b3b3; }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 0; direction: rtl; }
+        .blessing-bar { background-color: var(--gold-primary); color: #000; text-align: center; padding: 10px; font-weight: bold; font-size: 15px; }
+        header { max-width: 600px; margin: 20px auto; padding: 0 15px; text-align: center; }
+        h1.logo { color: var(--gold-primary); font-size: 26px; margin-bottom: 20px; }
+        .nav-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 12px; }
+        .nav-grid a, .full-width-btn { background-color: #1a1a1a; color: #fff; text-decoration: none; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 14px; border: 1px solid #333; display: block; text-align: center; transition: all 0.3s; }
+        .nav-grid a.active { background-color: var(--gold-primary); color: #000; border-color: var(--gold-primary); }
+        .full-width-btn { grid-column: span 2; margin-top: 4px; border: 1px solid var(--gold-primary); }
+        .nav-grid a:hover, .full-width-btn:hover { border-color: var(--gold-primary); }
+        .container { max-width: 600px; margin: 30px auto; padding: 0 15px; }
+        .section-heading { text-align: center; color: var(--gold-primary); font-size: 24px; margin-bottom: 30px; }
+        .article-card { background: var(--card-bg); border: 1px solid #333; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        .article-card h3 { color: var(--gold-primary); margin: 0 0 15px 0; font-size: 18px; }
+        .article-card p { color: #fff; line-height: 1.6; font-size: 14px; margin-bottom: 20px; }
+        .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #2a2a2a; padding-top: 15px; }
+        .read-more-btn { background: var(--gold-primary); color: #000; text-decoration: none; font-weight: bold; padding: 8px 16px; border-radius: 6px; font-size: 13px; }
+        .date-text { color: #666; font-size: 12px; }
+        footer { margin-top: 60px; background-color: #000; padding: 20px 0; text-align: center; border-top: 1px solid #222; }
+        .footer-links { margin-bottom: 15px; }
+        .footer-links a { color: #fff; text-decoration: none; margin: 0 10px; font-size: 14px; }
+        .copyright { color: var(--text-muted); font-size: 13px; }
     </style>
 </head>
 <body>
-    <div class="blessing-bar">اللهم صلِّ وسلِّم وبارك على نبينا محمد وعلى آله وصحبه أجمعين ✨</div>
+
+    <div class="blessing-bar">✨ اللهم صلِّ وسلِّم وبارك على نبينا محمد وعلى آله وصحبه أجمعين ✨</div>
+
     <header>
-        <a href="index.html" class="logo">أكاديمية إيموشا</a>
-        <nav>
+        <h1 class="logo">أكاديمية إيموشا</h1>
+        <div class="nav-grid">
             <a href="index.html">الصفحة الرئيسية</a>
             <a href="internet-earning.html">الربح من الإنترنت</a>
             <a href="facebook.html">أسرار فيسبوك</a>
             <a href="web-dev.html">تطوير المواقع</a>
+            <a href="thanwya.html">🎓 نتيجة الثانوية العامة</a>
             <a href="thanwya-books.html" class="active">📚 ثانوية عامة</a>
-        </nav>
+            <a href="azhar.html" class="full-width-btn">🕌 نتيجة الثانوية الأزهرية</a>
+        </div>
     </header>
 
     <div class="container">
-        <h1 class="section-title">📚 بوابة الثانوية العامة - ملخصات ومراجعات حصرية</h1>
+        <div class="section-heading">📚 قسم أخبار ونصائح الثانوية العامة والمكتبة</div>
         <div id="articlesContainer">
-            <p style="color: var(--text-muted); text-align: center;">جاري جلب ملفات المكتبة والمراجعات...</p>
+            <p style="color: var(--text-muted); text-align: center;">جاري جلب المذكرات والمقالات التوجيهية...</p>
         </div>
     </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="about.html">من نحن</a> | 
+            <a href="privacy.html">سياسة الخصوصية</a> | 
+            <a href="contact.html">اتصل بنا</a>
+        </div>
+        <div class="copyright">جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف</div>
+    </footer>
 
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
@@ -51,24 +69,23 @@
         firebase.initializeApp(firebaseConfig); const db = firebase.firestore();
         const container = document.getElementById("articlesContainer");
 
-        // جلب المقالات الموجهة لقسم "ثانوية عامة" من لوحة التحكم
         db.collection("articles").where("category", "==", "ثانوية عامة").get().then((querySnapshot) => {
             container.innerHTML = "";
-            if (querySnapshot.empty) { container.innerHTML = "<p style='color:#666; text-align:center;'>لا توجد مذكرات أو كتب منشورة حالياً.</p>"; return; }
+            if (querySnapshot.empty) { container.innerHTML = "<p style='color:#666; text-align:center;'>لا توجد مذكرات أو نصائح حالياً.</p>"; return; }
             querySnapshot.forEach((doc) => {
                 const data = doc.data(); const docId = doc.id;
-                const snippet = data.content ? data.content.substring(0, 150) + "..." : "";
+                const snippet = data.content ? data.content.substring(0, 120) + "..." : "";
                 container.innerHTML += `
                     <div class="article-card">
                         <h3>${data.title}</h3>
                         <p>${snippet}</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px; border-top: 1px solid #2a2a2a; padding-top: 10px;">
-                            <small style="color:#666;">تاريخ الإضافة: ${data.date || ''}</small>
-                            <a href="article.html?id=${docId}" class="read-more-btn">تحميل ومعاينة المادة كاملاً ➔</a>
+                        <div class="card-footer">
+                            <a href="article.html?id=${docId}" class="read-more-btn">اقرأ المقال كاملاً ➔</a>
+                            <span class="date-text">تاريخ النشر: ${data.date || ''}</span>
                         </div>
                     </div>`;
             });
-        }).catch(err => { container.innerHTML = "<p style='color:red;'>حدث خطأ أثناء تحميل القسم.</p>"; });
+        }).catch(err => { container.innerHTML = "<p style='color:red; text-align:center;'>حدث خطأ أثناء تحميل بوابة الطلاب.</p>"; });
     </script>
 </body>
 </html>

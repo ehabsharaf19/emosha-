@@ -182,89 +182,40 @@
 
 
     <!-- Firebase SDK & Config -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-        import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics.js";
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyBORppTYoq6wbsoM8cED7T_cW5UHVX5XbE",
+        authDomain: "emosha-b67a3.firebaseapp.com",
+        projectId: "emosha-b67a3",
+        storageBucket: "emosha-b67a3.firebasestorage.app",
+        messagingSenderId: "136317351287",
+        appId: "1:136317351287:web:f9b7186384278ba6c21d72"
+    };
+    if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+    const db = firebase.firestore();
+    const container = document.getElementById("sectionContainer") || document.body;
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyCp-m2DkIIwIoKUeuntHLvDbEclB041pz4",
-            authDomain: "shrouk-ehab.firebaseapp.com",
-            databaseURL: "https://shrouk-ehab-default-rtdb.firebaseio.com",
-            projectId: "shrouk-ehab",
-            storageBucket: "shrouk-ehab.firebasestorage.app",
-            messagingSenderId: "1015714183835",
-            appId: "1:1015714183835:web:cd71ea6fd14a6a2ef7643e",
-            measurementId: "G-NBMDS7Q4FQ"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const analytics = getAnalytics(app);
-
-        // كود عرض مقالات الفايربيس
-        const container = document.getElementById('articlesContainer');
-        collection(db, "articles"); // إذا كان هناك مسار محدد
-        
-        // ملاحظة: تأكد من ضبط قواعد الوصول في فايربيس للقراءة
-        onSnapshot(collection(db, "articles"), (snapshot) => {
-            container.innerHTML = ""; 
-            snapshot.forEach((doc) => {
-                const article = doc.data();
-                container.innerHTML += `
-                    <div class="article-card" style="border: 2px solid #d4af37; padding: 15px; margin: 20px; border-radius: 10px; background: #1e1e1e;">
-                        <h3 style="color: #d4af37;">${article.title || 'بدون عنوان'}</h3>
-                        ${article.image ? `<img src="${article.image}" style="width: 100%; border-radius: 5px;">` : ''}
-                        <p style="color: #fff; margin-top: 10px;">${article.content || ''}</p>
-                        <small style="color: #888;">التاريخ: ${article.date || ''}</small>
-                    </div>
-                `;
-            });
+    db.collection("articles").get().then((querySnapshot) => {
+        const loadingText = container.querySelector('p') || container;
+        if(loadingText && loadingText.innerText.includes("جاري")) { loadingText.remove(); }
+        if (querySnapshot.empty) {
+            container.innerHTML += "<p style='color:#666; text-align:center; padding: 20px;'>لا توجد مقالات منشورة حالياً.</p>";
+            return;
+        }
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            container.innerHTML += `
+                <div style="background:#1e1e1e; border:1px solid #d4af37; padding:20px; border-radius:8px; margin-bottom:20px; text-align:right; direction:rtl;">
+                    <span style="background:#d4af37; color:#000; padding:2px 8px; font-size:11px; font-weight:bold; border-radius:4px; float:left;">${data.category}</span>
+                    <h3 style="color:#d4af37; margin-top:0;">${data.title}</h3>
+                    <p style="color:#fff; line-height:1.7; white-space: pre-wrap;">${data.content}</p>
+                    <small style="color:#666;">تاريخ النشر: ${data.date || ''}</small>
+                </div>`;
         });
-    </script>
+    }).catch(err => { container.innerHTML += "<p style='color:red; text-align:center;'>حدث خطأ أثناء تحميل البيانات.</p>"; });
+</script>
 
-    <script>
-        // كود المقالات المحلي (LocalStorage)
-        var displayedCount = 0;
-        var mainItems = [];
-
-        window.onload = function() { displayMainArticles(true); };
-
-        function displayMainArticles(reset) {
-            var articles = JSON.parse(localStorage.getItem('sharedArticles')) || [];
-            mainItems = articles.filter(item => item.category === "الرئيسية");
-            var container = document.getElementById('mainArticlesContainer');
-            
-            if(reset) { container.innerHTML = ""; displayedCount = 0; }
-            if(mainItems.length === 0) {
-                container.innerHTML = `<p id="noArticles" style="color: var(--text-muted); text-align: center;">لا توجد مقالات عامة منشورة حالياً.</p>`;
-                document.getElementById('loadMoreBtn').style.display = 'none';
-                return;
-            }
-            loadMoreMainArticles();
-        }
-
-        function loadMoreMainArticles() {
-            var container = document.getElementById('mainArticlesContainer');
-            var nextItems = mainItems.slice(displayedCount, displayedCount + 3);
-            
-            nextItems.forEach(function(item) {
-                var excerpt = item.content.length > 150 ? item.content.substring(0, 150) + "..." : item.content;
-                var articleUrl = "article.html?id=" + item.id;
-
-                container.innerHTML += `
-                    <div class="article-post">
-                        <h3><a href="${articleUrl}">${item.title}</a></h3>
-                        <div class="article-meta">تاريخ النشر: ${item.date}</div>
-                        <p style="line-height: 1.7; color: #e0e0e0; white-space: pre-line;">${excerpt}</p>
-                        <a href="${articleUrl}" style="color: var(--gold-primary); text-decoration: none; font-weight: bold; font-size: 14px;">اقرأ المقال كاملاً برابط مخصص ومستقل ←</a>
-                    </div>`;
-            });
-
-            displayedCount += nextItems.length;
-            var btn = document.getElementById('loadMoreBtn');
-            if(displayedCount >= mainItems.length) { btn.style.display = 'none'; } else { btn.style.display = 'block'; }
-        }
-    </script>
 </body>
 </html>

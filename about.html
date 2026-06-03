@@ -1,3 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية إيموشا - الصفحات التعريفية</title>
+    <style>
+        :root { --bg-color: #121212; --card-bg: #1e1e1e; --gold-primary: #d4af37; }
+        body { background-color: var(--bg-color); color: #fff; font-family: sans-serif; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        header { background: #000; border-bottom: 3px solid var(--gold-primary); padding: 20px; text-align: center; }
+        .logo { font-size: 28px; font-weight: bold; color: var(--gold-primary); text-decoration: none; display: block; margin-bottom: 15px; }
+        nav { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 500px; margin: 0 auto; }
+        nav a { color: #fff; text-decoration: none; padding: 12px 10px; border: 1px solid #333; border-radius: 5px; font-size: 13px; text-align: center; display: block; background: #161616; }
+        nav a:last-child { grid-column: span 2; }
+        .container { max-width: 800px; margin: 40px auto; padding: 20px; text-align: right; flex: 1; }
+        
+        .legal-card { 
+            background: var(--card-bg); 
+            border: 1px solid #222; 
+            border-right: 5px solid var(--gold-primary); 
+            padding: 30px; 
+            border-radius: 8px; 
+            display: none; 
+        }
+        .legal-card.active { display: block; }
+        
+        h1, h2 { color: var(--gold-primary); margin-top: 0; }
+        p { line-height: 1.8; color: #ccc; }
+        ul { padding-right: 20px; color: #ccc; line-height: 1.8; }
+        ul li strong { color: var(--gold-primary); }
+        ul li a { color: #fff; text-decoration: none; border-bottom: 1px dashed var(--gold-primary); }
+        
+        footer { background: #000; border-top: 1px solid #222; padding: 20px 10px; text-align: center; margin-top: auto; }
+        .footer-links a { color: #bbb; text-decoration: none; margin: 0 10px; font-size: 14px; cursor: pointer; transition: 0.3s; }
+        .footer-links a.active-footer { color: var(--gold-primary); font-weight: bold; }
+        .footer-rights { font-size: 12px; color: #666; border-top: 1px solid #111; padding-top: 10px; max-width: 400px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">أكاديمية إيموشا</a>
+        <nav>
+            <a href="index.html">الصفحة الرئيسية</a>
+            <a href="internet-earning.html">الربح من الإنترنت</a>
+            <a href="facebook.html">أسرار فيسبوك</a>
+            <a href="web-dev.html">تطوير المواقع</a>
+            <a href="thanwya-books.html">📚 الثانوية العامة</a>
+            <a href="thanwya.html">🎓 نتيجة الثانوية العامة</a>
+            <a href="azhar.html">🕌 نتيجة الثانوية الأزهرية</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div id="about-section" class="legal-card">
+            <h1>من نحن</h1>
+            <p>مرحباً بكم في أكاديمية إيموشا، المنصة الإلكترونية الرائدة تحت إشراف وإدارة القبطان إيهاب شرف. تهدف الأكاديمية إلى تقديم محتوى تعليمي وتدريبي عالي الجودة وموثوق بنسبة 100% لمساعدة الشباب والطلاب في العالم العربي على تطوير مهاراتهم الرقمية وبناء مستقبلهم العملي.</p>
+            <h2>رؤيتنا ورسالتنا:</h2>
+            <p>تأسست الأكاديمية برؤية واضحة من القبطان إيهاب شرف لتكون دليلاً عملياً حقيقياً يبتعد عن الشروحات العشوائية؛ حيث نركز جهودنا على تقديم استراتيجيات برمجية وتسويقية مجربة ومبسطة تخدم كافة الفئات.</p>
+            <h2>ماذا نقدم في الأكاديمية؟</h2>
+            <ul>
+                <li><strong>الربح من الإنترنت وتطوير الأعمال:</strong> أدلة عملية في مجالات التجارة الإلكترونية، التسويق بالعمولة، وصناعة المحتوى الرقمي.</li>
+                <li><strong>أسرار أرباح فيسبوك:</strong> أحدث الاستراتيجيات لتحقيق الأرباح من مقاطع الريلز والفيديوهات وكيفية إدارة وتكبير الصفحات بكفاءة.</li>
+                <li><strong>بناء وتطوير المواقع:</strong> دروس تقنية متدرجة لتعلم البرمجة، إدارة قواعد البيانات، وتهيئة المواقع لمحركات البحث (SEO).</li>
+                <li><strong>بوابة الثانوية العامة:</strong> توفير ركن مجاني شامل لتحميل المذكرات، الكتب الخارجية، وعرض نتائج الامتحانات الرسمية من السيرفر الوزاري مباشرة داخل موقعنا.</li>
+            </ul>
+        </div>
+
+        <div id="privacy-section" class="legal-card">
+            <h1>سياسة الخصوصية</h1>
+            <p>في أكاديمية إيموشا (تحت إدارة القبطان إيهاب شرف)، نعتبر خصوصية زوارنا ومستخدمينا من أهم أولوياتنا. توضح هذه الصفحة طبيعة البيانات والمعلومات التي قد نتعامل معها لضمان تجربة آمنة تماماً.</p>
+            <h2>1. ملفات تعريف الارتباط (Cookies):</h2>
+            <p>نحن نستخدم ملفات تعريف الارتباط لتحسين تجربة تصفحك داخل الأكاديمية، وتذكر تفضيلاتك وتسهيل عملية انتقالك بين أقسام الموقع المختلفة.</p>
+            <h2>2. حماية البيانات والمعلومات:</h2>
+            <p>تلتزم إدارة الأكاديمية بشكل قاطع بعدم بيع، أو تأجير، أو مشاركة أي بيانات شخصية أو معلومات تخص الزوار مع أي جهة خارجية.</p>
+            <h2>3. لوحة التحكم والإدارة:</h2>
+            <p>لوحة التحكم ونشر المقالات محمية بالكامل بأنظمة تشفير وكلمة مرور سرية خاصة بـ القبطان إيهاب شرف فقط.</p>
+        </div>
+
         <div id="contact-section" class="legal-card">
             <h1>اتصل بنا</h1>
             <p>يسعدنا ويشرفنا دائماً تواصلكم المباشر مع إدارة أكاديمية إيموشا. إذا كان لديك أي استفسار، اقتراح لتطوير الموقع، أو رغبة في الإعلان أو الإبلاغ عن مشكلة تقنية، فنحن هنا للاستماع إليك.</p>
@@ -6,7 +84,43 @@
                 <li><strong>• الإدارة العامة:</strong> القبطان إيهاب شرف</li>
                 <li><strong>• البريد الإلكتروني الرسمي:</strong> <a href="mailto:ehabsharaf28@gmail.com">ehabsharaf28@gmail.com</a></li>
                 <li><strong>• الهاتف / الواتساب المباشر:</strong> 01010202865</li>
-                <li><strong>• صفحتنا الرسمية على فيسبوك:</strong> <a href="https://www.facebook.com/share/15Z2S7jFvN/" target="_blank" style="color: #d4af37;">اضغط هنا لزيارة الصفحة</a></li>
-                <li><strong>• قناتنا الرسمية على يوتيوب:</strong> <a href="https://youtube.com/@emosha_gaming?si=vPj_wG3Yv6-z6Yc5" target="_blank" style="color: #d4af37;">اضغط هنا لمتابعة شروحاتنا</a></li>
             </ul>
         </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a onclick="switchTab('about')" id="tab-about">من نحن</a> | 
+            <a onclick="switchTab('privacy')" id="tab-privacy">سياسة الخصوصية</a> | 
+            <a onclick="switchTab('contact')" id="tab-contact">اتصل بنا</a>
+        </div>
+        <div class="footer-rights">جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف</div>
+    </footer>
+
+    <script>
+        function switchTab(target) {
+            document.getElementById('about-section').classList.remove('active');
+            document.getElementById('privacy-section').classList.remove('active');
+            document.getElementById('contact-section').classList.remove('active');
+            
+            document.getElementById('tab-about').classList.remove('active-footer');
+            document.getElementById('tab-privacy').classList.remove('active-footer');
+            document.getElementById('tab-contact').classList.remove('active-footer');
+            
+            document.getElementById(target + '-section').classList.add('active');
+            document.getElementById('tab-' + target).classList.add('active-footer');
+            window.location.hash = target;
+        }
+
+        // كود ذكي عشان يقرأ الضغطة المحولة من الصفحات التانية
+        window.onload = function() {
+            let hash = window.location.hash.replace('#', '');
+            if (hash && ['about', 'privacy', 'contact'].includes(hash)) {
+                switchTab(hash);
+            } else {
+                switchTab('about'); // الافتراضي
+            }
+        }
+    </script>
+</body>
+</html>

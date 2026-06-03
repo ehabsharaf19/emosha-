@@ -2,24 +2,98 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>لوحة تحكم إيموشا - نسخة الفحص</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم إيموشا - إدارة الأقسام</title>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --gold-primary: #d4af37;
+            --text-color: #ffffff;
+        }
+        body { 
+            background-color: var(--bg-color); 
+            color: var(--text-color); 
+            font-family: 'Segoe UI', Tahoma, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            direction: rtl;
+        }
+        .dashboard-card { 
+            max-width: 600px; 
+            margin: 40px auto; 
+            background: var(--card-bg); 
+            border: 2px solid var(--gold-primary); 
+            border-radius: 12px; 
+            padding: 30px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
+        }
+        h1 { color: var(--gold-primary); text-align: center; margin-bottom: 25px; font-size: 24px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #ccc; font-size: 14px; }
+        .form-control { 
+            width: 100%; 
+            padding: 12px; 
+            background-color: #000; 
+            border: 1px solid #444; 
+            border-radius: 6px; 
+            color: #fff; 
+            font-size: 16px; 
+            box-sizing: border-box; 
+            outline: none; 
+            margin-bottom: 20px; 
+        }
+        .form-control:focus { border-color: var(--gold-primary); }
+        select.form-control { cursor: pointer; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23d4af37%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: left 12px top 50%; background-size: 12px auto; appearance: none; }
+        .submit-btn { 
+            width: 100%; 
+            padding: 14px; 
+            background-color: var(--gold-primary); 
+            color: #000; 
+            border: none; 
+            border-radius: 6px; 
+            font-size: 16px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: background 0.3s; 
+        }
+        .submit-btn:hover { background-color: #f3e5ab; }
+    </style>
 </head>
 <body>
-    <div id="adminWrapper" style="display:none; padding: 20px; background: #222; color: #fff;">
-        <h1>لوحة التحكم النشطة</h1>
-        <input type="text" id="artTitle" placeholder="عنوان المقال" style="width:100%; padding:10px; margin-bottom:10px;">
-        <textarea id="artContent" rows="4" style="width:100%; margin-bottom:10px;"></textarea>
-        <button id="btnPublish" style="padding:15px; width:100%; background:gold; font-weight:bold;">نشر المقال الآن</button>
+
+    <div id="adminWrapper" style="display:none;">
+        <div class="dashboard-card">
+            <h1>إضافة ونشر محتوى جديد للأكاديمية 🚀</h1>
+            
+            <label for="artCategory">اختر الصفحة المستهدفة:</label>
+            <select id="artCategory" class="form-control">
+                <option value="الرئيسية">🏠 الصفحة الرئيسية</option>
+                <option value="الربح من الإنترنت">💰 قسم الربح من الإنترنت</option>
+                <option value="أسرار فيسبوك">🔥 قسم أسرار فيسبوك</option>
+                <option value="تطوير المواقع">🌐 قسم بناء وتطوير المواقع</option>
+                <option value="الثانوية العامة">📚 قسم أخبار ونصائح الثانوية العامة</option>
+            </select>
+
+            <label for="artTitle">عنوان المقال أو المنشور:</label>
+            <input type="text" id="artTitle" class="form-control" placeholder="اكتب العنوان هنا...">
+
+            <label for="artContent">محتوى المقال تفصيلياً:</label>
+            <textarea id="artContent" class="form-control" rows="6" placeholder="اكتب نص المقال كاملاً هنا..."></textarea>
+
+            <button id="btnPublish" class="submit-btn">نشر المقال وتوجيهه فوراً 📢</button>
+        </div>
     </div>
 
     <script>
-        // 1. فحص هل Firebase محمل أم لا؟
+        // فحص تحميل فايربيس لضمان عدم توقف الصفحة
         if (typeof firebase === 'undefined') {
             alert("تحذير: مكتبة Firebase لم يتم تحميلها! تأكد من اتصال الإنترنت.");
         }
 
+        // بيانات الاتصال الخاصة بقاعدة بيانات القبطان
         const config = {
             apiKey: "AIzaSyCp-m2DkIIwIoKUeuntHLvDbEclB041pz4",
             authDomain: "shrouk-ehab.firebaseapp.com",
@@ -32,18 +106,38 @@
         firebase.initializeApp(config);
         const db = firebase.firestore();
 
-        if(prompt("الباسورد:") === "123010111  55Ee") {
+        // فحص كلمة المرور المؤمنة الخاصة بك
+        if(prompt("الباسورد الخاص بالإدارة:") === "123010111  55Ee") {
             document.getElementById('adminWrapper').style.display = 'block';
+        } else {
+            alert("الباسورد خطأ! لا يمكنك دخول لوحة التحكم.");
         }
 
+        // سكريبت النشر والفرز التلقائي للأقسام
         document.getElementById("btnPublish").addEventListener("click", () => {
+            const title = document.getElementById("artTitle").value.trim();
+            const content = document.getElementById("artContent").value.trim();
+            const category = document.getElementById("artCategory").value;
+
+            if(title === "" || content === "") {
+                alert("من فضلك املأ العنوان والمحتوى أولاً قبل النشر!");
+                return;
+            }
+
+            // إرسال البيانات مضافاً إليها حقل الـ category الجديد للفرز
             db.collection("articles").add({
-                title: document.getElementById("artTitle").value,
-                content: document.getElementById("artContent").value,
-                date: new Date().toISOString()
+                title: title,
+                content: content,
+                category: category, 
+                date: new Date().toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' })
             })
-            .then(() => alert("تم النشر بنجاح!"))
-            .catch(err => alert("خطأ في Firebase: " + err.code + " - " + err.message));
+            .then(() => {
+                alert("تم نشر المقال بنجاح وتوجيهه إلى [" + category + "] !");
+                // تفريغ الحقول بعد النشر
+                document.getElementById("artTitle").value = "";
+                document.getElementById("artContent").value = "";
+            })
+            .catch(err => alert("خطأ أثناء النشر في الفايربيس: " + err.code + " - " + err.message));
         });
     </script>
 </body>

@@ -5,80 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بناء وتطوير المواقع - أكاديمية إيموشا</title>
     <style>
-        :root { 
-            --bg-color: #121212; 
-            --card-bg: #1e1e1e; 
-            --gold-primary: #d4af37; 
-        }
-        body { 
-            background-color: var(--bg-color); 
-            color: #fff; 
-            font-family: sans-serif; 
-            margin: 0; 
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh; /* تعديل الـ typo من ve إلى vh لضمان ثبات الفوتر */
-        }
-
-        header { 
-            background: #000; 
-            border-bottom: 3px solid var(--gold-primary); 
-            padding: 20px; 
-            text-align: center; 
-        }
-        .logo { 
-            font-size: 28px; 
-            font-weight: bold; 
-            color: var(--gold-primary); 
-            text-decoration: none; 
-            display: block; 
-            margin-bottom: 15px; 
-        }
-        nav { 
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 10px; 
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        nav a { 
-            color: #fff; 
-            text-decoration: none; 
-            padding: 12px 10px; 
-            border: 1px solid #333; 
-            border-radius: 5px; 
-            font-size: 13px; 
-            text-align: center;
-            display: block;
-            background: #161616;
-        }
-        nav a:last-child {
-            grid-column: span 2;
-        }
-        nav a.active { 
-            background: var(--gold-primary); 
-            color: #000; 
-            font-weight: bold; 
-            border-color: var(--gold-primary);
-        }
-
-        .container { 
-            max-width: 800px; 
-            margin: 40px auto; 
-            padding: 20px; 
-            text-align: right; 
-            flex: 1; 
-        }
-        .article-post { 
-            background: var(--card-bg); 
-            border-right: 5px solid var(--gold-primary); 
-            padding: 20px; 
-            margin-bottom: 20px; 
-        }
+        :root { --bg-color: #121212; --card-bg: #1e1e1e; --gold-primary: #d4af37; --gold-hover: #f3e5ab; --text-color: #ffffff; --text-muted: #b3b3b3; }
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-color); }
+        .blessing-bar { background-color: var(--gold-primary); color: #000; text-align: center; padding: 8px 10px; font-weight: bold; font-size: 14px; }
+        header { background-color: #000; border-bottom: 2px solid var(--gold-primary); padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .logo { font-size: 28px; font-weight: bold; color: var(--gold-primary); text-decoration: none; }
+        nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; width: 100%; max-width: 1200px; }
+        nav a { color: var(--text-color); text-decoration: none; font-weight: bold; font-size: 12px; padding: 12px 10px; background-color: #1a1a1a; border: 1px solid #333; border-radius: 6px; transition: all 0.3s ease; text-align: center; flex: 1; min-width: 130px; }
+        nav a:hover { background-color: #252525; border-color: var(--gold-primary); color: var(--gold-primary); }
+        nav a.active { background-color: var(--gold-primary); color: #000; border-color: var(--gold-primary); }
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        h1.section-title { color: var(--gold-primary); border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 30px; }
+        .article-card { background:#1e1e1e; border:1px solid #333; padding:20px; border-radius:8px; margin-bottom:20px; text-align:right; transition: border-color 0.3s; }
+        .article-card:hover { border-color: var(--gold-primary); }
+        .article-card h3 { color: var(--gold-primary); margin-top: 0; font-size: 20px; }
+        .article-card p { color: #fff; line-height: 1.7; font-size: 15px; }
+        .read-more-btn { display: inline-block; color: #000; background: var(--gold-primary); text-decoration: none; font-weight: bold; padding: 6px 14px; border-radius: 4px; font-size: 13px; }
+        .read-more-btn:hover { background: var(--gold-hover); }
     </style>
 </head>
 <body>
-
+    <div class="blessing-bar">اللهم صلِّ وسلِّم وبارك على نبينا محمد وعلى آله وصحبه أجمعين ✨</div>
     <header>
         <a href="index.html" class="logo">أكاديمية إيموشا</a>
         <nav>
@@ -86,71 +33,41 @@
             <a href="internet-earning.html">الربح من الإنترنت</a>
             <a href="facebook.html">أسرار فيسبوك</a>
             <a href="web-dev.html" class="active">تطوير المواقع</a>
-            <a href="thanwya-books.html">📚 الثانوية العامة</a>
-            <a href="thanwya.html">🎓 نتيجة الثانوية العامة</a>
-            <a href="azhar.html">🕌 نتيجة الثانوية الأزهرية</a>
+            <a href="thanwya-books.html">📚 ثانوية عامة</a>
         </nav>
     </header>
 
     <div class="container">
-        <h1>قسم بناء وتطوير المواقع 🌐</h1>
-        <div id="sectionContainer">جاري التحميل...</div>
+        <h1 class="section-title">🌐 دروس بناء وتطوير المواقع والبرمجة</h1>
+        <div id="articlesContainer">
+            <p style="color: var(--text-muted); text-align: center;">جاري جلب الدروس...</p>
+        </div>
     </div>
 
-    <!-- الفوتر الموحد والمعدل للموبايل (تم إزالة الفوتر المكرر القديم وتثبيته هنا) -->
-    <footer style="background: #000; border-top: 3px solid var(--gold-primary); padding: 25px 10px; text-align: center; margin-top: auto; font-family: sans-serif;">
-        <div class="footer-links" style="margin-bottom: 15px;">
-            <a href="about.html#about" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">من نحن</a>
-            <a href="about.html#privacy" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">سياسة الخصوصية</a>
-            <a href="about.html#contact" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">اتصل بنا</a>
-        </div>
-        <div class="footer-rights" style="font-size: 12px; color: #666; border-top: 1px solid #111; padding-top: 15px; max-width: 400px; margin: 0 auto;">
-            جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف
-        </div>
-    </footer>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script>
+        const firebaseConfig = { apiKey: "AIzaSyBORppTYoq6wbsoM8cED7T_cW5UHVX5XbE", authDomain: "emosha-b67a3.firebaseapp.com", projectId: "emosha-b67a3" };
+        firebase.initializeApp(firebaseConfig); const db = firebase.firestore();
+        const container = document.getElementById("articlesContainer");
 
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-<script>
-    const firebaseConfig = {
-        apiKey: "AIzaSyBORppTYoq6wbsoM8cED7T_cW5UHVX5XbE",
-        authDomain: "emosha-b67a3.firebaseapp.com",
-        projectId: "emosha-b67a3",
-        storageBucket: "emosha-b67a3.firebasestorage.app",
-        messagingSenderId: "136317351287",
-        appId: "1:136317351287:web:f9b7186384278ba6c21d72"
-    };
-    if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
-    const db = firebase.firestore();
-    const container = document.getElementById("sectionContainer") || document.body;
-
-    db.collection("articles").where("category", "==", "تطوير المواقع").get().then((querySnapshot) => {
-        container.innerHTML = ""; // مسح كلمة جاري التحميل
-        
-        if (querySnapshot.empty) {
-            container.innerHTML = "<p style='color:#666; text-align:center; padding: 20px;'>لا توجد مقالات منشورة في هذا القسم حالياً.</p>";
-            return;
-        }
-        
-        querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            const docId = doc.id; // الحصول على ID المقال
-            
-            // اقتطاع أول 150 حرف فقط من المقال
-            const snippet = data.content.substring(0, 150) + "...";
-            
-            container.innerHTML += `
-                <div style="background:#1e1e1e; border:1px solid #d4af37; padding:20px; border-radius:8px; margin-bottom:20px; text-align:right; direction:rtl;">
-                    <h3 style="color:#d4af37; margin-top:0;">${data.title}</h3>
-                    <p style="color:#fff; line-height:1.7;">${snippet}</p>
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px; border-top: 1px solid #333; padding-top: 10px;">
-                        <small style="color:#666;">تاريخ النشر: ${data.date || ''}</small>
-                        <a href="article.html?id=${docId}" style="color:#000; background:#d4af37; text-decoration:none; font-weight:bold; padding:6px 12px; border-radius:4px; font-size:13px;">اقرأ المقال كاملاً ➔</a>
-                    </div>
-                </div>`;
-        });
-    }).catch(err => { container.innerHTML = "<p style='color:red; text-align:center;'>حدث خطأ أثناء تحميل المقالات.</p>"; });
-</script>
-
+        db.collection("articles").where("category", "==", "تطوير المواقع").get().then((querySnapshot) => {
+            container.innerHTML = "";
+            if (querySnapshot.empty) { container.innerHTML = "<p style='color:#666; text-align:center;'>لا توجد مقالات منشورة في هذا القسم حالياً.</p>"; return; }
+            querySnapshot.forEach((doc) => {
+                const data = doc.data(); const docId = doc.id;
+                const snippet = data.content ? data.content.substring(0, 150) + "..." : "";
+                container.innerHTML += `
+                    <div class="article-card">
+                        <h3>${data.title}</h3>
+                        <p>${snippet}</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px; border-top: 1px solid #2a2a2a; padding-top: 10px;">
+                            <small style="color:#666;">التاريخ: ${data.date || ''}</small>
+                            <a href="article.html?id=${docId}" class="read-more-btn">اقرأ المقال كاملاً ➔</a>
+                        </div>
+                    </div>`;
+            });
+        }).catch(err => { container.innerHTML = "<p style='color:red;'>حدث خطأ أثناء تحميل القسم.</p>"; });
+    </script>
 </body>
 </html>

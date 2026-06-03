@@ -109,8 +109,39 @@
         </div>
     </footer>
 
-    <script>
-        // هنا يوضع كود الـ JavaScript الخاص بجلب المقالات من الفايربيس
-    </script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyBORppTYoq6wbsoM8cED7T_cW5UHVX5XbE",
+        authDomain: "emosha-b67a3.firebaseapp.com",
+        projectId: "emosha-b67a3",
+        storageBucket: "emosha-b67a3.firebasestorage.app",
+        messagingSenderId: "136317351287",
+        appId: "1:136317351287:web:f9b7186384278ba6c21d72"
+    };
+    if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+    const db = firebase.firestore();
+    const container = document.getElementById("sectionContainer") || document.body;
+
+    db.collection("articles").where("category", "==", "تطوير المواقع").get().then((querySnapshot) => {
+        const loadingText = container.querySelector('p') || container;
+        if(loadingText && loadingText.innerText.includes("جاري")) { loadingText.remove(); }
+        if (querySnapshot.empty) {
+            container.innerHTML += "<p style='color:#666; text-align:center; padding: 20px;'>لا توجد مقالات منشورة في هذا القسم حالياً.</p>";
+            return;
+        }
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            container.innerHTML += `
+                <div style="background:#1e1e1e; border:1px solid #d4af37; padding:20px; border-radius:8px; margin-bottom:20px; text-align:right; direction:rtl;">
+                    <h3 style="color:#d4af37; margin-top:0;">${data.title}</h3>
+                    <p style="color:#fff; line-height:1.7; white-space: pre-wrap;">${data.content}</p>
+                    <small style="color:#666;">تاريخ النشر: ${data.date || ''}</small>
+                </div>`;
+        });
+    }).catch(err => { container.innerHTML += "<p style='color:red; text-align:center;'>حدث خطأ أثناء تحميل المقالات.</p>"; });
+</script>
+
 </body>
 </html>

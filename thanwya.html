@@ -33,24 +33,10 @@
         .submit-btn { width: 100%; padding: 12px; background-color: var(--gold-primary); color: #000; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
         .submit-btn:hover { background-color: var(--gold-hover); }
         
-        /* مربع النتيجة اللي هيظهر تحته علطول */
+        /* مربع النتيجة */
         .iframe-wrapper { display: none; margin-top: 20px; border-radius: 8px; border: 2px solid var(--gold-primary); overflow: hidden; background: #fff; position: relative; padding-top: 100%; }
         .iframe-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-
-        <footer>
-    <div class="footer-links">
-        <a href="about.html#about">من نحن</a> | 
-        <a href="about.html#privacy">سياسة الخصوصية</a> | 
-        <a href="about.html#contact">اتصل بنا</a>
-    </div>
-    <div class="footer-rights">جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف</div>
-</footer>
-
-
-
     </style>
-    
-
 </head>
 <body>
     <div class="blessing-bar">اللهم صلِّ وسلِّم وبارك على نبينا محمد وعلى آله وصحبه أجمعين ✨</div>
@@ -83,8 +69,16 @@
         </div>
     </div>
 
-    <footer>
-        <p style="color: var(--text-muted); font-size: 13px; margin: 0;">جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف</p>
+    <!-- الفوتر الموحد والمعدل للموبايل (تم إزالة الفوتر المكرر القديم وتوحيده) -->
+    <footer style="background: #000; border-top: 2px solid var(--gold-primary); padding: 25px 10px; text-align: center; margin-top: 60px; font-family: sans-serif;">
+        <div class="footer-links" style="margin-bottom: 15px;">
+            <a href="about.html#about" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">من نحن</a>
+            <a href="about.html#privacy" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">سياسة الخصوصية</a>
+            <a href="about.html#contact" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">اتصل بنا</a>
+        </div>
+        <div class="footer-rights" style="font-size: 12px; color: #666; border-top: 1px solid #111; padding-top: 15px; max-width: 400px; margin: 0 auto;">
+            جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف
+        </div>
     </footer>
 
 <script>
@@ -96,12 +90,9 @@
             return;
         }
         
-        // بيفتح النتيجة في نافذة منبثقة فوق موقعك، الطالب بيكتب الرقم عندك والنتيجة بتفتح له في نافذة خاصة
         var url = "https://g12.emis.gov.eg/?seatNo=" + seatNo;
         window.open(url, "ThanwyaResult", "width=900,height=700,scrollbars=yes,resizable=yes,top=50,left=50");
     }
 </script>
-
-
 </body>
 </html>

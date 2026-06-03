@@ -74,7 +74,7 @@
                 <option value="الربح من الإنترنت">💰 قسم الربح من الإنترنت</option>
                 <option value="أسرار فيسبوك">🔥 قسم أسرار فيسبوك</option>
                 <option value="تطوير المواقع">🌐 قسم بناء وتطوير المواقع</option>
-                <option value="الثانوية العامة">📚 قسم أخبار ونصائح الثانوية العامة</option>
+                <option value="ثانوية عامة">📚 قسم بوابة الثانوية العامة (المكتبة)</option>
             </select>
 
             <label for="artTitle">عنوان المقال أو المنشور:</label>
@@ -88,7 +88,6 @@
     </div>
 
     <script>
-        // بيانات مشروع الفايربيس الجديد الخاص بك 100%
         const firebaseConfig = {
             apiKey: "AIzaSyBORppTYoq6wbsoM8cED7T_cW5UHVX5XbE",
             authDomain: "emosha-b67a3.firebaseapp.com",
@@ -100,18 +99,15 @@
             measurementId: "G-G4F8CDJV0L"
         };
         
-        // تشغيل الفايربيس
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // نظام الحماية والباسورد الخاص بك
         if(prompt("الباسورد الخاص بالإدارة:") === "123010111  55Ee") {
             document.getElementById('adminWrapper').style.display = 'block';
         } else {
             alert("الباسورد خطأ! لا يمكنك دخول لوحة التحكم.");
         }
 
-        // كود معالجة النشر الذكي والتلقائي
         document.getElementById("btnPublish").addEventListener("click", () => {
             const titleInput = document.getElementById("artTitle");
             const contentInput = document.getElementById("artContent");
@@ -126,7 +122,6 @@
                 return;
             }
 
-            // حفظ المقال داخل كوليكشن موحد اسمه "articles" وتحديد قسمه بالداخل لسهولة الفرز
             db.collection("articles").add({
                 title: title,
                 content: content,
@@ -134,13 +129,12 @@
                 date: new Date().toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' })
             })
             .then(() => {
-                alert("تم النشر بنجاح في مشروعك الجديد وتوجيهه إلى [" + category + "] !");
-                // تفريغ الحقول أوتوماتيكياً فور نجاح العملية
+                alert("تم النشر بنجاح وتوجيهه إلى قسم [" + category + "] !");
                 titleInput.value = "";
                 contentInput.value = "";
             })
             .catch(err => {
-                alert("حدث خطأ أثناء النشر: " + err.message + "\nتأكد من تفعيل Firestore Database وفتح الـ Rules في المشروع الجديد.");
+                alert("حدث خطأ أثناء النشر: " + err.message);
             });
         });
     </script>

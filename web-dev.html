@@ -109,7 +109,7 @@
         </div>
     </footer>
 
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 <script>
     const firebaseConfig = {
@@ -125,22 +125,31 @@
     const container = document.getElementById("sectionContainer") || document.body;
 
     db.collection("articles").where("category", "==", "تطوير المواقع").get().then((querySnapshot) => {
-        const loadingText = container.querySelector('p') || container;
-        if(loadingText && loadingText.innerText.includes("جاري")) { loadingText.remove(); }
+        container.innerHTML = ""; // مسح كلمة جاري التحميل
+        
         if (querySnapshot.empty) {
-            container.innerHTML += "<p style='color:#666; text-align:center; padding: 20px;'>لا توجد مقالات منشورة في هذا القسم حالياً.</p>";
+            container.innerHTML = "<p style='color:#666; text-align:center; padding: 20px;'>لا توجد مقالات منشورة في هذا القسم حالياً.</p>";
             return;
         }
+        
         querySnapshot.forEach((doc) => {
             const data = doc.data();
+            const docId = doc.id; // الحصول على ID المقال
+            
+            // اقتطاع أول 150 حرف فقط من المقال
+            const snippet = data.content.substring(0, 150) + "...";
+            
             container.innerHTML += `
                 <div style="background:#1e1e1e; border:1px solid #d4af37; padding:20px; border-radius:8px; margin-bottom:20px; text-align:right; direction:rtl;">
                     <h3 style="color:#d4af37; margin-top:0;">${data.title}</h3>
-                    <p style="color:#fff; line-height:1.7; white-space: pre-wrap;">${data.content}</p>
-                    <small style="color:#666;">تاريخ النشر: ${data.date || ''}</small>
+                    <p style="color:#fff; line-height:1.7;">${snippet}</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px; border-top: 1px solid #333; padding-top: 10px;">
+                        <small style="color:#666;">تاريخ النشر: ${data.date || ''}</small>
+                        <a href="article.html?id=${docId}" style="color:#000; background:#d4af37; text-decoration:none; font-weight:bold; padding:6px 12px; border-radius:4px; font-size:13px;">اقرأ المقال كاملاً ➔</a>
+                    </div>
                 </div>`;
         });
-    }).catch(err => { container.innerHTML += "<p style='color:red; text-align:center;'>حدث خطأ أثناء تحميل المقالات.</p>"; });
+    }).catch(err => { container.innerHTML = "<p style='color:red; text-align:center;'>حدث خطأ أثناء تحميل المقالات.</p>"; });
 </script>
 
 </body>

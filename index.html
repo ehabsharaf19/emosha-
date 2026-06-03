@@ -181,7 +181,7 @@
         </div>
 
         <div class="articles-display">
-            <h2>آخر المقالات العامة المنشورة</h2>
+            <h2>المقالات الخاصة بالصفحة الرئيسية</h2>
             <div id="articlesContainer">
                 <p style="color: var(--text-muted); text-align: center;">جاري تحميل المقالات...</p>
             </div>
@@ -216,12 +216,12 @@
         const db = firebase.firestore();
         const container = document.getElementById("articlesContainer");
 
-        // جلب آخر المقالات من الفايربيس للرئيسية
-        db.collection("articles").get().then((querySnapshot) => {
+        // تعديل لجلب مقالات قسم "الرئيسية" فقط من الفايربيس
+        db.collection("articles").where("category", "==", "الرئيسية").get().then((querySnapshot) => {
             container.innerHTML = ""; // مسح نص جاري التحميل
             
             if (querySnapshot.empty) {
-                container.innerHTML = "<p style='color:#666; text-align:center; padding: 20px;'>لا توجد مقالات منشورة حالياً.</p>";
+                container.innerHTML = "<p style='color:#666; text-align:center; padding: 20px;'>لا توجد مقالات مخصصة للرئيسية حالياً.</p>";
                 return;
             }
             
@@ -234,7 +234,7 @@
                 
                 container.innerHTML += `
                     <div class="article-card">
-                        <span style="background:var(--gold-primary); color:#000; padding:4px 10px; font-size:11px; font-weight:bold; border-radius:4px; float:left;">${data.category || 'عام'}</span>
+                        <span style="background:var(--gold-primary); color:#000; padding:4px 10px; font-size:11px; font-weight:bold; border-radius:4px; float:left;">${data.category || 'الرئيسية'}</span>
                         <h3>${data.title}</h3>
                         <p>${snippet}</p>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px; border-top: 1px solid #2a2a2a; padding-top: 10px;">

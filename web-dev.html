@@ -3,21 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الربح من الإنترنت - أكاديمية إيموشا</title>
+    <title>بناء وتطوير المواقع - أكاديمية إيموشا</title>
     <style>
-        /* التنسيق الأساسي */
-        :root { --bg-color: #121212; --card-bg: #1e1e1e; --gold-primary: #d4af37; }
-        body { background-color: var(--bg-color); color: #fff; font-family: sans-serif; margin: 0; }
+        /* التنسيق الأساسي الموحد */
+        :root { 
+            --bg-color: #121212; 
+            --card-bg: #1e1e1e; 
+            --gold-primary: #d4af37; 
+        }
+        body { 
+            background-color: var(--bg-color); 
+            color: #fff; 
+            font-family: sans-serif; 
+            margin: 0; 
+        }
 
-        /* الهيدر الذهبي الموحد */
-        header { background: #000; border-bottom: 3px solid var(--gold-primary); padding: 20px; text-align: center; }
-        .logo { font-size: 28px; font-weight: bold; color: var(--gold-primary); text-decoration: none; display: block; margin-bottom: 15px; }
-        nav { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-        nav a { color: #fff; text-decoration: none; padding: 10px; border: 1px solid #333; border-radius: 5px; font-size: 13px; }
-        nav a.active { background: var(--gold-primary); color: #000; font-weight: bold; }
+        /* الهيدر الذهبي الاحترافي الموحد */
+        header { 
+            background: #000; 
+            border-bottom: 3px solid var(--gold-primary); 
+            padding: 20px; 
+            text-align: center; 
+        }
+        .logo { 
+            font-size: 28px; 
+            font-weight: bold; 
+            color: var(--gold-primary); 
+            text-decoration: none; 
+            display: block; 
+            margin-bottom: 15px; 
+        }
+        nav { 
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* تقسيم الأزرار لصفين متناسقين في الموبايل */
+            gap: 10px; 
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        nav a { 
+            color: #fff; 
+            text-decoration: none; 
+            padding: 12px 10px; 
+            border: 1px solid #333; 
+            border-radius: 5px; 
+            font-size: 13px; 
+            text-align: center;
+            display: block;
+            background: #161616;
+        }
+        /* جعل زر الأزهر يأخذ المساحة كاملة في الأسفل ليتناسق التصميم */
+        nav a:last-child {
+            grid-column: span 2;
+        }
+        nav a.active { 
+            background: var(--gold-primary); 
+            color: #000; 
+            font-weight: bold; 
+            border-color: var(--gold-primary);
+        }
 
-        .container { max-width: 800px; margin: 40px auto; padding: 20px; text-align: right; }
-        .article-post { background: var(--card-bg); border-right: 5px solid var(--gold-primary); padding: 20px; margin-bottom: 20px; }
+        .container { 
+            max-width: 800px; 
+            margin: 40px auto; 
+            padding: 20px; 
+            text-align: right; 
+        }
+        .article-post { 
+            background: var(--card-bg); 
+            border-right: 5px solid var(--gold-primary); 
+            padding: 20px; 
+            margin-bottom: 20px; 
+        }
     </style>
 </head>
 <body>
@@ -26,9 +82,9 @@
         <a href="index.html" class="logo">أكاديمية إيموشا</a>
         <nav>
             <a href="index.html">الصفحة الرئيسية</a>
-            <a href="internet-earning.html" class="active">الربح من الإنترنت</a>
+            <a href="internet-earning.html">الربح من الإنترنت</a>
             <a href="facebook.html">أسرار فيسبوك</a>
-            <a href="web-dev.html">تطوير المواقع</a>
+            <a href="web-dev.html" class="active">تطوير المواقع</a>
             <a href="thanwya-books.html">📚 الثانوية العامة</a>
             <a href="thanwya.html">🎓 نتيجة الثانوية العامة</a>
             <a href="azhar.html">🕌 نتيجة الثانوية الأزهرية</a>
@@ -36,12 +92,12 @@
     </header>
 
     <div class="container">
-        <h1>قسم طرق وأسرار الربح من الإنترنت 💰</h1>
+        <h1>قسم بناء وتطوير المواقع 🌐</h1>
         <div id="sectionContainer">جاري التحميل...</div>
     </div>
 
     <script>
-        // كود الـ JS الخاص بك هنا
+        // هنا يوضع كود الـ JavaScript الخاص بجلب مقالات تطوير المواقع من الفايربيس
     </script>
 </body>
 </html>

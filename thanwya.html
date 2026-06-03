@@ -69,7 +69,6 @@
         </div>
     </div>
 
-    <!-- الفوتر الموحد والمعدل للموبايل (تم إزالة الفوتر المكرر القديم وتوحيده) -->
     <footer style="background: #000; border-top: 2px solid var(--gold-primary); padding: 25px 10px; text-align: center; margin-top: 60px; font-family: sans-serif;">
         <div class="footer-links" style="margin-bottom: 15px;">
             <a href="about.html#about" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">من نحن</a>
@@ -81,38 +80,20 @@
         </div>
     </footer>
 
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 <script>
-    const firebaseConfig = {
-        apiKey: "AIzaSyBORppTYoq6wbsoM8cED7T_cW5UHVX5XbE",
-        authDomain: "emosha-b67a3.firebaseapp.com",
-        projectId: "emosha-b67a3",
-        storageBucket: "emosha-b67a3.firebasestorage.app",
-        messagingSenderId: "136317351287",
-        appId: "1:136317351287:web:f9b7186384278ba6c21d72"
-    };
-    if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
-    const db = firebase.firestore();
-    const container = document.getElementById("sectionContainer") || document.body;
-
-    db.collection("articles").where("category", "==", "الثانوية العامة").get().then((querySnapshot) => {
-        const loadingText = container.querySelector('p') || container;
-        if(loadingText && loadingText.innerText.includes("جاري")) { loadingText.remove(); }
-        if (querySnapshot.empty) {
-            container.innerHTML += "<p style='color:#666; text-align:center; padding: 20px;'>لا توجد نصائح منشورة هنا حالياً.</p>";
+    function showGeneralResult() {
+        const seatNum = document.getElementById("seatNumber").value;
+        if(seatNum.trim() === "") {
+            alert("من فضلك أدخل رقم الجلوس أولاً");
             return;
         }
-        querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            container.innerHTML += `
-                <div style="background:#1e1e1e; border:1px solid #d4af37; padding:20px; border-radius:8px; margin-bottom:20px; text-align:right; direction:rtl;">
-                    <h3 style="color:#d4af37; margin-top:0;">${data.title}</h3>
-                    <p style="color:#fff; line-height:1.7; white-space: pre-wrap;">${data.content}</p>
-                    <small style="color:#666;">تاريخ النشر: ${data.date || ''}</small>
-                </div>`;
-        });
-    }).catch(err => { container.innerHTML += "<p style='color:red; text-align:center;'>حدث خطأ أثناء تحميل البيانات.</p>"; });
+        const wrapper = document.getElementById("resultWrapper");
+        const frame = document.getElementById("resultFrame");
+        
+        // رابط سيرفر النتيجة الأصلي
+        frame.src = "https://natega.example.com/?seat=" + seatNum; 
+        wrapper.style.display = "block";
+    }
 </script>
 
 </body>

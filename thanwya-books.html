@@ -54,17 +54,11 @@
         <p class="page-desc">مكتبة شاملة لتحميل الكتب الخارجية، الملخصات، والمراجعات النهائية مجاناً.</p>
 
         <div class="books-section">
-            <h2>📚 المذكرات والكتب المتاحة:</h2>
-            <div id="booksContainer"></div>
-        </div>
-
-        <div class="books-section">
             <h2>📝 أخبار ومقالات الثانوية العامة:</h2>
-            <div id="articlesContainer"></div>
+            <div id="articlesContainer">جاري تحميل المقالات...</div>
         </div>
     </div>
 
-    <!-- الفوتر الموحد والمعدل للموبايل -->
     <footer style="background: #000; border-top: 2px solid var(--gold-primary); padding: 25px 10px; text-align: center; margin-top: 60px; font-family: sans-serif;">
         <div class="footer-links" style="margin-bottom: 15px;">
             <a href="about.html#about" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">من نحن</a>
@@ -76,39 +70,39 @@
         </div>
     </footer>
 
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    
     <script>
-        window.onload = function() {
-            var books = JSON.parse(localStorage.getItem('sharedBooks')) || [];
-            var container = document.getElementById('booksContainer');
-            if(books.length === 0) {
-                container.innerHTML = `<p style="color: var(--text-muted);">لا توجد مذكرات مضافة حالياً.</p>`;
-            } else {
-                books.forEach(function(book) {
-                    container.innerHTML += `
-                        <div class="book-item">
-                            <div><h3>${book.name}</h3><span style="color:var(--gold-primary)">النوع: PDF</span></div>
-                            <a href="${book.link}" target="_blank" class="download-btn">تحميل مباشر ⬇</a>
-                        </div>`;
-                });
-            }
-
-            var articles = JSON.parse(localStorage.getItem('sharedArticles')) || [];
-            var filtered = articles.filter(item => item.category === "الثانوية العامة");
-            var artContainer = document.getElementById('articlesContainer');
-            
-            if(filtered.length === 0) {
-                artContainer.innerHTML = `<p style="color: var(--text-muted);">لا توجد مقالات منشورة حالياً.</p>`;
-            } else {
-                filtered.forEach(function(item) {
-                    artContainer.innerHTML += `
-                        <div class="book-item" style="display:block;">
-                            <h3 style="color:var(--gold-primary); margin-top:0;">${item.title}</h3>
-                            <p style="color:#fff; line-height:1.7;">${item.content}</p>
-                            <span style="font-size:12px; color:#888;">${item.date}</span>
-                        </div>`;
-                });
-            }
+        const firebaseConfig = {
+            apiKey: "AIzaSyBORppTYoq6wbsoM8cED7T_cW5UHVX5XbE",
+            authDomain: "emosha-b67a3.firebaseapp.com",
+            projectId: "emosha-b67a3",
+            storageBucket: "emosha-b67a3.firebasestorage.app",
+            messagingSenderId: "136317351287",
+            appId: "1:136317351287:web:f9b7186384278ba6c21d72"
         };
+        if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
+        const db = firebase.firestore();
+        const container = document.getElementById("articlesContainer");
+
+        db.collection("articles").where("category", "==", "الثانوية العامة").get().then((querySnapshot) => {
+            container.innerHTML = "";
+            if (querySnapshot.empty) {
+                container.innerHTML = "<p style='color:#666; text-align:center;'>لا توجد مقالات منشورة حالياً.</p>";
+                return;
+            }
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                container.innerHTML += `
+                    <div style="background:#1e1e1e; border:1px solid #d4af37; padding:20px; border-radius:8px; margin-bottom:20px;">
+                        <h3 style="color:#d4af37; margin-top:0;">${data.title}</h3>
+                        <p style="color:#fff; line-height:1.7;">${data.content.substring(0, 150)}...</p>
+                        <a href="article.html?id=${doc.id}" style="color:var(--gold-primary); font-weight:bold; text-decoration:none;">اقرأ المزيد ➔</a>
+                    </div>`;
+            });
+        }).catch(err => { container.innerHTML = "حدث خطأ في تحميل البيانات."; });
     </script>
 </body>
 </html>

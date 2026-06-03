@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بناء وتطوير المواقع - أكاديمية إيموشا</title>
     <style>
-        /* التنسيق الأساسي الموحد */
         :root { 
             --bg-color: #121212; 
             --card-bg: #1e1e1e; 
@@ -18,10 +17,9 @@
             margin: 0; 
             display: flex;
             flex-direction: column;
-            min-height: 100ve; /* لضمان بقاء الفوتر في الأسفل دائماً */
+            min-height: 100vh; /* تعديل الـ typo من ve إلى vh لضمان ثبات الفوتر */
         }
 
-        /* الهيدر الذهبي الاحترافي الموحد */
         header { 
             background: #000; 
             border-bottom: 3px solid var(--gold-primary); 
@@ -64,13 +62,12 @@
             border-color: var(--gold-primary);
         }
 
-        /* المحتوى الرئيسي */
         .container { 
             max-width: 800px; 
             margin: 40px auto; 
             padding: 20px; 
             text-align: right; 
-            flex: 1; /* يدفع الفوتر للأسفل لو المحتوى قليل */
+            flex: 1; 
         }
         .article-post { 
             background: var(--card-bg); 
@@ -78,18 +75,6 @@
             padding: 20px; 
             margin-bottom: 20px; 
         }
-
-        <footer>
-    <div class="footer-links">
-        <a href="about.html#about">من نحن</a> | 
-        <a href="about.html#privacy">سياسة الخصوصية</a> | 
-        <a href="about.html#contact">اتصل بنا</a>
-    </div>
-    <div class="footer-rights">جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف</div>
-</footer>
-
-
-
     </style>
 </head>
 <body>
@@ -112,14 +97,14 @@
         <div id="sectionContainer">جاري التحميل...</div>
     </div>
 
-    <!-- الفوتر الجديد تم إضافته هنا -->
-    <footer>
-        <div class="footer-links">
-            <a href="about.html">من نحن</a> | 
-            <a href="privacy.html">سياسة الخصوصية</a> | 
-            <a href="contact.html">اتصل بنا</a>
+    <!-- الفوتر الموحد والمعدل للموبايل (تم إزالة الفوتر المكرر القديم وتثبيته هنا) -->
+    <footer style="background: #000; border-top: 3px solid var(--gold-primary); padding: 25px 10px; text-align: center; margin-top: auto; font-family: sans-serif;">
+        <div class="footer-links" style="margin-bottom: 15px;">
+            <a href="about.html#about" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">من نحن</a>
+            <a href="about.html#privacy" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">سياسة الخصوصية</a>
+            <a href="about.html#contact" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">اتصل بنا</a>
         </div>
-        <div class="footer-rights">
+        <div class="footer-rights" style="font-size: 12px; color: #666; border-top: 1px solid #111; padding-top: 15px; max-width: 400px; margin: 0 auto;">
             جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف
         </div>
     </footer>

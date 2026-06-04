@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة تحكم إيموشا - إدارة الأقسام الجديدة</title>
+    <title>لوحة تحكم إيموشا - إدارة الأقسام كاملة</title>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
     
@@ -70,11 +70,20 @@
             
             <label for="artCategory">اختر الصفحة التي تريد ظهور المقال فيها:</label>
             <select id="artCategory" class="form-control">
+                <!-- الأقسام الأساسية للموقع -->
                 <option value="الرئيسية">🏠 الصفحة الرئيسية</option>
                 <option value="الربح من الإنترنت">💰 قسم الربح من الإنترنت</option>
                 <option value="أسرار فيسبوك">🔥 قسم أسرار فيسبوك</option>
                 <option value="تطوير المواقع">🌐 قسم بناء وتطوير المواقع</option>
-                <option value="ثانوية عامة">📚 قسم بوابة الثانوية العامة (المكتبة)</option>
+                
+                <!-- الأقسام التعليمية (المكتبة الشاملة) -->
+                <option value="المرحلة الابتدائية">📚 المكتبة - المرحلة الابتدائية</option>
+                <option value="المرحلة الاعدادية">📚 المكتبة - المرحلة الإعدادية</option>
+                <option value="المرحلة الثانوية">📚 المكتبة - المرحلة الثانوية العامة</option>
+                
+                <!-- أقسام نتائج الامتحانات -->
+                <option value="نتيجة الثانوية العامة">🎓 قسم نتيجة الثانوية العامة</option>
+                <option value="نتيجة الثانوية الأزهرية">🕌 قسم نتيجة الثانوية الأزهرية</option>
             </select>
 
             <label for="artTitle">عنوان المقال أو المنشور:</label>

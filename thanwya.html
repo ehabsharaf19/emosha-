@@ -33,77 +33,8 @@
         .submit-btn { width: 100%; padding: 12px; background-color: var(--gold-primary); color: #000; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
         .submit-btn:hover { background-color: var(--gold-hover); }
         
-        /* مربع النتيجة المحسن للموبايل والشاشات المختلفة */
-        .iframe-wrapper { display: none; margin-top: 25px; border-radius: 8px; border: 2px solid var(--gold-primary); overflow: hidden; background: #fff; position: relative; padding-top: 120%; /* لزيادة الارتفاع على الموبايل لراحة الطالب */ }
-        .iframe-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-    </style>
-</head>
-<body>
-    <div class="blessing-bar">اللهم صلِّ وسلِّم وبارك على نبينا محمد وعلى آله وصحبه أجمعين ✨</div>
-    <header>
-        <a href="index.html" class="logo">أكاديمية إيموشا</a>
-        <nav>
-            <a href="index.html">الصفحة الرئيسية</a>
-            <a href="internet-earning.html">الربح من الإنترنت</a>
-            <a href="facebook.html">أسرار فيسبوك</a>
-            <a href="web-dev.html">تطوير المواقع</a>
-            <a href="thanwya-books.html">📚 الثانوية العامة</a>
-            <a href="thanwya.html" class="active">🎓 نتيجة الثانوية العامة</a>
-            <a href="azhar.html">🕌 نتيجة الثانوية الأزهرية</a>
-        </nav>
-    </header>
-
-    <div class="main-container">
-        <div class="result-card">
-            <h1>🎓 نتيجة الثانوية العامة 2026</h1>
-            <p>أدخل رقم جلوسك واضغط على الزر لتظهر نتيجتك بالأسفل مباشرة داخل الموقع</p>
-            
-            <div class="form-container">
-                <input type="number" id="seatNumber" class="input-field" placeholder="أدخل رقم الجلوس" required>
-                <button onclick="showGeneralResult()" class="submit-btn">عرض النتيجة بالأسفل ⬇</button>
-            </div>
-
-            <div id="resultWrapper" class="iframe-wrapper">
-                <iframe id="resultFrame" src=""></iframe>
-            </div>
-        </div>
-    </div>
-
-    <footer style="background: #000; border-top: 2px solid var(--gold-primary); padding: 25px 10px; text-align: center; margin-top: 60px; font-family: sans-serif;">
-        <div class="footer-links" style="margin-bottom: 15px;">
-            <a href="about.html#about" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">من نحن</a>
-            <a href="about.html#privacy" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">سياسة الخصوصية</a>
-            <a href="about.html#contact" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">اتصل بنا</a>
-        </div>
-        <div class="footer-rights" style="font-size: 12px; color: #666; border-top: 1px solid #111; padding-top: 15px; max-width: 400px; margin: 0 auto;">
-            جميع الحقوق محفوظة © 2026 | إدارة القبطان إيهاب شرف
-        </div>
-    </footer>
-
-<script>
-    function showGeneralResult() {
-        const seatNum = document.getElementById("seatNumber").value.trim();
-        
-        if(seatNum === "") {
-            alert("من فضلك أدخل رقم الجلوس أولاً.");
-            return;
-        }
-        
-        const wrapper = document.getElementById("resultWrapper");
-        const frame = document.getElementById("resultFrame");
-        
-        // رابط سيرفر النتيجة الأصلي الخاص بك
-        frame.src = "https://natega.example.com/?seat=" + seatNum; 
-        wrapper.style.display = "block";
-        
-        // عمل سكرول تلقائي لأسفل باتجاه النتيجة لراحة الزائر
-        wrapper.scrollIntoView({ behavior: 'smooth' });
-    }
-</script>
-
-</body>
-</html>
-        .iframe-wrapper { display: none; margin-top: 20px; border-radius: 8px; border: 2px solid var(--gold-primary); overflow: hidden; background: #fff; position: relative; padding-top: 100%; }
+        /* مربع النتيجة المحسن ومحمي من التداخل */
+        .iframe-wrapper { display: none; margin-top: 25px; border-radius: 8px; border: 2px solid var(--gold-primary); overflow: hidden; background: #fff; position: relative; padding-top: 120%; }
         .iframe-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
     </style>
 </head>
@@ -151,17 +82,22 @@
 
 <script>
     function showGeneralResult() {
-        const seatNum = document.getElementById("seatNumber").value;
-        if(seatNum.trim() === "") {
-            alert("من فضلك أدخل رقم الجلوس أولاً");
+        const seatNum = document.getElementById("seatNumber").value.trim();
+        
+        if(seatNum === "") {
+            alert("من فضلك أدخل رقم الجلوس أولاً.");
             return;
         }
+        
         const wrapper = document.getElementById("resultWrapper");
         const frame = document.getElementById("resultFrame");
         
-        // رابط سيرفر النتيجة الأصلي
+        // رابط سيرفر النتيجة الأصلي الخاص بك
         frame.src = "https://natega.example.com/?seat=" + seatNum; 
         wrapper.style.display = "block";
+        
+        // عمل سكرول تلقائي لأسفل باتجاه النتيجة لراحة الزائر
+        wrapper.scrollIntoView({ behavior: 'smooth' });
     }
 </script>
 

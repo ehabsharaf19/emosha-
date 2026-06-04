@@ -1,0 +1,22 @@
+{
+  "nav_direction": "rtl",
+  "name": "أكاديمية إيموشا التعليمية",
+  "short_name": "إيموشا",
+  "description": "منصة المقالات والكتب التعليمية والخدمات الرقمية بإدارة القبطان إيهاب شرف",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#d4af37",
+  "icons": [
+    {
+      "src": "https://i.postimg.cc/vT1Lw9TY/file-00000000dac471f4ad983052a8095540.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://i.postimg.cc/vT1Lw9TY/file-00000000dac471f4ad983052a8095540.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -61,37 +61,5 @@
             console.error("خطأ في جلب الروابط لجوجل:", err);
         });
     </script>
-        <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://emosha.vercel.app/index.html</loc>
-    <priority>1.00</priority>
-  </url>
-  <url>
-    <loc>https://emosha.vercel.app/internet-earning.html</loc>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://emosha.vercel.app/facebook.html</loc>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://emosha.vercel.app/web-dev.html</loc>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://emosha.vercel.app/thanwya-books.html</loc>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://emosha.vercel.app/thanwya.html</loc>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://emosha.vercel.app/azhar.html</loc>
-    <priority>0.80</priority>
-  </url>
-</urlset>
-
 </body>
 </html>

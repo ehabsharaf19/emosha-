@@ -23,6 +23,27 @@
         .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #2a2a2a; padding-top: 15px; }
         .read-more-btn { background: var(--gold-primary); color: #000; text-decoration: none; font-weight: bold; padding: 8px 16px; border-radius: 6px; font-size: 13px; }
         .date-text { color: #666; font-size: 12px; }
+
+        /* ==================================================== */
+        /* التعديل الجديد: كلاس لإخفاء الكروت الزائدة وزر المزيد */
+        /* ==================================================== */
+        .hidden-card { display: none !important; }
+        .load-more-wrapper { text-align: center; margin-top: 20px; margin-bottom: 20px; }
+        .load-more-btn { 
+            background-color: transparent; 
+            color: var(--gold-primary); 
+            border: 2px solid var(--gold-primary); 
+            padding: 10px 30px; 
+            font-size: 15px; 
+            font-weight: bold; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            display: none; /* بيظهر بالجاوا سكربت لو المقالات أكتر من 3 */
+            transition: all 0.3s; 
+        }
+        .load-more-btn:hover { background-color: var(--gold-primary); color: #000; }
+        /* ==================================================== */
+
         footer { margin-top: 60px; background-color: #000; padding: 20px 0; text-align: center; border-top: 1px solid #222; }
         .footer-links { margin-bottom: 15px; }
         .footer-links a { color: #fff; text-decoration: none; margin: 0 10px; font-size: 14px; }
@@ -51,6 +72,14 @@
         <div id="articlesContainer">
             <p style="color: var(--text-muted); text-align: center;">جاري جلب المذكرات والمقالات التوجيهية...</p>
         </div>
+
+        <!-- ==================================================== */ -->
+        <!-- التعديل الجديد: زرار عرض المزيد المضاف أسفل الحاوية -->
+        <!-- ==================================================== */ -->
+        <div class="load-more-wrapper">
+            <button id="loadMoreBtn" class="load-more-btn">عرض المزيد</button>
+        </div>
+        <!-- ==================================================== */ -->
     </div>
 
     <footer>
@@ -68,6 +97,12 @@
         const firebaseConfig = { apiKey: "AIzaSyBORppTYoq6wbsoM8cED7T_cW5UHVX5XbE", authDomain: "emosha-b67a3.firebaseapp.com", projectId: "emosha-b67a3" };
         firebase.initializeApp(firebaseConfig); const db = firebase.firestore();
         const container = document.getElementById("articlesContainer");
+        const loadMoreBtn = document.getElementById("loadMoreBtn");
+
+        // متغيرات للتحكم في العرض الـ 3 بـ 3
+        const articlesPerPage = 3;
+        let currentIndex = 0;
+        let allCards = [];
 
         db.collection("articles").where("category", "==", "ثانوية عامة").get().then((querySnapshot) => {
             container.innerHTML = "";
@@ -85,6 +120,38 @@
                         </div>
                     </div>`;
             });
+
+            // ==================================================== */
+            // التعديل الجديد: السكربت المسؤول عن تنظيم الـ 3 مقالات بعد جلبهم
+            // ==================================================== */
+            allCards = container.querySelectorAll(".article-card");
+            
+            // إخفاء كل الكروت في البداية
+            allCards.forEach(card => card.classList.add("hidden-card"));
+            
+            // دالة إظهار المقالات التالية
+            function showNextArticles() {
+                let maxIndex = currentIndex + articlesPerPage;
+                for (let i = currentIndex; i < maxIndex && i < allCards.length; i++) {
+                    allCards[i].classList.remove("hidden-card");
+                }
+                currentIndex = maxIndex;
+                
+                // لو وصلنا لآخر المقالات نخفي الزرار
+                if (currentIndex >= allCards.length) {
+                    loadMoreBtn.style.display = "none";
+                } else {
+                    loadMoreBtn.style.display = "inline-block";
+                }
+            }
+
+            // تشغيل الدالة لأول مرة لإظهار أول 3 مقالات
+            showNextArticles();
+
+            // ربط الزر بالدالة عند الضغط عليه
+            loadMoreBtn.addEventListener("click", showNextArticles);
+            // ==================================================== */
+
         }).catch(err => { container.innerHTML = "<p style='color:red; text-align:center;'>حدث خطأ أثناء تحميل بوابة الطلاب.</p>"; });
     </script>
 </body>

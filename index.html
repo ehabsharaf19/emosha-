@@ -120,6 +120,26 @@
             transition: background 0.3s; 
         }
         .read-more-btn:hover { background: var(--gold-hover); }
+
+        /* ==================================================== */
+        /* التعديل الجديد: كلاس لإخفاء الكروت الزائدة وزر المزيد */
+        /* ==================================================== */
+        .hidden-card { display: none !important; }
+        .load-more-wrapper { text-align: center; margin-top: 25px; margin-bottom: 25px; }
+        .load-more-btn { 
+            background-color: transparent; 
+            color: var(--gold-primary); 
+            border: 2px solid var(--gold-primary); 
+            padding: 10px 30px; 
+            font-size: 15px; 
+            font-weight: bold; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            display: none; /* بيظهر بالجاوا سكربت لو المقالات أكتر من 3 */
+            transition: all 0.3s; 
+        }
+        .load-more-btn:hover { background-color: var(--gold-primary); color: #000; }
+        /* ==================================================== */
     </style>
 </head>
 <body>
@@ -185,6 +205,14 @@
             <div id="articlesContainer">
                 <p style="color: var(--text-muted); text-align: center;">جاري تحميل المقالات...</p>
             </div>
+            
+            <!-- ==================================================== */ -->
+            <!-- التعديل الجديد: زرار عرض المزيد المضاف أسفل الحاوية -->
+            <!-- ==================================================== */ -->
+            <div class="load-more-wrapper">
+                <button id="loadMoreBtn" class="load-more-btn">عرض المزيد</button>
+            </div>
+            <!-- ==================================================== */ -->
         </div>
     </div>
 
@@ -215,6 +243,12 @@
         if (!firebase.apps.length) { firebase.initializeApp(firebaseConfig); }
         const db = firebase.firestore();
         const container = document.getElementById("articlesContainer");
+        const loadMoreBtn = document.getElementById("loadMoreBtn");
+
+        // متغيرات للتحكم في العرض الـ 3 بـ 3
+        const articlesPerPage = 3;
+        let currentIndex = 0;
+        let allCards = [];
 
         // تعديل لجلب مقالات قسم "الرئيسية" فقط من الفايربيس
         db.collection("articles").where("category", "==", "الرئيسية").get().then((querySnapshot) => {
@@ -243,6 +277,38 @@
                         </div>
                     </div>`;
             });
+
+            // ==================================================== */
+            // التعديل الجديد: السكربت المسؤول عن تنظيم الـ 3 مقالات بعد جلبهم
+            // ==================================================== */
+            allCards = container.querySelectorAll(".article-card");
+            
+            // إخفاء كل الكروت في البداية
+            allCards.forEach(card => card.classList.add("hidden-card"));
+            
+            // دالة إظهار المقالات التالية
+            function showNextArticles() {
+                let maxIndex = currentIndex + articlesPerPage;
+                for (let i = currentIndex; i < maxIndex && i < allCards.length; i++) {
+                    allCards[i].classList.remove("hidden-card");
+                }
+                currentIndex = maxIndex;
+                
+                // لو وصلنا لآخر المقالات أو أقل نخفي الزرار
+                if (currentIndex >= allCards.length) {
+                    loadMoreBtn.style.display = "none";
+                } else {
+                    loadMoreBtn.style.display = "inline-block";
+                }
+            }
+
+            // تشغيل الدالة لأول مرة لإظهار أول 3 مقالات
+            showNextArticles();
+
+            // ربط الزر بالدالة عند الضغط عليه
+            loadMoreBtn.addEventListener("click", showNextArticles);
+            // ==================================================== */
+
         }).catch(err => { 
             container.innerHTML = "<p style='color:red; text-align:center;'>حدث خطأ أثناء تحميل البيانات.</p>"; 
         });

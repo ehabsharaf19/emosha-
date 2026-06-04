@@ -38,27 +38,28 @@
         .iframe-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
         /* ==================================================== */
-        /* التعديل الجديد: تنسيق المقالات وزر عرض المزيد (إيموشا) */
+        /* تنسيق المقالات الديناميكية القادمة من الفايربيس */
         /* ==================================================== */
-        .articles-section { margin-top: 40px; text-align: right; }
+        .articles-section { margin-top: 40px; text-align: right; display: none; /* بتظهر بس لو فيه مقالات في السيرفر */ }
         .articles-section h2 { color: var(--gold-primary); font-size: 22px; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 20px; }
         
-        .article-item { 
-            display: none; /* مخفي افتراضياً */
-            background-color: var(--card-bg); 
+        .article-card { 
+            background-color: #151515; 
             border: 1px solid #333; 
             border-radius: 8px; 
             padding: 20px; 
             margin-bottom: 15px; 
             transition: border-color 0.3s;
         }
-        .article-item:hover { border-color: var(--gold-primary); }
-        .article-item h3 { margin: 0 0 10px 0; color: var(--gold-primary); font-size: 18px; }
-        .article-item p { margin: 0; color: var(--text-muted); font-size: 14px; line-height: 1.6; }
+        .article-card:hover { border-color: var(--gold-primary); }
+        .article-card h3 { margin: 0 0 10px 0; color: var(--gold-primary); font-size: 18px; }
+        .article-card p { margin: 0 0 15px 0; color: var(--text-color); font-size: 14px; line-height: 1.6; }
         
-        /* الكلاس المسؤول عن إظهار المقال */
-        .article-item.visible { display: block; }
+        .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #2a2a2a; padding-top: 15px; }
+        .read-more-btn { background: var(--gold-primary); color: #000; text-decoration: none; font-weight: bold; padding: 8px 16px; border-radius: 6px; font-size: 13px; }
+        .date-text { color: #666; font-size: 12px; }
 
+        .hidden-card { display: none !important; }
         .load-more-container { text-align: center; margin-top: 25px; }
         .load-more-btn { 
             background-color: transparent; 
@@ -69,10 +70,10 @@
             font-weight: bold; 
             border-radius: 6px; 
             cursor: pointer; 
+            display: none;
             transition: all 0.3s;
         }
         .load-more-btn:hover { background-color: var(--gold-primary); color: #000; }
-        /* ==================================================== */
     </style>
 </head>
 <body>
@@ -93,7 +94,7 @@
     <div class="main-container">
         <div class="result-card">
             <h1>🕌 نتيجة الثانوية الأزهرية الشريفة 2026</h1>
-            <p>أدخل رقم جلوسك واضغط على الزر للاستعلام المباشر تحت الخانة فوراً</p>
+            <p>أدخل رقم جلوسك واضغط على الزر للاستعلام المباشر</p>
             
             <div class="form-container">
                 <input type="number" id="azharSeat" class="input-field" placeholder="أدخل رقم الجلوس هنا" required>
@@ -104,46 +105,21 @@
                 <iframe id="azharFrame" src=""></iframe>
             </div>
 
-            <!-- ==================================================== */ -->
-            <!-- التعديل الجديد: حاوية المقالات الجاهزة للاستخدام مستقبلاً -->
-            <!-- ==================================================== */ -->
-            <div class="articles-section">
+            <!-- حاوية المقالات الديناميكية -->
+            <div id="articlesSection" class="articles-section">
                 <h2>آخر الأخبار والمقالات</h2>
-                <div id="articles-container">
-                    <!-- هنا المقالات (أمثلة تجريبية يمكنك تعديل محتواها) -->
-                    <div class="article-item">
-                        <h3>مقال 1: نصائح للمرحلة الجامعية بالأزهر</h3>
-                        <p>هذا النص تجريبي للمقال الأول، يمكنك استبداله بمحتواك الخاص في أي وقت.</p>
-                    </div>
-                    <div class="article-item">
-                        <h3>مقال 2: كيفية التظلم على نتيجة الأزهر</h3>
-                        <p>هذا النص تجريبي للمقال الثاني، يوضح خطوات التظلم المتبعة سنوياً.</p>
-                    </div>
-                    <div class="article-item">
-                        <h3>مقال 3: كليات جامعة الأزهر المتاحة علمي وأدبي</h3>
-                        <p>هذا النص تجريبي للمقال الثالث، يتحدث عن الخيارات المتاحة للطلاب.</p>
-                    </div>
-                    <div class="article-item">
-                        <h3>مقال 4: الأوراق المطلوبة لتنسيق الأزهر 2026</h3>
-                        <p>هذا النص تجريبي للمقال الرابع، سيظهر فقط عند الضغط على زر "عرض المزيد".</p>
-                    </div>
-                    <div class="article-item">
-                        <h3>مقال 5: موعد بدء العام الدراسي الجديد بجامعة الأزهر</h3>
-                        <p>هذا النص تجريبي للمقال الخامس والأخير في هذه القائمة.</p>
-                    </div>
+                <div id="articlesContainer">
+                    <!-- جاري سحب البيانات من السيرفر تلقائياً -->
                 </div>
                 
-                <!-- زر عرض المزيد -->
                 <div class="load-more-container">
-                    <button id="load-more-btn" class="load-more-btn">عرض المزيد</button>
+                    <button id="loadMoreBtn" class="load-more-btn">عرض المزيد</button>
                 </div>
             </div>
-            <!-- ==================================================== */ -->
 
         </div>
     </div>
 
-    <!-- الفوتر الموحد والمعدل للموبايل -->
     <footer style="background: #000; border-top: 2px solid var(--gold-primary); padding: 25px 10px; text-align: center; margin-top: 60px; font-family: sans-serif;">
         <div class="footer-links" style="margin-bottom: 15px;">
             <a href="about.html#about" style="color: #fff !important; text-decoration: none; margin: 10px auto; font-size: 14px; font-weight: 500; display: block; max-width: fit-content;">من نحن</a>
@@ -155,49 +131,82 @@
         </div>
     </footer>
 
-<script>
-    function showAzharResult() {
-        var seatNo = document.getElementById('azharSeat').value;
-        
-        if(seatNo.trim() === "") {
-            alert("من فضلك أدخل رقم الجلوس أولاً");
-            return;
-        }
-        
-        var url = "https://natiga.azhar.eg/";
-        window.open(url, "AzharResult", "width=800,height=600,scrollbars=yes,resizable=yes,top=100,left=100");
-    }
+    <!-- استدعاء مكتبات الفايربيس الموحدة -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script>
+        // إعدادات الفايربيس الخاصة بموقعك
+        const firebaseConfig = { apiKey: "AIzaSyBORppTYoq6wbsoM8cED7T_cW5UHVX5XbE", authDomain: "emosha-b67a3.firebaseapp.com", projectId: "emosha-b67a3" };
+        firebase.initializeApp(firebaseConfig); 
+        const db = firebase.firestore();
 
-    /* ==================================================== */
-    /* التعديل الجديد: سكربت التحكم في عرض المقالات 3 بـ 3 */
-    /* ==================================================== */
-    document.addEventListener("DOMContentLoaded", function () {
-        const articlesPerPage = 3; 
-        const articles = document.querySelectorAll(".article-item");
-        const loadMoreBtn = document.getElementById("load-more-btn");
+        function showAzharResult() {
+            var seatNo = document.getElementById('azharSeat').value;
+            if(seatNo.trim() === "") {
+                alert("من فضلك أدخل رقم الجلوس أولاً");
+                return;
+            }
+            var url = "https://natiga.azhar.eg/";
+            window.open(url, "AzharResult", "width=800,height=600,scrollbars=yes,resizable=yes,top=100,left=100");
+        }
+
+        // كود سحب المقالات وإدارتها 3 بـ 3
+        const articlesSection = document.getElementById("articlesSection");
+        const container = document.getElementById("articlesContainer");
+        const loadMoreBtn = document.getElementById("loadMoreBtn");
+
+        const articlesPerPage = 3;
         let currentIndex = 0;
+        let allCards = [];
 
-        function showNextArticles() {
-            let maxIndex = currentIndex + articlesPerPage;
-            for (let i = currentIndex; i < maxIndex && i < articles.length; i++) {
-                articles[i].classList.add("visible");
+        // جلب مقالات قسم "نتيجة الثانوية الأزهرية"
+        db.collection("articles").where("category", "==", "نتيجة الثانوية الأزهرية").get().then((querySnapshot) => {
+            if (querySnapshot.empty) { 
+                articlesSection.style.display = "none"; // إخفاء القسم تماماً لو السيرفر فاضي
+                return; 
             }
-            currentIndex = maxIndex;
-            if (currentIndex >= articles.length) {
-                loadMoreBtn.style.display = "none";
-            }
-        }
+            
+            articlesSection.style.display = "block";
+            container.innerHTML = "";
+            
+            querySnapshot.forEach((doc) => {
+                const data = doc.data(); 
+                const docId = doc.id;
+                const snippet = data.content ? data.content.substring(0, 120) + "..." : "";
+                
+                container.innerHTML += `
+                    <div class="article-card hidden-card">
+                        <h3>${data.title}</h3>
+                        <p>${snippet}</p>
+                        <div class="card-footer">
+                            <a href="article.html?id=${docId}" class="read-more-btn">اقرأ المقال كاملاً ➔</a>
+                            <span class="date-text">التاريخ: ${data.date || ''}</span>
+                        </div>
+                    </div>`;
+            });
 
-        if (articles.length > 0) {
+            allCards = container.querySelectorAll(".article-card");
+            
+            function showNextArticles() {
+                let maxIndex = currentIndex + articlesPerPage;
+                for (let i = currentIndex; i < maxIndex && i < allCards.length; i++) {
+                    allCards[i].classList.remove("hidden-card");
+                }
+                currentIndex = maxIndex;
+                
+                if (currentIndex >= allCards.length) {
+                    loadMoreBtn.style.display = "none";
+                } else {
+                    loadMoreBtn.style.display = "inline-block";
+                }
+            }
+
             showNextArticles();
-        } else {
-            const section = document.querySelector(".articles-section");
-            if(section) section.style.display = "none"; 
-        }
+            loadMoreBtn.addEventListener("click", showNextArticles);
 
-        loadMoreBtn.addEventListener("click", showNextArticles);
-    });
-    /* ==================================================== */
-</script>
+        }).catch(err => { 
+            console.error("حدث خطأ أثناء تحميل المقالات:", err);
+        });
+    </script>
 </body>
 </html>

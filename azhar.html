@@ -36,6 +36,43 @@
         /* مربع النتيجة الأزهري */
         .iframe-wrapper { display: none; margin-top: 20px; border-radius: 8px; border: 2px solid var(--gold-primary); overflow: hidden; background: #fff; position: relative; padding-top: 100%; }
         .iframe-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* ==================================================== */
+        /* التعديل الجديد: تنسيق المقالات وزر عرض المزيد (إيموشا) */
+        /* ==================================================== */
+        .articles-section { margin-top: 40px; text-align: right; }
+        .articles-section h2 { color: var(--gold-primary); font-size: 22px; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 20px; }
+        
+        .article-item { 
+            display: none; /* مخفي افتراضياً */
+            background-color: var(--card-bg); 
+            border: 1px solid #333; 
+            border-radius: 8px; 
+            padding: 20px; 
+            margin-bottom: 15px; 
+            transition: border-color 0.3s;
+        }
+        .article-item:hover { border-color: var(--gold-primary); }
+        .article-item h3 { margin: 0 0 10px 0; color: var(--gold-primary); font-size: 18px; }
+        .article-item p { margin: 0; color: var(--text-muted); font-size: 14px; line-height: 1.6; }
+        
+        /* الكلاس المسؤول عن إظهار المقال */
+        .article-item.visible { display: block; }
+
+        .load-more-container { text-align: center; margin-top: 25px; }
+        .load-more-btn { 
+            background-color: transparent; 
+            color: var(--gold-primary); 
+            border: 2px solid var(--gold-primary); 
+            padding: 10px 25px; 
+            font-size: 15px; 
+            font-weight: bold; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            transition: all 0.3s;
+        }
+        .load-more-btn:hover { background-color: var(--gold-primary); color: #000; }
+        /* ==================================================== */
     </style>
 </head>
 <body>
@@ -66,6 +103,43 @@
             <div id="azharWrapper" class="iframe-wrapper">
                 <iframe id="azharFrame" src=""></iframe>
             </div>
+
+            <!-- ==================================================== */ -->
+            <!-- التعديل الجديد: حاوية المقالات الجاهزة للاستخدام مستقبلاً -->
+            <!-- ==================================================== */ -->
+            <div class="articles-section">
+                <h2>آخر الأخبار والمقالات</h2>
+                <div id="articles-container">
+                    <!-- هنا المقالات (أمثلة تجريبية يمكنك تعديل محتواها) -->
+                    <div class="article-item">
+                        <h3>مقال 1: نصائح للمرحلة الجامعية بالأزهر</h3>
+                        <p>هذا النص تجريبي للمقال الأول، يمكنك استبداله بمحتواك الخاص في أي وقت.</p>
+                    </div>
+                    <div class="article-item">
+                        <h3>مقال 2: كيفية التظلم على نتيجة الأزهر</h3>
+                        <p>هذا النص تجريبي للمقال الثاني، يوضح خطوات التظلم المتبعة سنوياً.</p>
+                    </div>
+                    <div class="article-item">
+                        <h3>مقال 3: كليات جامعة الأزهر المتاحة علمي وأدبي</h3>
+                        <p>هذا النص تجريبي للمقال الثالث، يتحدث عن الخيارات المتاحة للطلاب.</p>
+                    </div>
+                    <div class="article-item">
+                        <h3>مقال 4: الأوراق المطلوبة لتنسيق الأزهر 2026</h3>
+                        <p>هذا النص تجريبي للمقال الرابع، سيظهر فقط عند الضغط على زر "عرض المزيد".</p>
+                    </div>
+                    <div class="article-item">
+                        <h3>مقال 5: موعد بدء العام الدراسي الجديد بجامعة الأزهر</h3>
+                        <p>هذا النص تجريبي للمقال الخامس والأخير في هذه القائمة.</p>
+                    </div>
+                </div>
+                
+                <!-- زر عرض المزيد -->
+                <div class="load-more-container">
+                    <button id="load-more-btn" class="load-more-btn">عرض المزيد</button>
+                </div>
+            </div>
+            <!-- ==================================================== */ -->
+
         </div>
     </div>
 
@@ -93,6 +167,37 @@
         var url = "https://natiga.azhar.eg/";
         window.open(url, "AzharResult", "width=800,height=600,scrollbars=yes,resizable=yes,top=100,left=100");
     }
+
+    /* ==================================================== */
+    /* التعديل الجديد: سكربت التحكم في عرض المقالات 3 بـ 3 */
+    /* ==================================================== */
+    document.addEventListener("DOMContentLoaded", function () {
+        const articlesPerPage = 3; 
+        const articles = document.querySelectorAll(".article-item");
+        const loadMoreBtn = document.getElementById("load-more-btn");
+        let currentIndex = 0;
+
+        function showNextArticles() {
+            let maxIndex = currentIndex + articlesPerPage;
+            for (let i = currentIndex; i < maxIndex && i < articles.length; i++) {
+                articles[i].classList.add("visible");
+            }
+            currentIndex = maxIndex;
+            if (currentIndex >= articles.length) {
+                loadMoreBtn.style.display = "none";
+            }
+        }
+
+        if (articles.length > 0) {
+            showNextArticles();
+        } else {
+            const section = document.querySelector(".articles-section");
+            if(section) section.style.display = "none"; 
+        }
+
+        loadMoreBtn.addEventListener("click", showNextArticles);
+    });
+    /* ==================================================== */
 </script>
 </body>
 </html>

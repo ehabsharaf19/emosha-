@@ -219,5 +219,17 @@
 
         }).catch(err => { container.innerHTML = "<p style='color:red; text-align:center;'>حدث خطأ أثناء تحميل القسم.</p>"; });
     </script>
+    <!-- كود ربط وتقفيل الأبلكيشن PWA تلقائياً مع السيرفر -->
+<link rel="manifest" href="manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(reg => console.log('تم تسجيل تطبيق إيموشا بنجاح!', reg))
+        .catch(err => console.log('خطأ في تسجيل التطبيق:', err));
+    });
+  }
+</script>
+
 </body>
 </html>
